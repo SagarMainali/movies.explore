@@ -1,8 +1,12 @@
+import Navbar from "./Components/Navbar"
+import Banner from "./Components/Banner"
+
 function App() {
 
   return (
-    <div className="">
-
+    <div>
+      <Navbar />
+      <Banner />
     </div>
   )
 }
