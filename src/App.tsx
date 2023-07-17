@@ -9,7 +9,7 @@ import { PageNotFound } from './Not-found'
 export function App() {
 
   return (
-    <div className="app max-w-[1500px] mx-auto max-2xl:px-3 text-slate-300">
+    <div className="max-w-[1500px] mx-auto text-slate-300">
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
