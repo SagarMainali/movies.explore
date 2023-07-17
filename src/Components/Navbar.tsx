@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom"
 
-export default function Navbar() {
+export function Navbar() {
      return (
           <div className="fixed w-full max-2xl:w-[calc(100%-24px)] z-10 py-3 bg-primary-dark/40 max-w-[1500px]">
                <div className="flex justify-between items-center">
-                    <NavLink to='.' className="relative h-[20px] md:w-[140px] w-[100px]">
+                    <NavLink to='/' className="relative h-[20px] md:w-[140px] w-[100px]">
                          <img src={'/tmdb-logo.svg'} alt="tmbd-logo" />
                     </NavLink>
 
@@ -18,8 +18,8 @@ export default function Navbar() {
                     </div>
 
                     <ul className="flex md:gap-6 gap-3 items-center">
-                         <NavLink to='/'>Movies</NavLink>
-                         <NavLink to='/'>TV Shows</NavLink>
+                         <NavLink to='/movies'>Movies</NavLink>
+                         <NavLink to='/tvshows'>TV Shows</NavLink>
                     </ul>
                </div>
           </div>

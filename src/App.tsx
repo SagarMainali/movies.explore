@@ -1,14 +1,20 @@
-import Navbar from "./Components/Navbar"
-import Banner from "./Components/Banner"
+import { Routes, Route } from 'react-router-dom'
+import { Layout } from './Components/Layout'
+import { Home } from './Pages/Home'
+import { Movies } from './Pages/Movies'
+import { Tvshows } from './Pages/Tvshows'
 
-function App() {
+export function App() {
 
   return (
-    <div>
-      <Navbar />
-      <Banner />
+    <div className="app">
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path='/movies' element={<Movies />} />
+          <Route path='/tvshows' element={<Tvshows />} />
+        </Route>
+      </Routes>
     </div>
   )
 }
-
-export default App

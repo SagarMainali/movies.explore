@@ -1,6 +1,6 @@
 import '../gradient_overlay.css'
 
-export default function GradientOverlay() {
+export function GradientOverlay() {
      return (
           <div className="overlay h-full w-full"></div>
      )
