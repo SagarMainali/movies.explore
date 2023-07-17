@@ -1,13 +1,16 @@
 import { NavLink } from "react-router-dom"
 
 export function Navbar() {
+
      return (
-          <div className="fixed w-full max-2xl:w-[calc(100%-24px)] z-10 py-3 bg-primary-dark/40 max-w-[1500px]">
+          <div className="fixed w-full max-2xl:w-[calc(100%-24px)] z-10 py-2 bg-primary-dark/40 max-w-[1500px]">
+               {/* Logo */}
                <div className="flex justify-between items-center">
                     <NavLink to='/' className="relative h-[20px] md:w-[140px] w-[100px]">
                          <img src={'/tmdb-logo.svg'} alt="tmbd-logo" />
                     </NavLink>
 
+                    {/* Search */}
                     <div className="rounded-3xl md:w-[20rem] sm:w-[16rem] w-[12rem] overflow-hidden flex items-center">
                          <input type="text" placeholder="Search..." className="w-[87%] md:h-[34px] h-[30px] bg-slate-300 text-slate-900 font-medium caret-slate-900 outline-0 px-3 placeholder:text-slate-900 placeholder:text-sm" />
                          <button className="w-[13%] md:h-[34px] h-[30px] bg-primary-dark/40" onClick={() => console.log('clicked')}>
@@ -17,6 +20,7 @@ export function Navbar() {
                          </button>
                     </div>
 
+                    {/* Routes */}
                     <ul className="flex md:gap-6 gap-3 items-center">
                          <NavLink to='/movies'>Movies</NavLink>
                          <NavLink to='/tvshows'>TV Shows</NavLink>
