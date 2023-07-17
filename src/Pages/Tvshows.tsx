@@ -1,5 +1,7 @@
 export function Tvshows() {
      return (
-          <div>Tvshows</div>
+          <div className="pt-[50px]">
+               Tvshows
+          </div>
      )
 }

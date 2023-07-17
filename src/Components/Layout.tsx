@@ -5,7 +5,7 @@ export function Layout() {
      return (
           <div>
                <Navbar />
-               <div className='px-3' >
+               <div className='px-3'>
                     <Outlet />
                </div>
           </div>

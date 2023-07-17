@@ -13,9 +13,11 @@ export function App() {
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path='/movies' element={<Movies />} />
-          <Route path='/tvshows' element={<Tvshows />} />
-          <Route path='/details' element={<Details />} />
+          <Route path="movies">
+            <Route index element={<Movies />} />
+            <Route path=":id" element={<Details />} />
+          </Route>
+          <Route path='tvshows' element={<Tvshows />} />
           <Route path='*' element={<PageNotFound />} />
         </Route>
       </Routes>

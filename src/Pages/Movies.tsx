@@ -1,5 +1,7 @@
 export function Movies() {
      return (
-          <div>Movies</div>
+          <div className="pt-[50px]">
+               Movies
+          </div>
      )
 }
