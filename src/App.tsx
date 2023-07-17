@@ -3,6 +3,7 @@ import { Layout } from './Components/Layout'
 import { Home } from './Pages/Home'
 import { Movies } from './Pages/Movies'
 import { Tvshows } from './Pages/Tvshows'
+import { PageNotFound } from './Not-found'
 
 export function App() {
 
@@ -13,6 +14,7 @@ export function App() {
           <Route index element={<Home />} />
           <Route path='/movies' element={<Movies />} />
           <Route path='/tvshows' element={<Tvshows />} />
+          <Route path='*' element={<PageNotFound />} />
         </Route>
       </Routes>
     </div>
