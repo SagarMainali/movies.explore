@@ -1,6 +1,6 @@
 import '../../styles/loading.css'
 
-export default function loading() {
+export function Loading() {
      return (
           <div className='loading-container'>
                <div className="lds-roller">
