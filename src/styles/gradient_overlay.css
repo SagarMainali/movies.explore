@@ -8,6 +8,6 @@
 /* overlay left right bottom */
 .overlay-lrb {
      background:
-          linear-gradient(to right, rgba(0, 28, 48, 1), rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, rgba(0, 28, 48, 1)),
-          linear-gradient(to top, rgba(0, 28, 48, 1), rgba(0, 0, 0, 0) 25%);
+          linear-gradient(to right, rgba(0, 28, 48, 1), rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0) 65%, rgba(0, 28, 48, 1)),
+          linear-gradient(to top, rgba(0, 28, 48, 1), rgba(0, 0, 0, 0) 35%);
 }
