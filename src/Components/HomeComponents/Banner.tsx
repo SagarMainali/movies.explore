@@ -1,7 +1,18 @@
 import { GradientOverlay } from './GradientOverlay'
 import { NavLink } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { fetchDataFromApi } from '../../utils/api'
 
 export function Banner() {
+
+     const [trending, setTrending] = useState([])
+
+     useEffect(() => {
+          fetchDataFromApi('/trending/all/day')
+               .then(res => {
+                    console.log(res)
+               })
+     }, [])
 
      return (
           <header>
