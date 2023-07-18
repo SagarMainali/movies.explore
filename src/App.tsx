@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom'
-import { Layout } from './Components/Layout'
+import { Layout } from './Layout'
 import { Home } from './Pages/Home'
 import { Movies } from './Pages/Movies'
 import { Tvshows } from './Pages/Tvshows'
 import { Details } from './Pages/Details'
-import { PageNotFound } from './Not-found'
+import { PageNotFound } from './Components/HelperComponents/Not-found'
 
 export function App() {
 

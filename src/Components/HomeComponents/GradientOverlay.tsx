@@ -1,4 +1,4 @@
-import '../gradient_overlay.css'
+import '../../styles/gradient_overlay.css'
 
 export function GradientOverlay() {
      return (
