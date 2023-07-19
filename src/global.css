@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* just for checking */
+.b{
+     border: 2px solid white;
+}
