@@ -31,7 +31,7 @@ export function Banner() {
                               <div className="h-[90vh] max-h-[700px] bg-no-repeat bg-cover bg-center" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${trending.backdrop_path})` }}>
                                    <GradientOverlay>
                                         <div className='flex flex-col gap-4'>
-                                             <h1 className='sm:text-5xl text-3xl font-semibold'>{trending.title || trending.name}</h1>
+                                             <h1 className='md:text-5xl sm:text-4xl text-3xl font-semibold'>{trending.title || trending.name}</h1>
                                              <div className='flex gap-3'>
                                                   <h3 className='px-2 text-center uppercase text-[10px] font-bold bg-slate-300 text-primary-dark rounded-md'>{trending.media_type}</h3>
                                                   <h3 className='px-2 text-center uppercase text-[10px] font-bold bg-slate-300 text-primary-dark rounded-md'>{trending.original_language}</h3>

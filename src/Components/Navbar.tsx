@@ -22,7 +22,9 @@ export function Navbar() {
                          <img src={'/tmdb-logo.svg'} alt="tmbd-logo" />
                     </NavLink>
 
-                    <div className={`flex items-center gap-3 menu-main duration-300 ${menuTogglerActive ? 'translate-x-0' : '-translate-x-[100%]'}`}>
+                    {/* dymanic class - (above sm - dont' translate at all, keep menu where it is) (below sm - translate -100% and upon toggling translate to default i.e 0)*/}
+                    <div className={`flex items-center gap-3 menu-main duration-300 sm:translate-x-0 -translate-x-[100%] ${menuTogglerActive ? '-translate-x-0' : ''}`}>
+
                          {/* Routes */}
                          <ul className="flex font-medium gap-1 menu-links">
                               <NavLink to='/movies'
@@ -30,6 +32,7 @@ export function Navbar() {
                               <NavLink to='/tvshows'
                                    className={({ isActive }) => 'px-2 py-[2px] text-center rounded-md hover:bg-logo-inherit duration-300 hover:text-primary-dark ' + (isActive ? 'active-link' : '')}>TV Shows</NavLink>
                          </ul>
+
                          {/* Search */}
                          <div className="rounded-lg md:w-[16rem] w-[12rem] overflow-hidden flex">
                               <input type="text" placeholder="Search..." className="w-[87%] h-[30px] bg-slate-300 text-slate-900 text-sm font-medium caret-slate-900 outline-0 px-4 placeholder:text-slate-900 placeholder:text-sm" />
