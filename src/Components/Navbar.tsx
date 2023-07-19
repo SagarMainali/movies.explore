@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom"
+import '../styles/responsive.css'
 
 export function Navbar() {
      // max-2xl:w-[calc(100%-24px)]
