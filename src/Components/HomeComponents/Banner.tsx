@@ -3,8 +3,11 @@ import { NavLink } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { fetchDataFromApi } from '../../utils/api'
 import { MovieAndShowsDetails } from '../../types/type'
+import { useGlobalContext } from '../../state_management/context'
 
 export function Banner() {
+
+     const { menuTogglerActive } = useGlobalContext()
 
      const [trending, setTrending] = useState<MovieAndShowsDetails>()
 
@@ -50,7 +53,9 @@ export function Banner() {
                                    </GradientOverlay>
 
                                    {/* overlay on top of the GradientOverlay if the main-menu is open*/}
-                                   {/* <div className="absolute top-0 z-10 h-[100vh] w-[100vw] bg-primary-dark/40"></div> */}
+                                   {
+                                        menuTogglerActive && <div className="absolute top-0 z-10 h-[100vh] w-[100vw] duration-300 bg-slate-900/80"></div>
+                                   }
                               </div>
                               :
                               // show plane background before getting data from api

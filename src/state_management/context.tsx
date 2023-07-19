@@ -2,7 +2,7 @@ import { useState, createContext, useContext } from "react"
 import { ChildrenType } from "../types/type"
 import { GlobalContextType } from "../types/type"
 
-const GlobalContext = createContext<GlobalContextType>({} as GlobalContextType)
+const GlobalContext = createContext({} as GlobalContextType)
 
 export function useGlobalContext() {
      return useContext(GlobalContext)
