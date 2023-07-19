@@ -1,47 +1,34 @@
 import { NavLink } from "react-router-dom"
 import '../styles/navbar.css'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 export function Navbar() {
 
-     const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false)
+     const [menuTogglerActive, setMenuTogglerActive] = useState<boolean>(false)
 
-     function checkScreenSize() {
-          if (window.innerWidth < 600) {
-               setIsSmallScreen(true)
-          }
-          else {
-               setIsSmallScreen(false)
-          }
+     function changeMenuTogglerState() {
+          setMenuTogglerActive((prevState: boolean) => {
+               return !prevState
+          })
      }
-
-     useEffect(() => {
-          // run whenever the components renders no matter what
-          checkScreenSize()
-
-          window.addEventListener('resize', checkScreenSize)
-
-          return () => window.removeEventListener('resize', checkScreenSize)
-     }, [])
 
      return (
           // max-2xl:w-[calc(100%-24px)]
-          <div className='fixed w-full max-w-[1500px] z-10 px-3 bg-primary-dark/40'>
+          <div className='fixed w-full max-w-[1500px] z-50 px-3 bg-primary-dark/40'>
                {/* Logo */}
-               <div className="h-[50px] flex justify-between items-center relative">
+               <div className="h-[50px] flex justify-between items-center">
 
-                    <NavLink to='/' className="md:w-[140px] w-[100px]">
+                    <NavLink to='/' className="md:w-[140px] min-w-[100px]">
                          <img src={'/tmdb-logo.svg'} alt="tmbd-logo" />
                     </NavLink>
 
-
-                    <div className="flex items-center gap-3">
+                    <div className={`flex items-center gap-3 menu-main duration-300 ${menuTogglerActive ? 'translate-x-0' : '-translate-x-[100%]'}`}>
                          {/* Routes */}
-                         <ul className="flex font-medium gap-1">
+                         <ul className="flex font-medium gap-1 menu-links">
                               <NavLink to='/movies'
-                                   className={({ isActive }) => 'px-2 py-[2px] rounded-md hover:bg-logo-inherit duration-300 hover:text-primary-dark ' + (isActive ? 'active-link' : '')}>Movies</NavLink>
+                                   className={({ isActive }) => 'px-2 py-[2px] text-center rounded-md hover:bg-logo-inherit duration-300 hover:text-primary-dark ' + (isActive ? 'active-link' : '')}>Movies</NavLink>
                               <NavLink to='/tvshows'
-                                   className={({ isActive }) => 'px-2 py-[2px] rounded-md hover:bg-logo-inherit duration-300 hover:text-primary-dark ' + (isActive ? 'active-link' : '')}>TV Shows</NavLink>
+                                   className={({ isActive }) => 'px-2 py-[2px] text-center rounded-md hover:bg-logo-inherit duration-300 hover:text-primary-dark ' + (isActive ? 'active-link' : '')}>TV Shows</NavLink>
                          </ul>
                          {/* Search */}
                          <div className="rounded-lg md:w-[16rem] w-[12rem] overflow-hidden flex">
@@ -54,9 +41,19 @@ export function Navbar() {
                          </div>
                     </div>
 
-                    {/* <svg xmlns="http://www.w3.org/2000/svg" height="1rem" viewBox="0 0 448 512" fill="red">
-     <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
-</svg> */}
+                    <div className="menu-toggler cursor-pointer hidden">
+                         {
+                              menuTogglerActive
+                                   ?
+                                   <svg xmlns="http://www.w3.org/2000/svg" height="1.3rem" viewBox="0 0 384 512" fill="#0FB6DF" onClick={changeMenuTogglerState}>
+                                        <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                                   </svg>
+                                   :
+                                   <svg xmlns="http://www.w3.org/2000/svg" height="1.4rem" viewBox="0 0 448 512" fill="#0FB6DF" onClick={changeMenuTogglerState}>
+                                        <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+                                   </svg>
+                         }
+                    </div>
 
                </div>
           </div>
