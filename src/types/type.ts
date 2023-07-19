@@ -15,3 +15,8 @@ export type MovieAndShowsDetails = {
 export type ChildrenType = {
      children: ReactNode
 }
+
+export type GlobalContextType = {
+     menuTogglerActive: boolean,
+     changeMenuTogglerState: () => void
+}

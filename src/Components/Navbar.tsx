@@ -1,16 +1,10 @@
 import { NavLink } from "react-router-dom"
 import '../styles/navbar.css'
-import { useState } from 'react'
+import { useGlobalContext } from '../state_management/context'
 
 export function Navbar() {
 
-     const [menuTogglerActive, setMenuTogglerActive] = useState<boolean>(false)
-
-     function changeMenuTogglerState() {
-          setMenuTogglerActive((prevState: boolean) => {
-               return !prevState
-          })
-     }
+     const { menuTogglerActive, changeMenuTogglerState } = useGlobalContext()
 
      return (
           // max-2xl:w-[calc(100%-24px)]
