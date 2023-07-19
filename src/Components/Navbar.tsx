@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"
-import '../styles/responsive.css'
+import '../styles/navbar.css'
 
 export function Navbar() {
      // max-2xl:w-[calc(100%-24px)]
@@ -22,10 +22,14 @@ export function Navbar() {
                     </div>
 
                     {/* Routes */}
-                    <ul className="flex md:gap-6 gap-3 items-center">
-                         <NavLink to='/movies'>Movies</NavLink>
-                         <NavLink to='/tvshows'>TV Shows</NavLink>
+                    <ul className="flex font-medium md:gap-4 gap-2 items-center">
+                         <NavLink to='/movies' className={({ isActive }) => 'nav-padding ' + (isActive ? 'active-link' : '')}>Movies</NavLink>
+                         <NavLink to='/tvshows' className={({ isActive }) => 'nav-padding ' + (isActive ? 'active-link' : '')}>TV Shows</NavLink>
                     </ul>
+
+                    {/* <svg xmlns="http://www.w3.org/2000/svg" height="1rem" viewBox="0 0 448 512" fill="red">
+                         <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+                    </svg> */}
                </div>
           </div>
      )

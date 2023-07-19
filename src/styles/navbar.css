@@ -1,0 +1,13 @@
+.active-link {
+     background-color: rgba(19, 183, 220, 1);
+     color: #001C30;
+}
+
+.nav-padding {
+     padding: 2px 10px;
+     border-radius: 6px;
+}
+
+@media screen and (max-width:550px) {
+     
+}
