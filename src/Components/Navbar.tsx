@@ -17,7 +17,7 @@ export function Navbar() {
                     </NavLink>
 
                     {/* dymanic class - (above sm - dont' translate at all, keep menu where it is) (below sm - translate -100% and upon toggling translate to default i.e 0)*/}
-                    <div className={`flex items-center gap-3 menu-main duration-300 sm:translate-x-0 -translate-x-[100%] ${menuTogglerActive ? '-translate-x-0' : ''}`}>
+                    <div className={`flex items-center gap-3 menu-main duration-300 sm:translate-x-0 -translate-x-[100%] ${menuTogglerActive ? 'translate-x-0' : ''}`}>
 
                          {/* Routes */}
                          <ul className="flex font-medium gap-1 menu-links">
@@ -28,7 +28,7 @@ export function Navbar() {
                          </ul>
 
                          {/* Search */}
-                         <div className="rounded-lg w-[14rem] overflow-hidden flex">
+                         <div className="rounded-lg sm:w-[14rem] w-full overflow-hidden flex">
                               <input type="text" placeholder="Search..." className="w-[87%] h-[30px] bg-slate-200 text-slate-900 text-sm font-medium caret-slate-900 outline-0 px-4 placeholder:text-slate-900 placeholder:text-sm" />
                               <button className="w-[13%] h-[30px] bg-slate-300" onClick={() => console.log('clicked')}>
                                    <svg className="w-full md:h-[1.1rem] h-[1rem]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#001C30">
