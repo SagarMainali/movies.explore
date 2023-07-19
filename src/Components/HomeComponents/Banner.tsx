@@ -7,7 +7,7 @@ import { useGlobalContext } from '../../state_management/context'
 
 export function Banner() {
 
-     const { menuTogglerActive } = useGlobalContext()
+     const { menuTogglerActive, changeMenuTogglerState } = useGlobalContext()
 
      const [trending, setTrending] = useState<MovieAndShowsDetails>()
 
@@ -26,8 +26,7 @@ export function Banner() {
 
      return (
           <header>
-               <NavLink to={`/movies/${trending?.id}`}>
-
+               <NavLink to={menuTogglerActive ? '' : `/movies/${trending?.id}`} onClick={menuTogglerActive ? changeMenuTogglerState : undefined}>
                     {
                          trending
                               ?
@@ -54,15 +53,13 @@ export function Banner() {
 
                                    {/* overlay on top of the GradientOverlay if the main-menu is open*/}
                                    {
-                                        menuTogglerActive && <div className="absolute top-0 z-10 h-[97vh] w-[97vw] duration-300 bg-slate-900/80"></div>
+                                        menuTogglerActive && <div className="absolute top-0 z-10 h-[97vh] w-[97vw] duration-300 bg-slate-900/80 sm:hidden"></div>
                                    }
                               </div>
                               :
                               // show plane background before getting data from api
                               <div className="h-[90vh] max-h-[700px] bg-primary-dark"></div>
                     }
-
-
                </NavLink>
           </header >
      )
