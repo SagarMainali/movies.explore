@@ -54,7 +54,7 @@ export function Banner() {
 
                                    {/* overlay on top of the GradientOverlay if the main-menu is open*/}
                                    {
-                                        menuTogglerActive && <div className="absolute top-0 z-10 h-[100vh] w-[100vw] duration-300 bg-slate-900/80"></div>
+                                        menuTogglerActive && <div className="absolute top-0 z-10 h-[97vh] w-[97vw] duration-300 bg-slate-900/80"></div>
                                    }
                               </div>
                               :
