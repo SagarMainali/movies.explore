@@ -1,5 +1,6 @@
 import { GradientOverlay } from './GradientOverlay'
 import { NavLink } from 'react-router-dom'
+import { image_baseUrl } from '../../utils/api'
 import { useState, useEffect } from 'react'
 import { fetchDataFromApi } from '../../utils/api'
 import { MovieAndShowsDetails } from '../../types/type'
@@ -30,7 +31,7 @@ export function Banner() {
                     {
                          trending
                               ?
-                              <div className="h-[90vh] max-h-[700px] bg-no-repeat bg-cover bg-center" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${trending.backdrop_path})` }}>
+                              <div className="h-[90vh] max-h-[700px] bg-no-repeat bg-cover bg-center" style={{ backgroundImage: `url(${image_baseUrl + trending.backdrop_path})` }}>
                                    <GradientOverlay>
                                         <div className='flex flex-col gap-4'>
                                              <h1 className='md:text-5xl sm:text-4xl text-3xl font-semibold'>{trending.title || trending.name}</h1>
@@ -53,7 +54,7 @@ export function Banner() {
 
                                    {/* overlay on top of the GradientOverlay if the main-menu is open*/}
                                    {
-                                        menuTogglerActive && <div className="absolute top-0 z-10 h-[97vh] w-[97vw] duration-300 bg-slate-900/80 sm:hidden"></div>
+                                        menuTogglerActive && <div className="absolute top-0 z-10 h-[97vh] w-[97vw] duration-300 bg-slate-900/70 sm:hidden"></div>
                                    }
                               </div>
                               :

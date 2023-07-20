@@ -12,7 +12,7 @@ export function Navbar() {
                {/* Logo */}
                <div className="h-[50px] flex justify-between items-center">
 
-                    <NavLink to='/' className="md:w-[140px] min-w-[100px]">
+                    <NavLink to='/' className="md:w-[140px] min-w-[120px]">
                          <img src={'/tmdb-logo.svg'} alt="tmbd-logo" />
                     </NavLink>
 

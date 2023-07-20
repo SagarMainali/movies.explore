@@ -1,6 +1,9 @@
 import axios from "axios";
 
 const base_url: string = 'https://api.themoviedb.org/3'
+
+export const image_baseUrl = 'https://image.tmdb.org/t/p/original'
+
 const tmdb_api_access_token: string = import.meta.env.VITE_APP_TMDB_API_ACCESS_TOKEN
 
 const headers = {
