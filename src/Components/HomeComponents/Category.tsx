@@ -8,7 +8,13 @@ import '../../styles/category.css'
 export function Category({ category }: { category: string }) {
 
      // movies or tvshow
-     const [userInput, setuserInput] = useState<string>('tv')
+     const [userInput, setUserInput] = useState<string>('movie')
+
+     const changeUserInput = () => {
+          setUserInput((prevInput: string) => (
+               prevInput === 'movie' ? 'tv' : 'movie')
+          )
+     }
 
      let dynamicUrl = (
           category === 'Trending'
@@ -24,15 +30,16 @@ export function Category({ category }: { category: string }) {
      )
 
 
-     const { data, isLoading } = fetchDataFromApi(dynamicUrl)
-
-     console.log(data)
+     const { data } = fetchDataFromApi(dynamicUrl)
 
      return (
           <div className="flex flex-col gap-2">
-               <div className="flex justify-between">
+               <div className="flex justify-between items-center">
                     <h2 className="text-2xl">{category}</h2>
-
+                    <span className="flex rounded-md text-sm">
+                         <h4 onClick={changeUserInput} className={`py-0.5 px-3 cursor-pointer rounded-md ${userInput === 'movie' ? 'bg-slate-700': ''}`}>Movies</h4>
+                         <h4 onClick={changeUserInput} className={`py-0.5 px-3 cursor-pointer rounded-md ${userInput === 'tv' ? 'bg-slate-700': ''}`}>Tv Shows</h4>
+                    </span>
                </div>
                <div className="category flex gap-3 overflow-x-scroll ::-webkit-scrollbar:hidden">
                     {

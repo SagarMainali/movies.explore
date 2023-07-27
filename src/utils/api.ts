@@ -10,16 +10,15 @@ const headers = {
      Authorization: 'bearer ' + tmdb_api_access_token
 }
 
-export const fetchDataFromApi = (url: string, params?: string) => {
+export const fetchDataFromApi = (url: string) => {
 
      return useQuery({
           queryKey: ['movies', url],
           queryFn: async () => {
                const { data } = await axios.get(base_url + url, {
-                    headers,
-                    params
+                    headers
                })
-               return data.results as MovieAndShowsDetails[]     
+               return data.results as MovieAndShowsDetails[]
           }
      })
 
