@@ -3,7 +3,7 @@
      color: #001C30;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 760px) {
      .menu-main {
           position: absolute;
           left: 0;

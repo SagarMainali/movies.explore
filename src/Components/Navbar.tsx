@@ -26,7 +26,7 @@ export function Navbar() {
                     </NavLink>
 
                     {/* dymanic class - (above sm - dont' translate at all, keep menu where it is) (below sm - translate -100% and upon toggling translate to default i.e 0)*/}
-                    <div className={`flex items-center gap-3 menu-main duration-300 sm:translate-x-0 -translate-x-[100%] ${menuTogglerActive ? 'translate-x-0' : ''}`}>
+                    <div className={`flex items-center gap-3 menu-main duration-300 md:translate-x-0 -translate-x-[100%] ${menuTogglerActive ? 'translate-x-0' : ''}`}>
 
                          {/* Routes */}
                          <ul className="flex font-medium gap-1 menu-links">
