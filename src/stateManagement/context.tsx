@@ -1,12 +1,16 @@
 import { useState, createContext, useContext } from "react"
 import { ChildrenType } from "../types/type"
 import { GlobalContextType } from "../types/type"
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
 
 const GlobalContext = createContext({} as GlobalContextType)
 
 export function useGlobalContext() {
      return useContext(GlobalContext)
 }
+
+const queryClient = new QueryClient()
 
 export function GlobalContextProvider({ children }: ChildrenType) {
 
@@ -20,7 +24,9 @@ export function GlobalContextProvider({ children }: ChildrenType) {
 
      return (
           <GlobalContext.Provider value={{ menuTogglerActive, changeMenuTogglerState }}>
-               {children}
+               <QueryClientProvider client={queryClient}>
+                    {children}
+               </QueryClientProvider>
           </GlobalContext.Provider>
      )
 }

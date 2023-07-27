@@ -1,11 +1,11 @@
 import { Routes, Route } from 'react-router-dom'
 import { Layout } from './Layout'
-import { Home } from './Pages/Home'
-import { Movies } from './Pages/Movies'
-import { Tvshows } from './Pages/Tvshows'
-import { Details } from './Pages/Details'
-import { PageNotFound } from './Components/HelperComponents/Not-found'
-import { GlobalContextProvider } from './state_management/context'
+import { Home } from './pages/Home'
+import { Movies } from './pages/Movies'
+import { Tvshows } from './pages/Tvshows'
+import { Details } from './pages/Details'
+import { PageNotFound } from './Components/helperComponents/Not-found'
+import { GlobalContextProvider } from './stateManagement/context'
 
 export function App() {
 

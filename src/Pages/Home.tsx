@@ -1,4 +1,4 @@
-import { Banner } from "../Components/HomeComponents/Banner";
+import { Banner } from "../Components/homeComponents/Banner";
 
 export function Home() {
      return (
