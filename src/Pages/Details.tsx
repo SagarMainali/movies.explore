@@ -9,7 +9,7 @@ export function Details() {
 
   return (
     <div className="pt-[50px]">
-      <h2>Movie id = {id}</h2>
+      <h2>Movie/Show id = {id}</h2>
     </div>
   )
 }

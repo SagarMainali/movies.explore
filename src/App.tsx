@@ -10,12 +10,12 @@ import { GlobalContextProvider } from './stateManagement/context'
 export function App() {
 
   return (
-    <div className="max-w-[1500px] mx-auto text-slate-300">
+    <div className="max-w-[1500px] mx-auto text-slate-300 overflow-hidden pb-6">
       <GlobalContextProvider>
         <Routes>
           <Route path='/' element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="movies">
+            <Route path="watch">
               <Route index element={<Movies />} />
               <Route path=":id" element={<Details />} />
             </Route>
