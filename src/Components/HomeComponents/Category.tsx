@@ -3,6 +3,7 @@ import { fetchDataFromApi } from "../../utils/api"
 import { useState } from "react"
 import { image_baseUrl } from "../../utils/api"
 import { NavLink } from "react-router-dom"
+import '../../styles/category.css'
 
 export function Category({ category }: { category: string }) {
 
@@ -33,12 +34,12 @@ export function Category({ category }: { category: string }) {
                     <h2 className="text-2xl">{category}</h2>
 
                </div>
-               <div className="flex gap-3">
+               <div className="category flex gap-3 overflow-x-scroll ::-webkit-scrollbar:hidden">
                     {
                          data?.map(
                               (movieOrShow: MovieAndShowsDetails) => (
                                    <NavLink key={movieOrShow.id} to={`/watch/${movieOrShow.id}`}>
-                                        <img className="md:min-w-[200px] min-w-[150px]" src={`${image_baseUrl}/${movieOrShow.poster_path}`} alt="movie/tvshow" />
+                                        <img className="lg:min-w-[250px] md:min-w-[200px] sm:min-w-[150px] min-w-[120px] rounded-md" src={`${image_baseUrl}/${movieOrShow.poster_path}`} alt="movie/tvshow" />
                                    </NavLink>
                               )
                          )
