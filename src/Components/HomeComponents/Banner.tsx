@@ -40,7 +40,10 @@ export function Banner() {
                ?
                <Loading />
                :
-               <NavLink to={menuTogglerActive ? '' : `/watch/${trending.id}`} onClick={menuTogglerActive ? changeMenuTogglerState : undefined}>
+               <NavLink
+                    to={menuTogglerActive ? '' : `/details/${trending.id}`}
+                    onClick={menuTogglerActive ? changeMenuTogglerState : undefined}>
+                    
                     <div className="md:h-[85vh] h-[95vh] max-h-[700px] bg-no-repeat bg-cover bg-center" style={{ backgroundImage: `url(${image_baseUrl + trending.backdrop_path})` }}>
                          <GradientOverlay>
                               <div className='flex flex-col gap-4 md:w-[70vw] w-full'>

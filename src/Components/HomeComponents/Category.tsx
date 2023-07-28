@@ -41,11 +41,11 @@ export function Category({ category }: { category: string }) {
                          <h4 onClick={changeUserInput} className={`py-0.5 px-3 cursor-pointer rounded-md ${userInput === 'tv' ? 'bg-slate-700': ''}`}>Tv Shows</h4>
                     </span>
                </div>
-               <div className="category flex gap-3 overflow-x-scroll ::-webkit-scrollbar:hidden">
+               <div className="category flex gap-3 overflow-x-scroll">
                     {
                          data?.map(
                               (movieOrShow: MovieAndShowsDetails) => (
-                                   <NavLink key={movieOrShow.id} to={`/watch/${movieOrShow.id}`}>
+                                   <NavLink key={movieOrShow.id} to={`/details/${movieOrShow.id}`}>
                                         <img className="lg:min-w-[250px] md:min-w-[200px] sm:min-w-[150px] min-w-[120px] rounded-md" src={`${image_baseUrl}/${movieOrShow.poster_path}`} alt="movie/tvshow" />
                                    </NavLink>
                               )

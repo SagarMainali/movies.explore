@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom"
 import '../styles/navbar.css'
 import { useGlobalContext } from '../stateManagement/context'
-import { ChangeEvent, useState } from "react"
+import { ChangeEvent, useEffect, useState } from "react"
 
 export function Navbar() {
 
@@ -14,6 +14,16 @@ export function Navbar() {
      }
 
      const navigate = useNavigate()
+
+     useEffect(() => {
+          window.addEventListener('scroll', () => {
+               console.log(window.scrollY)
+          })
+
+          return window.removeEventListener('scroll', () => {
+               console.log(window.scrollY)
+          })
+     }, [scrollY])
 
      return (
           // max-2xl:w-[calc(100%-24px)]

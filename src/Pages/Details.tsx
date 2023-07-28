@@ -4,9 +4,6 @@ export function Details() {
 
   const { id } = useParams()
 
-  console.log(id)
-  console.log('first')
-
   return (
     <div className="pt-[50px]">
       <h2>Movie/Show id = {id}</h2>

@@ -15,11 +15,9 @@ export function App() {
         <Routes>
           <Route path='/' element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="watch">
-              <Route index element={<Movies />} />
-              <Route path=":id" element={<Details />} />
-            </Route>
-            <Route path='tvshows' element={<Tvshows />} />
+            <Route path="movies" element={<Movies />} />
+            <Route path="tvshows" element={<Tvshows />} />
+            <Route path="details/:id" element={<Details />} />
             <Route path='*' element={<PageNotFound />} />
           </Route>
         </Routes>
