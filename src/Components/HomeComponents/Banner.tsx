@@ -43,8 +43,8 @@ export function Banner() {
                <NavLink
                     to={menuTogglerActive ? '' : `/details/${trending.id}`}
                     onClick={menuTogglerActive ? changeMenuTogglerState : undefined}>
-                    
-                    <div className="md:h-[85vh] h-[95vh] max-h-[700px] bg-no-repeat bg-cover bg-center" style={{ backgroundImage: `url(${image_baseUrl + trending.backdrop_path})` }}>
+
+                    <div className="md:h-[85vh] h-[95vh] max-h-[700px] bg-no-repeat bg-cover bg-center" style={{ backgroundImage: trending.backdrop_path ? `url(${image_baseUrl + trending.backdrop_path})` : '' }}>
                          <GradientOverlay>
                               <div className='flex flex-col gap-4 md:w-[70vw] w-full'>
                                    <h1 className='md:text-5xl sm:text-4xl text-3xl font-semibold'>{trending.title || trending.name}</h1>

@@ -16,14 +16,19 @@ export function Navbar() {
      const navigate = useNavigate()
 
      useEffect(() => {
-          window.addEventListener('scroll', () => {
-               console.log(window.scrollY)
-          })
+          window.addEventListener('scroll', handleNavbar)
 
-          return window.removeEventListener('scroll', () => {
-               console.log(window.scrollY)
-          })
-     }, [scrollY])
+          function handleNavbar() {
+               if (window.scrollY > 450) {
+                    console.log('450 crossed')
+               }
+          }
+
+          return () => {
+               window.removeEventListener('scroll', handleNavbar)
+          }
+
+     }, [window.scrollY])
 
      return (
           // max-2xl:w-[calc(100%-24px)]
