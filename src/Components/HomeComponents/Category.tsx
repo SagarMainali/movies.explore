@@ -10,10 +10,8 @@ export function Category({ category }: { category: string }) {
      // movies or tvshow
      const [userInput, setUserInput] = useState<string>('movie')
 
-     const changeUserInput = () => {
-          setUserInput((prevInput: string) => (
-               prevInput === 'movie' ? 'tv' : 'movie')
-          )
+     const changeUserInput = (category: string) => {
+          setUserInput(category === 'movie' ? 'movie' : 'tv')
      }
 
      let dynamicUrl = (
@@ -33,20 +31,30 @@ export function Category({ category }: { category: string }) {
      const { data } = fetchDataFromApi(dynamicUrl)
 
      return (
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-3">
+
                <div className="flex justify-between items-center">
                     <h2 className="text-2xl">{category}</h2>
-                    <span className="flex rounded-md text-sm">
-                         <h4 onClick={changeUserInput} className={`py-0.5 px-3 cursor-pointer rounded-md ${userInput === 'movie' ? 'bg-slate-700': ''}`}>Movies</h4>
-                         <h4 onClick={changeUserInput} className={`py-0.5 px-3 cursor-pointer rounded-md ${userInput === 'tv' ? 'bg-slate-700': ''}`}>Tv Shows</h4>
+                    <span className="flex rounded-md text-sm bg-slate-500 z-0 w-[170px] overflow-hidden">
+                         <h4
+                              onClick={() => { changeUserInput('movie') }}
+                              className={`py-0.5 text-center cursor-pointer rounded-md w-[50%] relative 
+                              after:absolute after:inset-0 after:bg-slate-700 after:-z-10 after:rounded-md after:duration-200
+                              ${userInput === 'movie' ? '' : 'after:translate-x-[100%]'}`}>Movies</h4>
+                         <h4
+                              onClick={() => { changeUserInput('tv') }}
+                              className='py-0.5 text-center cursor-pointer rounded-md w-[50%]'>Tv Shows</h4>
                     </span>
                </div>
+
                <div className="category flex gap-3 overflow-x-scroll">
                     {
                          data?.map(
                               (movieOrShow: MovieAndShowsDetails) => (
                                    <NavLink key={movieOrShow.id} to={`/details/${movieOrShow.id}`}>
-                                        <img className="lg:min-w-[250px] md:min-w-[200px] sm:min-w-[150px] min-w-[120px] rounded-md" src={`${image_baseUrl}/${movieOrShow.poster_path}`} alt="movie/tvshow" />
+                                        <img
+                                             className="md:min-w-[200px] sm:min-w-[150px] min-w-[120px] rounded-lg"
+                                             src={`${image_baseUrl}/${movieOrShow.poster_path}`} alt="movie/tvshow" />
                                    </NavLink>
                               )
                          )

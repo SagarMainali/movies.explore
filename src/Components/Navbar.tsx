@@ -15,12 +15,17 @@ export function Navbar() {
 
      const navigate = useNavigate()
 
+     const [hideNavbar, setHideNavbar] = useState<boolean>(false)
+
      useEffect(() => {
           window.addEventListener('scroll', handleNavbar)
 
           function handleNavbar() {
-               if (window.scrollY > 450) {
-                    console.log('450 crossed')
+               if (scrollY > 450) {
+                    setHideNavbar(true)
+               }
+               else {
+                    setHideNavbar(false)
                }
           }
 
@@ -28,11 +33,11 @@ export function Navbar() {
                window.removeEventListener('scroll', handleNavbar)
           }
 
-     }, [window.scrollY])
+     }, [scrollY])
 
      return (
           // max-2xl:w-[calc(100%-24px)]
-          <div className='fixed w-full max-w-[1500px] z-50 px-3 bg-primary-dark/40'>
+          <div className={`fixed w-full max-w-[1500px] z-50 px-3 bg-primary-dark/40 duration-300 ${hideNavbar ? '-translate-y-[100%]' : ''}`}>
                {/* Logo */}
                <div className="h-[50px] flex justify-between items-center">
 
