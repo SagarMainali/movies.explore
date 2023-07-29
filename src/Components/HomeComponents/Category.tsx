@@ -1,11 +1,8 @@
 import { MovieAndShowsDetails } from "../../types/type"
 import { fetchDataFromApi } from "../../utils/api"
 import { useState } from "react"
-import { image_baseUrl } from "../../utils/api"
-import { NavLink } from "react-router-dom"
 import '../../styles/category.css'
-import { CircularProgressbar } from 'react-circular-progressbar'
-import 'react-circular-progressbar/dist/styles.css'
+import { Card } from "../Card"
 
 export function Category({ category }: { category: string }) {
 
@@ -32,20 +29,6 @@ export function Category({ category }: { category: string }) {
 
      const { data } = fetchDataFromApi(dynamicUrl)
 
-     const circularProgressbarStyles = {
-          text: {
-               fontSize: '32px',
-               fontWeight: 'bolder',
-               fill: '#001C30'
-          },
-          trail: {
-               stroke: 'rgb(226 232 240)'
-          },
-          background: {
-               fill: 'rgb(226 232 240)'
-          }
-     }
-
      return (
           <div className="flex flex-col gap-3">
 
@@ -66,34 +49,7 @@ export function Category({ category }: { category: string }) {
                <div className="category flex gap-3 overflow-x-scroll">
                     {
                          data?.map(
-                              (movieOrShow: MovieAndShowsDetails) => (
-                                   <div key={movieOrShow.id} className="flex flex-col gap-1">
-                                        <div className="relative">
-                                             <NavLink to={`/details/${movieOrShow.id}`}>
-                                                  <img
-                                                       className="md:min-w-[200px] sm:min-w-[150px] min-w-[120px] rounded-lg"
-                                                       src={`${image_baseUrl}/${movieOrShow.poster_path}`} alt="movie/tvshow" />
-                                             </NavLink>
-                                             <span className="absolute left-1 bottom-1 w-[40px] h-[40px] rounded-full p-[1.5px] bg-slate-200">
-                                                  <CircularProgressbar
-                                                       maxValue={10} value={movieOrShow.vote_average} text={`${movieOrShow.vote_average.toFixed(1)}`}
-                                                       strokeWidth={9} background
-                                                       styles={{
-                                                            ...circularProgressbarStyles, path: {
-                                                                 stroke: movieOrShow.vote_average >= 6.5 ? '#0FB6DF' : '#f07b41'
-                                                            }
-                                                       }} />
-                                             </span>
-                                        </div>
-                                        <h1 className="sm:text-lg text-sm truncate md:max-w-[195px] sm:max-w-[145px] max-w-[115px]">
-                                             {(movieOrShow.title || movieOrShow.name).length > 50
-                                                  ? ((movieOrShow.title || movieOrShow.name).slice(0, 50) + '...')
-                                                  : (movieOrShow.title || movieOrShow.name)
-                                             }
-                                        </h1>
-                                        <h2 className="text-[10px] font-bold">{movieOrShow.release_date}</h2>
-                                   </div>
-                              )
+                              (movieOrShow: MovieAndShowsDetails) => <Card key={movieOrShow.id} {...movieOrShow} />
                          )
                     }
                </div>
