@@ -13,7 +13,7 @@ export default {
       screens: {
         'xsm': '500px',
         'sm': '600px',
-        'md': '760px',
+        'md': '800px',
         'lg': '1040px',
         'xl': '1300px',
         '2xl': '1500px',
