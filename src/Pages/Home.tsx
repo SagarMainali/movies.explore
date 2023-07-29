@@ -1,5 +1,6 @@
 import { Banner } from "../Components/homeComponents/Banner"
 import { Category } from "../Components/homeComponents/Category"
+import { Footer } from "../Components/homeComponents/Footer"
 import { useGlobalContext } from "../stateManagement/context"
 
 export function Home() {
@@ -15,10 +16,16 @@ export function Home() {
                          onClick={changeMenuTogglerState}></div>
                }
                <Banner />
+
                <Category category={'Trending Now'} />
+
                <Category category={"What's Popular"} />
+
                <Category category={'Top rated'} />
+
                <Category category={'Now playing'} />
+
+               <Footer />
           </div>
      )
 }
