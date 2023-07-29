@@ -35,7 +35,7 @@ export function Category({ category }: { category: string }) {
 
                <div className="flex justify-between items-center">
                     <h2 className="text-2xl">{category}</h2>
-                    <span className="flex rounded-md text-sm bg-slate-500 z-0 w-[170px] overflow-hidden">
+                    <span className="flex rounded-md text-sm text-slate-200 bg-slate-500 z-0 sm:w-[170px] w-[140px] overflow-hidden">
                          <h4
                               onClick={() => { changeUserInput('movie') }}
                               className={`py-0.5 text-center cursor-pointer rounded-md w-[50%] relative 
