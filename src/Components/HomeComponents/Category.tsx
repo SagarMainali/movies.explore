@@ -48,9 +48,7 @@ export function Category({ category }: { category: string }) {
 
                <div className="category flex gap-3 overflow-x-scroll">
                     {
-                         data?.map(
-                              (movieOrShow: MovieAndShowsDetails) => <Card key={movieOrShow.id} {...movieOrShow} />
-                         )
+                         data?.map((movieOrShow: MovieAndShowsDetails) => <Card key={movieOrShow.id} {...movieOrShow} />)
                     }
                </div>
 

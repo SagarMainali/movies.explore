@@ -40,7 +40,7 @@ export function Card({ id, poster_path, vote_average, release_date, title, name 
                               }} />
                     </span>
                </div>
-               <h1 className="sm:text-lg text-sm truncate md:max-w-[195px] sm:max-w-[145px] max-w-[115px]">{ title || name}</h1>
+               <h1 className="sm:text-lg text-sm truncate md:max-w-[195px] sm:max-w-[145px] max-w-[115px]">{title || name}</h1>
                <h2 className="text-[10px] font-bold">{release_date}</h2>
           </div>
      )
