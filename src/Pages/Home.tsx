@@ -5,8 +5,8 @@ export function Home() {
      return (
           <div className="flex flex-col gap-10">
                <Banner />
-               <Category category={'Trending'} />
-               <Category category={'Popular'} />
+               <Category category={'Trending Now'} />
+               <Category category={"What's Popular"} />
                <Category category={'Top rated'} />
                <Category category={'Now playing'} />
           </div>

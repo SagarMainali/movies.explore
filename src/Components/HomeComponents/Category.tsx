@@ -15,9 +15,9 @@ export function Category({ category }: { category: string }) {
      }
 
      let dynamicUrl = (
-          category === 'Trending'
-               ? `/trending/${userInput}/week`
-               : category === 'Popular'
+          category === 'Trending Now'
+               ? `/trending/${userInput}/day`
+               : category === "What's Popular"
                     ? `/${userInput}/popular`
                     : category === 'Top rated'
                          ? `/${userInput}/top_rated`

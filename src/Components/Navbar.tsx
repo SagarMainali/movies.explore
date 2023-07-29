@@ -20,11 +20,10 @@ export function Navbar() {
      // const [prevScrollY, setPrevScrollY] = useState<number>(0)
      const prevScrollY = useRef<number>(0)
 
+     // to change background color of navbar based on scrollposition
      const [crossed300, setCrossed300] = useState<boolean>(false)
 
      useEffect(() => {
-          window.addEventListener('scroll', handleNavbar)
-
           function handleNavbar() {
                const currentScrollY = window.scrollY
                if (currentScrollY > 300) {
@@ -41,9 +40,9 @@ export function Navbar() {
                prevScrollY.current = currentScrollY
           }
 
-          return () => {
-               window.removeEventListener('scroll', handleNavbar)
-          }
+          window.addEventListener('scroll', handleNavbar)
+
+          return () => { window.removeEventListener('scroll', handleNavbar) }
      }, [])
      // the dependecy prevScrollY is very important here because it lets the useEffect run everytime the componenet re-renders and if its value has
      // been changed. so everytime the useEffect runs it creates a new closure for the function handleNavbar then only it can refer to the latest
@@ -51,14 +50,13 @@ export function Navbar() {
      // it keeps on refering to the same old closure of the handleNavbar function that was created at the initial render of the component. due to
      // this although the prevScrollY is being updated inside the function with the latest value but it is still refering the same value which was
      // 0 when the useEffect ran for the first time
-
-     // this problem gets solved when we just use useRef instead of useState variable - by using useRef we no longer need to use dependency 
+     // *this problem gets solved when we just use useRef instead of useState variable - by using useRef we no longer need to use dependency *
 
      return (
           // max-2xl:w-[calc(100%-24px)]
           <div
                className={`fixed w-full max-w-[1500px] z-50 px-3 duration-300 
-               ${hideNavbar ? '-translate-y-[100%]' : ''} ${crossed300 ? 'bg-primary-dark/90' : 'bg-primary-dark/40'}`}>
+               ${hideNavbar ? '-translate-y-[100%]' : ''} ${crossed300 ? 'bg-primary-dark/80' : 'bg-primary-dark/40'}`}>
                {/* Logo */}
                <div className="h-[50px] flex justify-between items-center">
 
