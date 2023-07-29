@@ -28,7 +28,7 @@ export function Navbar() {
                const currentScrollY = window.scrollY
                if (currentScrollY > 300) {
                     setCrossed300(true)
-                    if (currentScrollY > prevScrollY.current) {
+                    if (currentScrollY > prevScrollY.current && !menuTogglerActive) {
                          setHideNavbar(true)
                     } else {
                          setHideNavbar(false)
@@ -43,7 +43,7 @@ export function Navbar() {
           window.addEventListener('scroll', handleNavbar)
 
           return () => { window.removeEventListener('scroll', handleNavbar) }
-     }, [])
+     }, [prevScrollY.current])
      // the dependecy prevScrollY is very important here because it lets the useEffect run everytime the componenet re-renders and if its value has
      // been changed. so everytime the useEffect runs it creates a new closure for the function handleNavbar then only it can refer to the latest
      // updated state value of the prevScrollY otherwise if there is no dependency provided the useEffect will not run on the next render and then
@@ -66,7 +66,7 @@ export function Navbar() {
 
                     {/* dymanic class - (above sm - dont' translate at all, keep menu where it is) (below sm - translate -100% and upon toggling translate to default i.e 0)*/}
                     <div className={`flex items-center gap-3 menu-main duration-300 md:translate-x-0 -translate-x-[100%] 
-                    ${menuTogglerActive ? 'translate-x-0' : ''}`}>
+                         ${menuTogglerActive ? 'translate-x-0' : ''}`}>
 
                          {/* Routes */}
                          <ul className="flex font-medium gap-1 menu-links">

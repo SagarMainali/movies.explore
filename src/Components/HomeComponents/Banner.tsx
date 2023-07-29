@@ -4,12 +4,9 @@ import { image_baseUrl } from '../../utils/api'
 import { useState, useEffect } from 'react'
 import { fetchDataFromApi } from '../../utils/api'
 import { MovieAndShowsDetails } from '../../types/type'
-import { useGlobalContext } from '../../stateManagement/context'
 import { Loading } from '../helperComponents/Loading'
 
 export function Banner() {
-
-     const { menuTogglerActive, changeMenuTogglerState } = useGlobalContext()
 
      const { data, isLoading } = fetchDataFromApi('/trending/all/day')
 
@@ -40,10 +37,7 @@ export function Banner() {
                ?
                <Loading />
                :
-               <NavLink
-                    to={menuTogglerActive ? '' : `/details/${trending.id}`}
-                    onClick={menuTogglerActive ? changeMenuTogglerState : undefined}>
-
+               <NavLink to={`/details/${trending.id}`}>
                     <div className="md:h-[85vh] h-[95vh] max-h-[700px] bg-no-repeat bg-cover bg-center" style={{ backgroundImage: trending.backdrop_path ? `url(${image_baseUrl + trending.backdrop_path})` : '' }}>
                          <GradientOverlay>
                               <div className='flex flex-col gap-4 md:w-[70vw] w-full'>
@@ -64,11 +58,6 @@ export function Banner() {
                                    <p>{trending.overview}</p>
                               </div>
                          </GradientOverlay>
-
-                         {/* overlay on top of the GradientOverlay if the main-menu is active*/}
-                         {
-                              menuTogglerActive && <div className="absolute top-0 z-10 h-[97vh] w-[97vw] duration-300 bg-slate-900/70 md:hidden"></div>
-                         }
                     </div>
                </NavLink>
      )
