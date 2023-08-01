@@ -49,7 +49,7 @@ export function Category({ category }: { category: string }) {
                <div className="category flex gap-3 overflow-x-scroll">
                     {
                          // first checking the type of 'data' which should return true and proceed if it is an array
-                         Array.isArray(data) && data?.map((movieOrShow: MovieAndShowsDetails) => <Card key={movieOrShow.id} {...movieOrShow} />)
+                         Array.isArray(data) && data?.map((movieOrShow: MovieAndShowsDetails) => <Card key={movieOrShow.id} customMediaType={userInput} {...movieOrShow} />)
                     }
                </div>
 

@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import { fetchDataFromApi, image_baseUrl } from "../utils/api"
 import { Loading } from "../Components/helperComponents/Loading"
+import { GradientOverlay } from "../Components/homeComponents/GradientOverlay"
 
 export function Details() {
 
@@ -13,12 +14,11 @@ export function Details() {
       ?
       <Loading />
       :
-      <div className="pt-[50px]">
-        <div className="detail-container h-[60vh] max-h-[480px] bg-no-repeat bg-cover bg-center"
+      <div className="">
+        <div className="detail-container h-[60vh] max-h-[400px] bg-no-repeat bg-cover bg-center"
           style={{
             backgroundImage: (data && typeof (data) === 'object' && !Array.isArray(data)) ? `url(${image_baseUrl + data.backdrop_path})` : ''
           }}>
-
         </div>
 
         <div className="cast"></div>

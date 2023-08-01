@@ -16,7 +16,7 @@ export function Explorer({ explore }: { explore: string }) {
                     {
                          // first checking the type of 'data' which should return true and proceed if it is an array
                          Array.isArray(data) && data?.map(
-                              (movie: MovieAndShowsDetails) => <Card key={movie.id} {...movie} />
+                              (movie: MovieAndShowsDetails) => <Card key={movie.id} {...movie} customMediaType={explore} />
                          )
                     }
                </div>
