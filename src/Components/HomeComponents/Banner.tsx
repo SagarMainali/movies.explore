@@ -37,7 +37,7 @@ export function Banner() {
                ?
                <Loading />
                :
-               <NavLink to={`/details/${trending.id}`}>
+               <NavLink to={`/${trending.media_type}/${trending.id}`}>
                     <div className="md:h-[85vh] h-[95vh] max-h-[700px] bg-no-repeat bg-cover bg-center" style={{ backgroundImage: trending.backdrop_path ? `url(${image_baseUrl + trending.backdrop_path})` : '' }}>
                          <GradientOverlay>
                               <div className='flex flex-col gap-4 md:w-[70vw] w-full'>

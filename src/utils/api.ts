@@ -13,12 +13,12 @@ const headers = {
 export const fetchDataFromApi = (url: string) => {
 
      return useQuery({
-          queryKey: ['movies', url],
+          queryKey: [url],
           queryFn: async () => {
                const { data } = await axios.get(base_url + url, {
                     headers
                })
-               return data.results as MovieAndShowsDetails[]
+               return data.results as MovieAndShowsDetails[] || data as MovieAndShowsDetails
           }
      })
 

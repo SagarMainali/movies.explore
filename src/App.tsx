@@ -16,7 +16,7 @@ export function App() {
             <Route index element={<Home />} />
             <Route path="movies" element={<Explorer explore={'movie'} />} />
             <Route path="tvshows" element={<Explorer explore={'tv'} />} />
-            <Route path="details/:id" element={<Details />} />
+            <Route path=":media_type/:id" element={<Details />} />
             <Route path='*' element={<PageNotFound />} />
           </Route>
         </Routes>

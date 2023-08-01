@@ -34,11 +34,11 @@ export function Category({ category }: { category: string }) {
 
                <div className="flex justify-between items-center">
                     <h2 className="sm:text-2xl text-lg font-semibold">{category}</h2>
-                    <span className="flex rounded-md text-xs sm:text-sm text-slate-200 bg-slate-500 z-0 sm:w-[170px] w-[140px] overflow-hidden">
+                    <span className="flex rounded-md text-xs sm:text-sm text-slate-200 bg-slate-700 z-0 sm:w-[170px] w-[140px] overflow-hidden">
                          <h4
                               onClick={() => { changeUserInput('movie') }}
                               className={`py-0.5 text-center cursor-pointer rounded-md w-[50%] relative 
-                              after:absolute after:inset-0 after:bg-slate-700 after:-z-10 after:rounded-md after:duration-200
+                              after:absolute after:inset-0 after:bg-slate-500 after:-z-10 after:rounded-md after:duration-200
                               ${userInput === 'movie' ? '' : 'after:translate-x-[100%]'}`}>Movies</h4>
                          <h4
                               onClick={() => { changeUserInput('tv') }}

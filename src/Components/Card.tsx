@@ -5,7 +5,7 @@ import 'react-circular-progressbar/dist/styles.css'
 import { MovieAndShowsDetails } from "../types/type"
 
 
-export function Card({ id, poster_path, vote_average, release_date, title, name }: MovieAndShowsDetails) {
+export function Card({ id, title, name, media_type, poster_path, vote_average, release_date }: MovieAndShowsDetails) {
 
      const circularProgressbarStyles = {
           text: {
@@ -24,7 +24,7 @@ export function Card({ id, poster_path, vote_average, release_date, title, name 
      return (
           <div className="flex flex-col gap-1">
                <div className="relative">
-                    <NavLink to={`/details/${id}`}>
+                    <NavLink to={`/${media_type}/${id}`}>
                          <img
                               className='md:min-w-[200px] sm:min-w-[150px] min-w-[120px] rounded-lg'
                          src={`${image_baseUrl}/${poster_path}`} alt="movie/tvshow" />
