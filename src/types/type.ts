@@ -8,6 +8,7 @@ export type MovieAndShowsDetails = {
      overview: string,
      media_type: string,
      release_date: string,
+     first_air_date: string,
      vote_average: number,
      vote_count: number,
      backdrop_path: string,
@@ -17,6 +18,8 @@ export type MovieAndShowsDetails = {
      budget: number,
      revenue: number,
      runtime: number,
+     number_of_seasons: number,
+     number_of_episodes: number,
      status: string,
      genres: {
           id: number,

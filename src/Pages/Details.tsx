@@ -60,14 +60,27 @@ export function Details() {
                   <span className="bg-slate-200 rounded-md px-[6px] py-[2px] text-primary-dark text-[10px] font-bold">{media_type?.toUpperCase()}</span>
                   <span className="bg-slate-200 rounded-md px-[6px] py-[2px] text-primary-dark text-[10px] font-bold">{data.original_language?.toUpperCase()}</span>
                 </div>
-                <div className="flex gap-4 text-sm">
-                  <h4 className='font-semibold'>Released on: <span className="text-slate-300 font-normal">{data.release_date}</span></h4>
-                  <h4 className='font-semibold'>Running Time: <span className="text-slate-300 font-normal">{data.runtime} minutes</span></h4>
-                </div>
-                <div className="flex gap-4 text-sm">
-                  <h4 className='font-semibold'>Budget: <span className="text-slate-300 font-normal">{data.budget}</span></h4>
-                  <h4 className='font-semibold'>Box office: <span className="text-slate-300 font-normal">{data.revenue}</span></h4>
-                </div>
+                {
+                  media_type === 'movie'
+                    ?
+                    <div className="flex gap-4 text-sm">
+                      <h4 className='font-semibold'>Released on: <span className="text-slate-300 font-normal">{data.release_date || data.first_air_date}</span></h4>
+                      <h4 className='font-semibold'>Status: <span className="text-slate-300 font-normal">{data.status}</span></h4>
+                      <h4 className='font-semibold'>Running Time: <span className="text-slate-300 font-normal">{data.runtime} minutes</span></h4>
+                    </div>
+                    :
+                    <div className="flex gap-4 text-sm">
+                      <h4 className='font-semibold'>First aired on: <span className="text-slate-300 font-normal">{data.release_date || data.first_air_date}</span></h4>
+                      <h4 className='font-semibold'>No of Episodes: <span className="text-slate-300 font-normal">{data.number_of_seasons}</span></h4>
+                      <h4 className='font-semibold'>No of Seasons: <span className="text-slate-300 font-normal">{data.number_of_episodes}</span></h4>
+                    </div>
+                }
+                {media_type === 'movie' &&
+                  <div className="flex gap-4 text-sm">
+                    <h4 className='font-semibold'>Budget: <span className="text-slate-300 font-normal">{data.budget}</span></h4>
+                    <h4 className='font-semibold'>Box office: <span className="text-slate-300 font-normal">{data.revenue}</span></h4>
+                  </div>
+                }
                 <p className="text-slate-300">{data.overview}</p>
 
               </div>
