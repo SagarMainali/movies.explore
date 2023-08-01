@@ -4,24 +4,23 @@ import { CircularProgressbar } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
 import { MovieAndShowsDetails } from "../types/type"
 
+export const circularProgressbarStyles = {
+     text: {
+          fontSize: '32px',
+          fontWeight: 'bolder',
+          fill: '#001C30'
+     },
+     trail: {
+          stroke: 'rgb(226 232 240)'
+     },
+     background: {
+          fill: 'rgb(226 232 240)'
+     }
+}
 
 export function Card({ customMediaType, ...movieOrShow }: { customMediaType: string } & MovieAndShowsDetails) {
 
      const { id, poster_path, vote_average, title, name, release_date } = movieOrShow
-
-     const circularProgressbarStyles = {
-          text: {
-               fontSize: '32px',
-               fontWeight: 'bolder',
-               fill: '#001C30'
-          },
-          trail: {
-               stroke: 'rgb(226 232 240)'
-          },
-          background: {
-               fill: 'rgb(226 232 240)'
-          }
-     }
 
      return (
           <div className="flex flex-col gap-1">

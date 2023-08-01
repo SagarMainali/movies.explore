@@ -17,11 +17,11 @@ export type MovieAndShowsDetails = {
      budget: number,
      revenue: number,
      runtime: number,
-}
-
-export type ImageUrls = {
-     backDropUrl: string,
-     posterUrl: string
+     status: string,
+     genres: {
+          id: number,
+          name: string
+     }[]
 }
 
 export type ChildrenType = {
