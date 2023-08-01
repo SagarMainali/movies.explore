@@ -13,7 +13,8 @@ export function Banner() {
      const [trending, setTrending] = useState<MovieAndShowsDetails>({} as MovieAndShowsDetails)
 
      useEffect(() => {
-          if (!isLoading && data) {
+          // first check if data is an array because it could also be an object or undefined other than the array
+          if (!isLoading && Array.isArray(data)) {
                const randomNumber = Math.floor(Math.random() * 20)
                setTrending(data[randomNumber])
           }
@@ -33,12 +34,12 @@ export function Banner() {
      // }, [])
 
      return (
-          isLoading
+          isLoading && !data
                ?
                <Loading />
                :
                <NavLink to={`/${trending.media_type}/${trending.id}`}>
-                    <div className="md:h-[85vh] h-[95vh] max-h-[700px] bg-no-repeat bg-cover bg-center" style={{ backgroundImage: trending.backdrop_path ? `url(${image_baseUrl + trending.backdrop_path})` : '' }}>
+                    <div className="md:h-[85vh] h-[95vh] max-h-[700px] bg-no-repeat bg-cover bg-center" style={{ backgroundImage: trending.backdrop_path ? `url(${image_baseUrl + trending.backdrop_path})`: '' }}>
                          <GradientOverlay>
                               <div className='flex flex-col gap-4 md:w-[70vw] w-full'>
                                    <h1 className='md:text-5xl sm:text-4xl text-3xl font-semibold'>{trending.title || trending.name}</h1>

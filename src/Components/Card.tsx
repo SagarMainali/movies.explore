@@ -27,7 +27,7 @@ export function Card({ id, title, name, media_type, poster_path, vote_average, r
                     <NavLink to={`/${media_type}/${id}`}>
                          <img
                               className='md:min-w-[200px] sm:min-w-[150px] min-w-[120px] rounded-lg'
-                         src={`${image_baseUrl}/${poster_path}`} alt="movie/tvshow" />
+                              src={`${image_baseUrl}/${poster_path}`} alt="movie/tvshow" />
                     </NavLink>
                     <span className="absolute left-1 bottom-1 w-[40px] h-[40px] rounded-full p-[1.5px] bg-slate-200">
                          <CircularProgressbar

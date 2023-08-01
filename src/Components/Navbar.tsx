@@ -72,13 +72,13 @@ export function Navbar() {
                          ${menuTogglerActive ? 'translate-x-0' : ''} `}>
 
                          {/* Routes */}
-                         <ul className="flex font-medium gap-2 menu-links">
+                         <ul className="flex font-medium text-sm gap-2 menu-links">
                               <NavLink to='/movies'
                                    className={({ isActive }) =>
-                                        'px-2 py-[2px] rounded-md hover:bg-logo-inherit duration-300 hover:text-primary-dark ' + (isActive ? 'active-link' : '')}>Movies</NavLink>
+                                        'px-2 py-[3px] rounded-md hover:bg-logo-inherit duration-300 hover:text-primary-dark ' + (isActive ? 'active-link' : '')}>Movies</NavLink>
                               <NavLink to='/tvshows'
                                    className={({ isActive }) =>
-                                        'px-2 py-[2px] rounded-md hover:bg-logo-inherit duration-300 hover:text-primary-dark ' + (isActive ? 'active-link' : '')}>TV Shows</NavLink>
+                                        'px-2 py-[3px] rounded-md hover:bg-logo-inherit duration-300 hover:text-primary-dark ' + (isActive ? 'active-link' : '')}>TV Shows</NavLink>
                          </ul>
 
                          {/* Search */}

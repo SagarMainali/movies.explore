@@ -18,7 +18,8 @@ export const fetchDataFromApi = (url: string) => {
                const { data } = await axios.get(base_url + url, {
                     headers
                })
-               return data.results as MovieAndShowsDetails[] || data as MovieAndShowsDetails
+
+               return data.results ? data.results as MovieAndShowsDetails[] : data as MovieAndShowsDetails
           }
      })
 
