@@ -9,6 +9,7 @@ export type MovieAndShowsDetails = {
      media_type: string,
      release_date: string,
      first_air_date: string,
+     last_air_date: string,
      vote_average: number,
      vote_count: number,
      backdrop_path: string,

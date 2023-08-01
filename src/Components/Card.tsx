@@ -18,7 +18,7 @@ export const circularProgressbarStyles = {
      }
 }
 
-export function Card({ customMediaType, ...movieOrShow }: { customMediaType: string } & MovieAndShowsDetails) {
+export function Card({ customMediaType, ...movieOrShow }: { customMediaType: string | undefined} & MovieAndShowsDetails) {
 
      const { id, poster_path, vote_average, title, name, release_date } = movieOrShow
 

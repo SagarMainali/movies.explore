@@ -5,6 +5,7 @@ import '../styles/gradient_overlay.css'
 import { CircularProgressbar } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
 import { circularProgressbarStyles } from "../Components/Card"
+import SuggestedCategory from "../Components/homeComponents/SuggestedCategory"
 
 export function Details() {
 
@@ -18,7 +19,7 @@ export function Details() {
       <Loading />
       :
       data && typeof (data) === 'object' && !Array.isArray(data) &&
-      <div className="main-detail-container">
+      <div className="details flex flex-col gap-10">
 
         <div className="detail h-[85vh] relative">
           <div
@@ -34,7 +35,7 @@ export function Details() {
                 <h1 className="font-medium text-base italic text-slate-200">{data.tagline}</h1>
                 <div className="flex gap-2 items-center">
                   {
-                    data.genres.map(genre => <span className="bg-slate-200 rounded-md px-[6px] py-[2px] text-primary-dark text-[10px] font-bold">
+                    data.genres.map(genre => <span key={genre.id} className="bg-slate-200 rounded-md px-[6px] py-[2px] text-primary-dark text-[10px] font-bold">
                       {genre.name}
                     </span>)
                   }
@@ -70,7 +71,9 @@ export function Details() {
                     </div>
                     :
                     <div className="flex gap-4 text-sm">
-                      <h4 className='font-semibold'>First aired on: <span className="text-slate-300 font-normal">{data.release_date || data.first_air_date}</span></h4>
+                      <h4 className='font-semibold'>First aired on: <span className="text-slate-300 font-normal">{data.first_air_date}</span></h4>
+                      <h4 className='font-semibold'>Last aired on: <span className="text-slate-300 font-normal">{data.last_air_date}</span></h4>
+                      <h4 className='font-semibold'>Status: <span className="text-slate-300 font-normal">{data.status}</span></h4>
                       <h4 className='font-semibold'>No of Episodes: <span className="text-slate-300 font-normal">{data.number_of_seasons}</span></h4>
                       <h4 className='font-semibold'>No of Seasons: <span className="text-slate-300 font-normal">{data.number_of_episodes}</span></h4>
                     </div>
@@ -82,11 +85,14 @@ export function Details() {
                   </div>
                 }
                 <p className="text-slate-300">{data.overview}</p>
-
               </div>
             </div>
           </div>
         </div>
+
+        <SuggestedCategory media_type={media_type} id={id} category='similar' />
+
+        <SuggestedCategory media_type={media_type} id={id} category='recommendations' />
 
         {/* <div className="cast"></div>
 
