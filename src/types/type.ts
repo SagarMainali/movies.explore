@@ -19,6 +19,11 @@ export type MovieAndShowsDetails = {
      runtime: number,
 }
 
+export type ImageUrls = {
+     backDropUrl: string,
+     posterUrl: string
+}
+
 export type ChildrenType = {
      children: ReactNode
 }
