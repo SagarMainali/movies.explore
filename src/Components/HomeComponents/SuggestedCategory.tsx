@@ -9,20 +9,25 @@ export default function SuggestedCategory({ id, media_type, category }: { id: st
 
      const { data } = fetchDataFromApi(endpoint)
 
+     const category_title = category === 'similar'
+          ? `Similar ${media_type === 'movie'
+               ? 'Movies' : 'Tv Shows'}`
+          : 'Recommendations'
+
      return (
-          Array.isArray(data)
-               ?
-               <div className="flex flex-col gap-4 w-[80%] mx-auto">
-                    <h1>{category} {media_type}</h1>
-                    <div className="category flex gap-3 overflow-x-scroll">
-                         {
-                              data.map(
-                                   (movieOrShow: MovieAndShowsDetails) => <Card customMediaType={media_type} {...movieOrShow} />
-                              )
-                         }
-                    </div>
+          Array.isArray(data) && data.length > 0
+          &&
+          <div className="flex flex-col gap-3 lg:w-[80%] w-[100%] mx-auto">
+               <h1 className="font-semibold text-lg">
+                    {category_title}
+               </h1>
+               <div className="category flex gap-3 overflow-x-scroll">
+                    {
+                         data.map(
+                              (movieOrShow: MovieAndShowsDetails) => <Card key={movieOrShow.id} customMediaType={media_type} {...movieOrShow} />
+                         )
+                    }
                </div>
-               :
-               <div></div>
+          </div>
      )
 }

@@ -28,16 +28,17 @@ export function Details() {
             <div className="overlay-lrb h-full w-full absolute inset-0"></div>
           </div>
           <div className="absolute bottom-0 w-full flex justify-center">
-            <div className="w-[80%] flex gap-3">
+            <div className="lg:w-[80%] w-[100%] flex gap-3">
               <img src={image_baseUrl + data.poster_path} alt="posterImg" className="rounded-lg max-h-[350px]" />
               <div className="flex flex-col gap-4">
                 <h1 className="font-bold text-4xl text-slate-100">{data.title || data.name}</h1>
-                <h1 className="font-medium text-base italic text-slate-200">{data.tagline}</h1>
+                {data.tagline && <h1 className="font-medium text-base italic text-slate-200">{data.tagline}</h1>}
                 <div className="flex gap-2 items-center">
                   {
-                    data.genres.map(genre => <span key={genre.id} className="bg-slate-200 rounded-md px-[6px] py-[2px] text-primary-dark text-[10px] font-bold">
-                      {genre.name}
-                    </span>)
+                    data.genres.map((genre) => (
+                      <span key={genre.id} className="bg-slate-200 rounded-md px-[6px] py-[2px] text-primary-dark text-[10px] font-bold">
+                        {genre.name}
+                      </span>))
                   }
                 </div>
                 <div className="flex gap-2 ites-center">
@@ -64,13 +65,13 @@ export function Details() {
                 {
                   media_type === 'movie'
                     ?
-                    <div className="flex gap-4 text-sm">
+                    <div className="flex gap-4 text-sm flex-wrap">
                       <h4 className='font-semibold'>Released on: <span className="text-slate-300 font-normal">{data.release_date || data.first_air_date}</span></h4>
                       <h4 className='font-semibold'>Status: <span className="text-slate-300 font-normal">{data.status}</span></h4>
                       <h4 className='font-semibold'>Running Time: <span className="text-slate-300 font-normal">{data.runtime} minutes</span></h4>
                     </div>
                     :
-                    <div className="flex gap-4 text-sm">
+                    <div className="flex gap-4 text-sm flex-wrap">
                       <h4 className='font-semibold'>First aired on: <span className="text-slate-300 font-normal">{data.first_air_date}</span></h4>
                       <h4 className='font-semibold'>Last aired on: <span className="text-slate-300 font-normal">{data.last_air_date}</span></h4>
                       <h4 className='font-semibold'>Status: <span className="text-slate-300 font-normal">{data.status}</span></h4>
