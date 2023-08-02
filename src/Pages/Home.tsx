@@ -1,6 +1,6 @@
-import { Banner } from "../Components/homeComponents/Banner"
-import { Category } from "../Components/homeComponents/Category"
-import { Footer } from "../Components/homeComponents/Footer"
+import { Banner } from "../Components/homePageComponents/Banner"
+import { Category } from "../Components/homePageComponents/Category"
+import { Footer } from "../Components/homePageComponents/Footer"
 import { useGlobalContext } from "../stateManagement/context"
 
 export function Home() {

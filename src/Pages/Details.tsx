@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom"
-import { fetchDataFromApi, image_baseUrl } from "../utils/api"
+import { fetchDataFromApi } from "../utils/api"
+import { image_baseUrl } from "../utils/common"
 import { Loading } from "../Components/helperComponents/Loading"
 import '../styles/gradient_overlay.css'
 import { CircularProgressbar } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
-import { circularProgressbarStyles } from "../Components/Card"
-import { SuggestedCategory } from "../Components/homeComponents/SuggestedCategory"
+import { circularProgressbarStyles } from "../utils/common"
+import { SuggestedCategory } from "../Components/detailsPageComponents/SuggestedCategory"
 
 export function Details() {
 
@@ -99,9 +100,7 @@ export function Details() {
 
         {/* <div className="cast"></div>
 
-        <div className="videos"></div>
-
-        <div className="similar-movies"></div> */}
+        <div className="videos"></div>*/}
       </div >
   )
 }

@@ -36,7 +36,3 @@ export const fetchDataFromApi = (url: string) => {
      //      return error
      // }
 }
-
-export const image_baseUrl = 'https://image.tmdb.org/t/p/original'
-
-export const video_baseUrl = 'https://www.youtube.com/watch?v='

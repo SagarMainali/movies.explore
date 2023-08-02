@@ -1,6 +1,6 @@
 import { GradientOverlay } from './GradientOverlay'
 import { NavLink } from 'react-router-dom'
-import { image_baseUrl } from '../../utils/api'
+import { image_baseUrl } from '../../utils/common'
 import { useState, useEffect } from 'react'
 import { fetchDataFromApi } from '../../utils/api'
 import { MovieAndShowsDetails } from '../../types/type'

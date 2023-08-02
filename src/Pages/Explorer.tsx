@@ -1,7 +1,7 @@
 import { fetchDataFromApi } from "../utils/api"
 import { Loading } from "../Components/helperComponents/Loading"
 import { MovieAndShowsDetails } from "../types/type"
-import { Card } from "../Components/Card"
+import { Card } from "../Components/globalComponents/Card"
 
 export function Explorer({ explore }: { explore: string }) {
 

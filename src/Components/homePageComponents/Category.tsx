@@ -2,7 +2,7 @@ import { MovieAndShowsDetails } from "../../types/type"
 import { fetchDataFromApi } from "../../utils/api"
 import { useState } from "react"
 import '../../styles/category.css'
-import { Card } from "../Card"
+import { Card } from "../globalComponents/Card"
 
 export function Category({ category }: { category: string }) {
 

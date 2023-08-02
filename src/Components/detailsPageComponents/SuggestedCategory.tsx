@@ -1,6 +1,6 @@
 import { MovieAndShowsDetails } from "../../types/type"
 import { fetchDataFromApi } from "../../utils/api"
-import { Card } from "../Card"
+import { Card } from "../globalComponents/Card"
 import '../../styles/category.css'
 
 export function SuggestedCategory({ id, media_type, category }: { id: string | undefined, media_type: string | undefined, category: string }) {

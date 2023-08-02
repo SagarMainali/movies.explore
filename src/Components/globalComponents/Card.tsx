@@ -1,22 +1,9 @@
-import { image_baseUrl } from "../utils/api"
+import { image_baseUrl } from "../../utils/common"
 import { NavLink } from "react-router-dom"
 import { CircularProgressbar } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
-import { MovieAndShowsDetails } from "../types/type"
-
-export const circularProgressbarStyles = {
-     text: {
-          fontSize: '32px',
-          fontWeight: 'bolder',
-          fill: '#001C30'
-     },
-     trail: {
-          stroke: 'rgb(226 232 240)'
-     },
-     background: {
-          fill: 'rgb(226 232 240)'
-     }
-}
+import { MovieAndShowsDetails } from "../../types/type"
+import { circularProgressbarStyles } from "../../utils/common"
 
 export function Card({ customMediaType, ...movieOrShow }: { customMediaType: string | undefined } & MovieAndShowsDetails) {
 

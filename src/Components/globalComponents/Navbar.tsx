@@ -1,6 +1,6 @@
 import { NavLink, useNavigate, useLocation } from "react-router-dom"
-import '../styles/navbar.css'
-import { useGlobalContext } from '../stateManagement/context'
+import '../../styles/navbar.css'
+import { useGlobalContext } from '../../stateManagement/context'
 import { ChangeEvent, useEffect, useState, useRef } from "react"
 
 export function Navbar() {
