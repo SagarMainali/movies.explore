@@ -1,6 +1,5 @@
 import axios from "axios"
 import { useQuery } from "@tanstack/react-query"
-import { MovieAndShowsDetails } from "../types/type"
 
 const base_url: string = 'https://api.themoviedb.org/3'
 
@@ -10,16 +9,15 @@ const headers = {
      Authorization: 'bearer ' + tmdb_api_access_token
 }
 
-export const fetchDataFromApi = (url: string) => {
+export const fetchDataFromApi = (endpoint: string) => {
 
      return useQuery({
-          queryKey: [url],
+          queryKey: [endpoint],
           queryFn: async () => {
-               const { data } = await axios.get(base_url + url, {
+               const { data } = await axios.get(base_url + endpoint, {
                     headers
                })
-
-               return data.results ? data.results as MovieAndShowsDetails[] : data as MovieAndShowsDetails
+               return data.results ? data.results : data.cast ? data.cast : data
           }
      })
 

@@ -25,7 +25,19 @@ export type MovieAndShowsDetails = {
      genres: {
           id: number,
           name: string
-     }[]
+     }[],
+}
+
+export type CastType = {
+     id: number,
+     original_name: string,
+     profile_path: string,
+     character: string,
+}
+
+export type DataResponse = {
+     results: MovieAndShowsDetails[],
+     cast: CastType[]
 }
 
 export type ChildrenType = {

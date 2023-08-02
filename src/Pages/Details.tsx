@@ -7,6 +7,7 @@ import { CircularProgressbar } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
 import { circularProgressbarStyles } from "../utils/common"
 import { SuggestedCategory } from "../Components/detailsPageComponents/SuggestedCategory"
+import { CastSection } from "../Components/detailsPageComponents/CastSection"
 
 export function Details() {
 
@@ -23,22 +24,24 @@ export function Details() {
       <div className="flex flex-col gap-10">
 
         <div className="h-[85vh] relative">
+
           <div
             className="bg-no-repeat bg-cover bg-top h-[80%] w-full relative"
             style={{ backgroundImage: `url(${image_baseUrl + data.backdrop_path})` }}>
             <div className="overlay-lrb h-full w-full absolute inset-0"></div>
           </div>
+
           <div className="absolute bottom-0 w-full flex justify-center">
-            <div className="lg:w-[80%] w-[100%] flex gap-3">
+            <div className="lg:w-[85%] w-[100%] flex gap-3">
               <img src={image_baseUrl + data.poster_path} alt="posterImg" className='rounded-lg max-h-[370px]' />
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col gap-1 items-start">
-                  <h1 className="font-bold text-3xl text-slate-200 bg-primary-dark/50 py-[2px] px-3 rounded-lg">{data.title || data.name}</h1>
-                  {data.tagline && <h1 className="font-medium text-[12px] italic text-slate-200 bg-primary-dark/50 py-[2px] px-2 rounded-lg">{data.tagline}</h1>}
+                  <h1 className="font-bold text-3xl text-slate-200 bg-primary-dark/40 py-[2px] px-3 rounded-lg">{data.title || data.name}</h1>
+                  {data.tagline && <h1 className="font-medium text-[12px] italic text-slate-200 bg-primary-dark/40 py-[2px] px-2 rounded-lg">{data.tagline}</h1>}
                 </div>
                 <div className="flex gap-2 items-center">
                   {
-                    data.genres.map((genre) => (
+                    data.genres.map((genre: { name: string, id: number }) => (
                       <span key={genre.id} className="bg-slate-200 rounded-md px-[6px] py-[2px] text-primary-dark text-[10px] font-bold">
                         {genre.name}
                       </span>))
@@ -94,13 +97,14 @@ export function Details() {
           </div>
         </div>
 
-        <SuggestedCategory media_type={media_type} id={id} category='similar' />
+        <div className="w-[85%] mx-auto flex flex-col gap-10 overflow-hidden">
+          <CastSection endpoint={`/${media_type}/${id}/credits`} />
 
-        <SuggestedCategory media_type={media_type} id={id} category='recommendations' />
+          <SuggestedCategory media_type={media_type} id={id} category='similar' />
 
-        {/* <div className="cast"></div>
+          <SuggestedCategory media_type={media_type} id={id} category='recommendations' />
+        </div>
 
-        <div className="videos"></div>*/}
       </div >
   )
 }

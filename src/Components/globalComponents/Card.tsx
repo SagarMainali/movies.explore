@@ -1,20 +1,23 @@
 import { image_baseUrl } from "../../utils/common"
-import { NavLink } from "react-router-dom"
+import { NavLink, useLocation } from "react-router-dom"
 import { CircularProgressbar } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
 import { MovieAndShowsDetails } from "../../types/type"
 import { circularProgressbarStyles } from "../../utils/common"
 
+// the customMediaType is needed because only trending movies or shows has media_type property
 export function Card({ customMediaType, ...movieOrShow }: { customMediaType: string | undefined } & MovieAndShowsDetails) {
 
      const { id, poster_path, vote_average, title, name, release_date } = movieOrShow
+
+     const { pathname } = useLocation()
 
      return (
           <div className="flex flex-col gap-1">
                <div className="relative">
                     <NavLink to={`/${customMediaType}/${id}`}>
                          <img
-                              className='md:min-w-[200px] sm:min-w-[150px] min-w-[120px] rounded-lg h-[300px]'
+                              className={`md:min-w-[200px] sm:min-w-[150px] min-w-[120px] rounded-lg ${pathname.includes('movies') || pathname.includes('tvshows') ? 'max-h-[400px]' : 'h-[300px]'}`}
                               src={`${image_baseUrl}/${poster_path}`} alt="movie/tvshow" />
                     </NavLink>
                     <span className="absolute left-1 bottom-1 w-[40px] h-[40px] rounded-full p-[1.5px] bg-slate-200">
