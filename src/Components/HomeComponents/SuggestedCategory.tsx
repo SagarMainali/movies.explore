@@ -3,7 +3,7 @@ import { fetchDataFromApi } from "../../utils/api"
 import { Card } from "../Card"
 import '../../styles/category.css'
 
-export default function SuggestedCategory({ id, media_type, category }: { id: string | undefined, media_type: string | undefined, category: string }) {
+export function SuggestedCategory({ id, media_type, category }: { id: string | undefined, media_type: string | undefined, category: string }) {
 
      const endpoint = `/${media_type}/${id}/${category}`
 

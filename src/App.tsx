@@ -9,7 +9,7 @@ import { Explorer } from './pages/Explorer'
 export function App() {
 
   return (
-    <div className="max-w-[1500px] mx-auto text-slate-300 overflow-hidden">
+    <div className="max-w-[1500px] mx-auto text-slate-300 pb-4 overflow-hidden">
       <GlobalContextProvider>
         <Routes>
           <Route path='/' element={<Layout />}>

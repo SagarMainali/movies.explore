@@ -27,7 +27,7 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
                <div className="relative">
                     <NavLink to={`/${customMediaType}/${id}`}>
                          <img
-                              className='md:min-w-[200px] sm:min-w-[150px] min-w-[120px] rounded-lg min-h-[300px]'
+                              className='md:min-w-[200px] sm:min-w-[150px] min-w-[120px] rounded-lg h-[300px]'
                               src={`${image_baseUrl}/${poster_path}`} alt="movie/tvshow" />
                     </NavLink>
                     <span className="absolute left-1 bottom-1 w-[40px] h-[40px] rounded-full p-[1.5px] bg-slate-200">

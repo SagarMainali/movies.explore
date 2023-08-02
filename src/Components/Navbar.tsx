@@ -26,6 +26,10 @@ export function Navbar() {
      const [crossed300, setCrossed300] = useState<boolean>(false)
 
      useEffect(() => {
+          setHideNavbar(false)
+     }, [pathname])
+
+     useEffect(() => {
           function handleNavbar() {
                const currentScrollY = window.scrollY
                if (currentScrollY > 300) {

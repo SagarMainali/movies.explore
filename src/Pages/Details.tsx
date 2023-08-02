@@ -5,7 +5,7 @@ import '../styles/gradient_overlay.css'
 import { CircularProgressbar } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
 import { circularProgressbarStyles } from "../Components/Card"
-import SuggestedCategory from "../Components/homeComponents/SuggestedCategory"
+import { SuggestedCategory } from "../Components/homeComponents/SuggestedCategory"
 
 export function Details() {
 
@@ -19,20 +19,22 @@ export function Details() {
       <Loading />
       :
       data && typeof (data) === 'object' && !Array.isArray(data) &&
-      <div className="details flex flex-col gap-10">
+      <div className="flex flex-col gap-10">
 
-        <div className="detail h-[85vh] relative">
+        <div className="h-[85vh] relative">
           <div
-            className="bg-no-repeat bg-cover bg-center h-[80%] w-full relative"
+            className="bg-no-repeat bg-cover bg-top h-[80%] w-full relative"
             style={{ backgroundImage: `url(${image_baseUrl + data.backdrop_path})` }}>
             <div className="overlay-lrb h-full w-full absolute inset-0"></div>
           </div>
           <div className="absolute bottom-0 w-full flex justify-center">
             <div className="lg:w-[80%] w-[100%] flex gap-3">
-              <img src={image_baseUrl + data.poster_path} alt="posterImg" className="rounded-lg max-h-[350px]" />
+              <img src={image_baseUrl + data.poster_path} alt="posterImg" className='rounded-lg max-h-[370px]' />
               <div className="flex flex-col gap-4">
-                <h1 className="font-bold text-4xl text-slate-100">{data.title || data.name}</h1>
-                {data.tagline && <h1 className="font-medium text-base italic text-slate-200">{data.tagline}</h1>}
+                <div className="flex flex-col gap-1 items-start">
+                  <h1 className="font-bold text-3xl text-slate-200 bg-primary-dark/50 py-[2px] px-3 rounded-lg">{data.title || data.name}</h1>
+                  {data.tagline && <h1 className="font-medium text-[12px] italic text-slate-200 bg-primary-dark/50 py-[2px] px-2 rounded-lg">{data.tagline}</h1>}
+                </div>
                 <div className="flex gap-2 items-center">
                   {
                     data.genres.map((genre) => (
@@ -81,8 +83,8 @@ export function Details() {
                 }
                 {media_type === 'movie' &&
                   <div className="flex gap-4 text-sm">
-                    <h4 className='font-semibold'>Budget: <span className="text-slate-300 font-normal">{data.budget}</span></h4>
-                    <h4 className='font-semibold'>Box office: <span className="text-slate-300 font-normal">{data.revenue}</span></h4>
+                    <h4 className='font-semibold'>Budget: <span className="text-slate-300 font-normal">{data.budget ? data.budget : 'N/A'}</span></h4>
+                    <h4 className='font-semibold'>Box office: <span className="text-slate-300 font-normal">{data.revenue ? data.budget : 'N/A'}</span></h4>
                   </div>
                 }
                 <p className="text-slate-300">{data.overview}</p>
