@@ -35,9 +35,10 @@ export type CastType = {
      character: string
 }
 
-export type DataResponse = {
-     results: MovieAndShowsDetails[],
-     cast: CastType[]
+export type VideoType = {
+     name: string,
+     key: string,
+     type: string
 }
 
 export type ChildrenType = {

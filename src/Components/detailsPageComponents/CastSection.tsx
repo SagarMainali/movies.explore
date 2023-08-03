@@ -30,11 +30,11 @@ export function CastSection({ endpoint }: { endpoint: string }) {
           &&
           <div className="flex flex-col gap-3">
                <h1 className="font-semibold text-lg">Top Cast</h1>
-               <div className="flex gap-4 overflow-x-scroll category">
+               <div className="flex gap-6 overflow-x-scroll category">
                     {
                          castList?.map((cast: CastType) => (
-                              <div key={cast.id} className="min-w-[130px]">
-                                   <img src={image_baseUrl + cast.profile_path} alt="cast" className="rounded-full h-[130px] w-full object-cover" />
+                              <div key={cast.id} className="min-w-[150px]">
+                                   <img src={image_baseUrl + cast.profile_path} alt="cast" className="rounded-full h-[150px] w-full object-cover" />
                                    <h1 className="text-sm font-medium text-center">{cast.original_name}</h1>
                                    <h1 className="text-sm font-medium text-center">({cast.character})</h1>
                               </div>

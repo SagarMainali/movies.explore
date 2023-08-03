@@ -6,22 +6,39 @@ import 'react-circular-progressbar/dist/styles.css'
 import { SuggestedCategory } from "../Components/detailsPageComponents/SuggestedCategory"
 import { CastSection } from "../Components/detailsPageComponents/CastSection"
 import { DetailsSection } from "../Components/detailsPageComponents/DetailSection"
-import { MovieAndShowsDetails } from "../types/type"
+import { MovieAndShowsDetails, VideoType } from "../types/type"
+import { useEffect, useState } from "react"
 
 export function Details() {
 
   const { media_type, id } = useParams()
 
-  const { data, isLoading } = fetchDataFromApi(`/${media_type}/${id}`)
+  const { data: movieOrShowData, isLoading } = fetchDataFromApi(`/${media_type}/${id}`)
+
+  const { data: videosData } = fetchDataFromApi(`/${media_type}/${id}/videos`)
+
+  const [trailer, setTrailer] = useState<VideoType>({} as VideoType)
+
+  useEffect(() => {
+    if (videosData) {
+      const trailersOnly = videosData.filter(
+        (videoData: VideoType) => (
+          videoData.type === 'Trailer'
+        )
+      )
+      setTrailer(trailersOnly[0])
+    }
+  }, [videosData])
+
 
   return (
-    isLoading && !data
+    isLoading && !movieOrShowData
       ?
       <Loading />
       :
       <div className="flex flex-col gap-10">
 
-        <DetailsSection data={data as MovieAndShowsDetails} media_type={media_type} />
+        <DetailsSection movieOrShowData={movieOrShowData as MovieAndShowsDetails} trailer={trailer as VideoType} media_type={media_type} />
 
         {/* separate container because to match the width 80% of the DetailsSeciont's content */}
         <div className="lg:w-[85%] w-[100%] mx-auto flex flex-col gap-10 overflow-hidden">
