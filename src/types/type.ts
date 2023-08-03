@@ -32,7 +32,7 @@ export type CastType = {
      id: number,
      original_name: string,
      profile_path: string,
-     character: string,
+     character: string
 }
 
 export type DataResponse = {
