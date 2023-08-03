@@ -12,8 +12,9 @@ export function Home() {
                {
                     // overlay on top of the GradientOverlay if the main-menu is active
                     menuTogglerActive &&
-                    <div className="absolute top-0 z-10 inset-0 duration-300 bg-slate-900/70 md:hidden"
-                         onClick={changeMenuTogglerState}></div>
+                    <div className="absolute top-0 z-10 inset-0 duration-300 bg-slate-900/70 backdrop-blur-sm md:hidden"
+                         onClick={changeMenuTogglerState}>
+                    </div>
                }
                <Banner />
 
