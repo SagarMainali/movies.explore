@@ -17,7 +17,7 @@ export function SuggestedCategory({ id, media_type, category }: { id: string | u
      return (
           Array.isArray(data) && data.length > 0
           &&
-          <div className="flex flex-col gap-3 mx-auto">
+          <div className="flex flex-col gap-3">
                <h1 className="font-semibold text-lg">
                     {category_title}
                </h1>
