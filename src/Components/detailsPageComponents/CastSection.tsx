@@ -36,7 +36,7 @@ export function CastSection({ endpoint }: { endpoint: string }) {
                               <div key={cast.id} className="min-w-[150px]">
                                    <img src={image_baseUrl + cast.profile_path} alt="cast" className="rounded-full h-[150px] w-full object-cover" />
                                    <h1 className="text-sm font-medium text-center">{cast.original_name}</h1>
-                                   <h1 className="text-sm font-medium text-center">({cast.character})</h1>
+                                   <h1 className="text-xs font-medium text-center">({cast.character})</h1>
                               </div>
                          ))
                     }

@@ -8,6 +8,8 @@ export function DetailsSection({ movieOrShowData, media_type, trailer }: { movie
 
      const [trailerMode, setTrailerMode] = useState<boolean>(false)
 
+     console.log(trailer)
+
      return (
           <div className="h-[85vh] relative">
 
@@ -53,7 +55,7 @@ export function DetailsSection({ movieOrShowData, media_type, trailer }: { movie
                                              <path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z" />
                                         </svg>
                                    </span>
-                                   {trailerMode && <VideoPopup videoKey={trailer.key} setTrailerMode={setTrailerMode} />}
+                                   {trailerMode && <VideoPopup videoKey={trailer?.key} setTrailerMode={setTrailerMode} title={ movieOrShowData.title || movieOrShowData.name} />}
                               </div>
                               <div className="flex gap-2">
                                    <span className="bg-slate-200 rounded-md px-[6px] py-[2px] text-primary-dark text-[10px] font-bold">{media_type?.toUpperCase()}</span>

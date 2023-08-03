@@ -30,7 +30,6 @@ export function Details() {
     }
   }, [videosData])
 
-
   return (
     isLoading && !movieOrShowData
       ?
