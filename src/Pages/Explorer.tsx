@@ -8,6 +8,7 @@ export function Explorer({ explore }: { explore: string }) {
      const { data, isLoading } = fetchDataFromApi(`/discover/${explore}`)
 
      return (
+
           isLoading
                ?
                <Loading />
@@ -20,5 +21,6 @@ export function Explorer({ explore }: { explore: string }) {
                          )
                     }
                </div>
+
      )
 }

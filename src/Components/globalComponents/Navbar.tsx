@@ -63,7 +63,7 @@ export function Navbar() {
           <div
                className={`fixed w-full max-w-[1500px] z-50 px-3 duration-300 
                ${hideNavbar ? '-translate-y-[100%]' : ''} 
-               ${pathname === '/' && !crossed300 ? 'bg-primary-dark/40' : 'bg-primary-dark/80'}`}>
+               ${pathname === '/' && !crossed300 ? 'bg-primary-dark/40' : 'bg-primary-dark/80 backdrop-blur-sm'}`}>
                {/* Logo */}
                <div className="h-[50px] flex justify-between items-center">
 
@@ -77,6 +77,9 @@ export function Navbar() {
 
                          {/* Routes */}
                          <ul className="flex font-medium text-sm gap-2 menu-links">
+                              <NavLink to='/'
+                                   className={({ isActive }) =>
+                                        'px-2 py-[3px] rounded-md hover:bg-logo-inherit duration-300 md:hidden hover:text-primary-dark ' + (isActive ? 'active-link' : '')}>Home</NavLink>
                               <NavLink to='/movies'
                                    className={({ isActive }) =>
                                         'px-2 py-[3px] rounded-md hover:bg-logo-inherit duration-300 hover:text-primary-dark ' + (isActive ? 'active-link' : '')}>Movies</NavLink>
