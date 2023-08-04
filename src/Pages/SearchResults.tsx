@@ -1,14 +1,16 @@
+import { useParams } from "react-router-dom"
 import { fetchDataFromApi } from "../utils/api"
 import { Loading } from "../Components/helperComponents/Loading"
 import { MovieAndShowsDetails } from "../types/type"
 import { Card } from "../Components/globalComponents/Card"
 
-export function Explorer({ explore }: { explore: string }) {
+export function SearchResults() {
 
-     const { data, isLoading } = fetchDataFromApi(`/discover/${explore}`)
+     const { searchQuery } = useParams()
+
+     const { data, isLoading } = fetchDataFromApi(`/search/multi?query=${searchQuery}`)
 
      return (
-
           isLoading
                ?
                <Loading />
@@ -17,10 +19,9 @@ export function Explorer({ explore }: { explore: string }) {
                     {
                          // first checking the type of 'data' which should return true and proceed if it is an array
                          Array.isArray(data) && data?.map(
-                              (movieOrShow: MovieAndShowsDetails) => <Card key={movieOrShow.id} {...movieOrShow} customMediaType={explore} />
+                              (movieOrShow: MovieAndShowsDetails) => <Card key={movieOrShow.id} {...movieOrShow} customMediaType={movieOrShow.media_type} />
                          )
                     }
                </div>
-
      )
 }

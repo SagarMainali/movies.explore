@@ -1,7 +1,7 @@
 import { NavLink, useNavigate, useLocation } from "react-router-dom"
 import '../../styles/navbar.css'
 import { useGlobalContext } from '../../stateManagement/context'
-import { ChangeEvent, useEffect, useState, useRef } from "react"
+import { ChangeEvent, KeyboardEvent, useEffect, useState, useRef } from "react"
 
 export function Navbar() {
 
@@ -9,13 +9,32 @@ export function Navbar() {
 
      const { menuTogglerActive, changeMenuTogglerState } = useGlobalContext()
 
-     const [searchQuery, setSearchQuery] = useState('')
+     const navigate = useNavigate()
+
+     const searchQuery = useRef<string>('')
+
+     const [emptyField, setEmptyField] = useState<boolean>(false)
 
      function handleChange(event: ChangeEvent<HTMLInputElement>) {
-          setSearchQuery(event.target.value)
+          setEmptyField(false)
+          searchQuery.current = event.target.value
      }
 
-     const navigate = useNavigate()
+     function handleKeyPress(event: KeyboardEvent<HTMLInputElement>) {
+          if (event.key === 'Enter') {
+               goToPath()
+          }
+     }
+
+     function goToPath() {
+          if (searchQuery.current) {
+               setEmptyField(false)
+               navigate(`/search/${searchQuery.current}`)
+          }
+          else {
+               setEmptyField(true)
+          }
+     }
 
      const [hideNavbar, setHideNavbar] = useState<boolean>(false)
 
@@ -91,11 +110,12 @@ export function Navbar() {
                          {/* Search */}
                          <div className="rounded-lg sm:w-[14rem] w-full overflow-hidden flex">
                               <input type="text"
-                                   placeholder="Search..."
+                                   placeholder={emptyField ? 'Field is empty...' : "Search..."}
                                    onChange={handleChange}
-                                   className="w-[87%] h-[30px] bg-slate-200 text-slate-900 text-sm font-medium caret-slate-900 
-                                   outline-0 px-4 placeholder:text-slate-900 placeholder:text-sm" />
-                              <button className="w-[13%] h-[30px] bg-slate-300" onClick={() => navigate(`movies / ${searchQuery} `)}>
+                                   onKeyDown={handleKeyPress}
+                                   className={`w-[87%] h-[30px] bg-slate-200 text-slate-900 text-sm font-medium caret-slate-900 outline-0 px-4 
+                                   placeholder:text-sm ${emptyField ? 'placeholder:text-red-900' : 'placeholder:text-slate-900'}`} />
+                              <button className="w-[13%] h-[30px] bg-slate-300" onClick={goToPath}>
                                    <svg className="w-full md:h-[1.1rem] h-[1rem]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#001C30">
                                         <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
                                    </svg>

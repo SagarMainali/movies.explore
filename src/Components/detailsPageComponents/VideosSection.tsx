@@ -12,7 +12,7 @@ export default function VideosSection({ videosData, changeVideoMode }: {
                <div className="flex gap-4 overflow-x-scroll hide-scrollbar">
                     {
                          videosData?.map((video: VideoType) => (
-                              <div className="">
+                              <div className="" key={video.key}>
                                    <div
                                         className="rounded-md h-[160px] min-w-[280px] bg-no-repeat bg-center flex justify-center items-center 
                                         cursor-pointer group"

@@ -5,6 +5,7 @@ import { Details } from './pages/Details'
 import { PageNotFound } from './Components/helperComponents/Not-found'
 import { GlobalContextProvider } from './stateManagement/context'
 import { Explorer } from './pages/Explorer'
+import { SearchResults } from './pages/SearchResults'
 
 export function App() {
 
@@ -16,6 +17,7 @@ export function App() {
             <Route index element={<Home />} />
             <Route path="movies" element={<Explorer explore={'movie'} />} />
             <Route path="tvshows" element={<Explorer explore={'tv'} />} />
+            <Route path="search/:searchQuery" element={<SearchResults />} />
             <Route path=":media_type/:id" element={<Details />} />
             <Route path='*' element={<PageNotFound />} />
           </Route>

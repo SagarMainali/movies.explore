@@ -31,7 +31,7 @@ export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode
 
                <div className="absolute bottom-0 w-full flex justify-center">
                     <div className="lg:w-[85%] w-[100%] flex gap-3">
-                         <img src={image_baseUrl + movieOrShowData.poster_path} alt="posterImg" className='rounded-lg max-h-[370px]' />
+                         <img src={image_baseUrl + movieOrShowData.poster_path} alt="posterImg" className='rounded-lg max-h-[370px] shadow-2xl' />
                          <div className="flex flex-col gap-4">
                               <div className="flex flex-col gap-1 items-start">
                                    <h1 className="font-bold text-3xl text-slate-200 bg-primary-dark/40 py-[2px] px-3 rounded-lg">{movieOrShowData.title || movieOrShowData.name}</h1>

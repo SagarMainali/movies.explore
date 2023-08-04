@@ -8,7 +8,7 @@ import { circularProgressbarStyles } from "../../utils/common"
 // the customMediaType is needed because only trending movies or shows has media_type property
 export function Card({ customMediaType, ...movieOrShow }: { customMediaType: string | undefined } & MovieAndShowsDetails) {
 
-     const { id, poster_path, vote_average, title, name, release_date } = movieOrShow
+     const { id, poster_path, vote_average, title, name, release_date, first_air_date } = movieOrShow
 
      const { pathname } = useLocation()
 
@@ -17,7 +17,8 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
                <div className="relative">
                     <NavLink to={`/${customMediaType}/${id}`}>
                          <img
-                              className={`md:min-w-[200px] sm:min-w-[150px] min-w-[120px] rounded-lg ${pathname.includes('movies') || pathname.includes('tvshows') ? 'max-h-[400px]' : 'h-[300px]'}`}
+                              className={`md:min-w-[200px] sm:min-w-[150px] min-w-[120px] rounded-lg 
+                              ${pathname.includes('movies') || pathname.includes('tvshows') || pathname.includes('search') ? 'max-h-[400px]' : 'h-[300px]'}`}
                               src={`${image_baseUrl}/${poster_path}`} alt="movie/tvshow" />
                     </NavLink>
                     <span className="absolute left-1 bottom-1 w-[40px] h-[40px] rounded-full p-[1.5px] bg-slate-200">
@@ -32,7 +33,7 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
                     </span>
                </div>
                <h1 className="sm:text-lg text-sm truncate md:max-w-[195px] sm:max-w-[145px] max-w-[115px]">{title || name}</h1>
-               <h2 className="text-[10px] font-bold">{release_date}</h2>
+               <h2 className="text-[10px] font-bold">{release_date || first_air_date || 'N/A'}</h2>
           </div>
      )
 }
