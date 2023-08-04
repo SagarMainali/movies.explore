@@ -1,14 +1,24 @@
 import { CircularProgressbar } from "react-circular-progressbar";
 import { circularProgressbarStyles, image_baseUrl } from "../../utils/common";
-import { MovieAndShowsDetails, VideoType } from "../../types/type";
+import { MovieAndShowsDetails, VideoModeType, VideoType } from "../../types/type";
 import { VideoPopup } from "./VideoPopup";
-import { useState } from "react";
+import { PlayButton } from "./PlayButton";
+import { useEffect } from "react";
 
-export function DetailsSection({ movieOrShowData, media_type, trailer }: { movieOrShowData: MovieAndShowsDetails, media_type: string | undefined, trailer: VideoType }) {
+export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode, setVideoMode, changeVideoMode }: {
+     movieOrShowData: MovieAndShowsDetails,
+     media_type: string | undefined,
+     trailer: VideoType,
+     videoMode: VideoModeType,
+     setVideoMode: React.Dispatch<React.SetStateAction<VideoModeType>>,
+     changeVideoMode: (key?: string) => void
+}) {
 
-     const [trailerMode, setTrailerMode] = useState<boolean>(false)
-
-     console.log(trailer)
+     useEffect(() => {
+          if (trailer) {
+               setVideoMode({ openVideo: false, videoKey: trailer.key })
+          }
+     }, [trailer])
 
      return (
           <div className="h-[85vh] relative">
@@ -46,16 +56,13 @@ export function DetailsSection({ movieOrShowData, media_type, trailer }: { movie
                                                   }
                                              }} />
                                    </span>
-                                   <span
-                                        className="border-2 border-slate-200 rounded-full flex justify-center items-center p-2 cursor-pointer h-[50px] w-[50px] group"
-                                        title="Play Trailer"
-                                        onClick={() => setTrailerMode(true)}
-                                   >
-                                        <svg className='fill-slate-200 group-hover:scale-[.85] duration-300' xmlns="http://www.w3.org/2000/svg" height="1.6rem" viewBox="0 0 384 512">
-                                             <path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z" />
-                                        </svg>
+                                   <span className='group rounded-full' onClick={() => changeVideoMode(trailer.key)}>
+                                        <PlayButton />
                                    </span>
-                                   {trailerMode && <VideoPopup videoKey={trailer?.key} setTrailerMode={setTrailerMode} title={ movieOrShowData.title || movieOrShowData.name} />}
+                                   {videoMode.openVideo && <VideoPopup
+                                        videoKey={videoMode.videoKey}
+                                        changeVideoMode={changeVideoMode}
+                                        title={movieOrShowData.title || movieOrShowData.name} />}
                               </div>
                               <div className="flex gap-2">
                                    <span className="bg-slate-200 rounded-md px-[6px] py-[2px] text-primary-dark text-[10px] font-bold">{media_type?.toUpperCase()}</span>
@@ -84,7 +91,7 @@ export function DetailsSection({ movieOrShowData, media_type, trailer }: { movie
                                         <h4 className='font-semibold'>Box office: <span className="text-slate-300 font-normal">{movieOrShowData.revenue ? movieOrShowData.budget : 'N/A'}</span></h4>
                                    </div>
                               }
-                              <p className="text-slate-300">{movieOrShowData.overview}</p>
+                              <p className="text-slate-300 text-[15px]">"{movieOrShowData.overview}"</p>
                          </div>
                     </div>
                </div>

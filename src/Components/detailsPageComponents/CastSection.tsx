@@ -30,7 +30,7 @@ export function CastSection({ endpoint }: { endpoint: string }) {
           &&
           <div className="flex flex-col gap-3">
                <h1 className="font-semibold text-lg">Top Cast</h1>
-               <div className="flex gap-6 overflow-x-scroll category">
+               <div className="flex gap-6 overflow-x-scroll hide-scrollbar">
                     {
                          castList?.map((cast: CastType) => (
                               <div key={cast.id} className="min-w-[150px]">

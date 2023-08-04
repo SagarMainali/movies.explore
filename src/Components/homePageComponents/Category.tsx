@@ -32,7 +32,7 @@ export function Category({ category }: { category: string }) {
           <div className="flex flex-col gap-3">
 
                <div className="flex justify-between items-center">
-                    <h2 className="sm:text-2xl text-lg font-semibold">{category}</h2>
+                    <h2 className="sm:text-xl text-lg font-semibold">{category}</h2>
                     <span className="flex rounded-md text-xs sm:text-sm text-slate-200 bg-slate-700 z-0 sm:w-[170px] w-[140px] overflow-hidden">
                          <h4
                               onClick={() => { changeUserInput('movie') }}
@@ -45,7 +45,7 @@ export function Category({ category }: { category: string }) {
                     </span>
                </div>
 
-               <div className="category flex gap-3 overflow-x-scroll">
+               <div className="hide-scrollbar flex gap-3 overflow-x-scroll">
                     {
                          Array.isArray(data) && data?.map((movieOrShow: MovieAndShowsDetails) => <Card key={movieOrShow.id} customMediaType={userInput} {...movieOrShow} />)
                     }

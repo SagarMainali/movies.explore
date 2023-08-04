@@ -45,6 +45,11 @@ export type ChildrenType = {
      children: ReactNode
 }
 
+export type VideoModeType = {
+     videoKey: string | null,
+     openVideo: boolean
+}
+
 export type GlobalContextType = {
      menuTogglerActive: boolean,
      changeMenuTogglerState: () => void

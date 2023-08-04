@@ -18,10 +18,10 @@ export function SuggestedCategory({ id, media_type, category }: { id: string | u
           Array.isArray(data) && data.length > 0
           &&
           <div className="flex flex-col gap-3">
-               <h1 className="font-semibold text-lg">
+               <h1 className="sm:text-xl text-lg font-semibold">
                     {category_title}
                </h1>
-               <div className="category flex gap-3 overflow-x-scroll">
+               <div className="hide-scrollbar flex gap-3 overflow-x-scroll">
                     {
                          data.map(
                               (movieOrShow: MovieAndShowsDetails) => <Card key={movieOrShow.id} customMediaType={media_type} {...movieOrShow} />
