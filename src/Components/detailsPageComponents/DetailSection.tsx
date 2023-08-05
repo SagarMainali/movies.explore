@@ -20,12 +20,31 @@ export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode
           }
      }, [trailer])
 
+     function minutesConverter(minutes: number): string {
+          let hr = 0, min = 0, hrOrHrs = '', minOrMins = ''
+          if (minutes > 60) {
+               hr = Math.floor(minutes / 60)
+               min = minutes % 60
+               // check if should be hr or hrs
+               hrOrHrs = hr >= 10 ? 'hrs' : 'hr'
+               // check if should be min or mins
+               minOrMins = min >= 10 ? 'mins' : 'min'
+               return `${hr + hrOrHrs} ${min + minOrMins}`
+          }
+          else {
+               min = minutes
+               // check if should be min or mins
+               minOrMins = min >= 10 ? 'mins' : 'min'
+               return `${min + minOrMins}`
+          }
+     }
+
      return (
-          <div className="md:h-[90vh] md:relative b">
+          <div className="md:h-[90vh] md:relative">
 
                {/* <div
                     className="bg-no-repeat bg-cover bg-top md:h-[80%] h-[50vh] w-full relative"
-                    style={{ backgroundImage: `url(${image_baseUrl + movieOrShowData.backdrop_path})` }}>
+                    style={{ backgroundImage: `url(${ image_baseUrl + movieOrShowData.backdrop_path})` }}>
                     <div className="overlay-lrb h-full w-full absolute inset-0"></div>
                </div> */}
 
@@ -65,7 +84,7 @@ export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode
                               <div className="flex gap-2 ites-center">
                                    <span className="h-[50px] w-[50px]">
                                         <CircularProgressbar
-                                             maxValue={10} value={movieOrShowData.vote_average} text={`${movieOrShowData.vote_average?.toFixed(1)}`}
+                                             maxValue={10} value={movieOrShowData.vote_average} text={`${movieOrShowData.vote_average?.toFixed(1)} `}
                                              strokeWidth={9} background
                                              styles={{
                                                   ...circularProgressbarStyles, path: {
@@ -91,7 +110,7 @@ export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode
                                         <div className="flex md:gap-4 gap-2 text-sm flex-wrap">
                                              <h4 className='font-semibold'>Released on: <span className="text-slate-300 font-normal">{movieOrShowData.release_date || movieOrShowData.first_air_date}</span></h4>
                                              <h4 className='font-semibold'>Status: <span className="text-slate-300 font-normal">{movieOrShowData.status}</span></h4>
-                                             <h4 className='font-semibold'>Running Time: <span className="text-slate-300 font-normal">{movieOrShowData.runtime} minutes</span></h4>
+                                             <h4 className='font-semibold'>Running Time: <span className="text-slate-300 font-normal">{minutesConverter(movieOrShowData.runtime)}</span></h4>
                                         </div>
                                         :
                                         <div className="flex md:gap-4 gap-2 text-sm flex-wrap">
@@ -108,7 +127,7 @@ export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode
                                         <h4 className='font-semibold'>Box office: <span className="text-slate-300 font-normal">{movieOrShowData.revenue ? movieOrShowData.budget : 'N/A'}</span></h4>
                                    </div>
                               }
-                              <p className="text-slate-300 text-[15px]">"{movieOrShowData.overview}"</p>
+                              <p className="text-slate-300 text-[14px]">"{movieOrShowData.overview}"</p>
                          </div>
                     </div>
                </div>
