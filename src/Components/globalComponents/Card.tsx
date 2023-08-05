@@ -12,7 +12,7 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
 
      const { pathname } = useLocation()
 
-     const { media_type, id: main_id} = useParams()
+     const { media_type, id: main_id } = useParams()
 
      // ${pathname.includes('movies') || pathname.includes('tvshows') || pathname.includes('search') ? 'max-h-[400px]' : 'max-h-[300px]'}`
      return (

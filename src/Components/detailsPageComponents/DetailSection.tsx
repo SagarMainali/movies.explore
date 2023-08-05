@@ -39,6 +39,33 @@ export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode
           }
      }
 
+     function moneyInWords(money: number, type: string) {
+          // to not add decimal in budget
+          if (type === 'budget') {
+               if (money < 1000000) {
+                    return `${(money / 1000).toFixed()} Thousand USD`
+               }
+               else if (money >= 1000000 && money < 1000000000) {
+                    return `${(money / 1000000).toFixed()} Million USD`
+               }
+               else {
+                    return `${(money / 1000000000).toFixed()} Billion USD`
+               }
+          }
+          // to add decimal in revenue
+          else {
+               if (money < 1000000) {
+                    return `${(money / 1000).toFixed(2)} Thousand USD`
+               }
+               else if (money >= 1000000 && money < 1000000000) {
+                    return `${(money / 1000000).toFixed(2)} Million USD`
+               }
+               else {
+                    return `${(money / 1000000000).toFixed(2)} Billion USD`
+               }
+          }
+     }
+
      return (
           <div className="md:h-[90vh] md:relative">
 
@@ -98,7 +125,8 @@ export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode
                                    {videoMode.openVideo && <VideoPopup
                                         videoKey={videoMode.videoKey}
                                         changeVideoMode={changeVideoMode}
-                                        title={movieOrShowData.title || movieOrShowData.name} />}
+                                        title={movieOrShowData.title || movieOrShowData.name} />
+                                   }
                               </div>
                               <div className="flex gap-2">
                                    <span className="bg-slate-200 rounded-md px-[6px] py-[2px] text-primary-dark text-[10px] font-bold">{media_type?.toUpperCase()}</span>
@@ -123,11 +151,11 @@ export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode
                               }
                               {media_type === 'movie' &&
                                    <div className="flex gap-4 text-sm">
-                                        <h4 className='font-semibold'>Budget: <span className="text-slate-300 font-normal">{movieOrShowData.budget ? movieOrShowData.budget : 'N/A'}</span></h4>
-                                        <h4 className='font-semibold'>Box office: <span className="text-slate-300 font-normal">{movieOrShowData.revenue ? movieOrShowData.budget : 'N/A'}</span></h4>
+                                        <h4 className='font-semibold'>Budget: <span className="text-slate-300 font-normal">{movieOrShowData.budget ? moneyInWords(movieOrShowData.budget, 'budget') : 'N/A'}</span></h4>
+                                        <h4 className='font-semibold'>Box office: <span className="text-slate-300 font-normal">{movieOrShowData.revenue ? moneyInWords(movieOrShowData.revenue, 'revenue') : 'N/A'}</span></h4>
                                    </div>
                               }
-                              <p className="text-slate-300 text-[14px]">"{movieOrShowData.overview}"</p>
+                              <p className="text-slate-300 md:text-[16px] text-sm">"{movieOrShowData.overview}"</p>
                          </div>
                     </div>
                </div>
