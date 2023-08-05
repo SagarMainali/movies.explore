@@ -52,5 +52,6 @@ export type VideoModeType = {
 
 export type GlobalContextType = {
      menuTogglerActive: boolean,
-     changeMenuTogglerState: () => void
+     changeMenuTogglerState: () => void,
+     changeDateFormat: (date: string) => string
 }

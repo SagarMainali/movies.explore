@@ -4,6 +4,7 @@ import { MovieAndShowsDetails, VideoModeType, VideoType } from "../../types/type
 import { VideoPopup } from "./VideoPopup";
 import { PlayButton } from "./PlayButton";
 import { useEffect } from "react";
+import { useGlobalContext } from "../../stateManagement/context";
 
 export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode, setVideoMode, changeVideoMode }: {
      movieOrShowData: MovieAndShowsDetails,
@@ -13,6 +14,8 @@ export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode
      setVideoMode: React.Dispatch<React.SetStateAction<VideoModeType>>,
      changeVideoMode: (key?: string) => void
 }) {
+
+     const { changeDateFormat } = useGlobalContext()
 
      useEffect(() => {
           if (trailer) {
@@ -136,14 +139,14 @@ export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode
                                    media_type === 'movie'
                                         ?
                                         <div className="flex md:gap-4 gap-2 text-sm flex-wrap">
-                                             <h4 className='font-semibold'>Released on: <span className="text-slate-300 font-normal">{movieOrShowData.release_date || movieOrShowData.first_air_date}</span></h4>
+                                             <h4 className='font-semibold'>Released on: <span className="text-slate-300 font-normal">{changeDateFormat(movieOrShowData.release_date)}</span></h4>
                                              <h4 className='font-semibold'>Status: <span className="text-slate-300 font-normal">{movieOrShowData.status}</span></h4>
                                              <h4 className='font-semibold'>Running Time: <span className="text-slate-300 font-normal">{minutesConverter(movieOrShowData.runtime)}</span></h4>
                                         </div>
                                         :
                                         <div className="flex md:gap-4 gap-2 text-sm flex-wrap">
-                                             <h4 className='font-semibold'>First aired on: <span className="text-slate-300 font-normal">{movieOrShowData.first_air_date}</span></h4>
-                                             <h4 className='font-semibold'>Last aired on: <span className="text-slate-300 font-normal">{movieOrShowData.last_air_date}</span></h4>
+                                             <h4 className='font-semibold'>First aired on: <span className="text-slate-300 font-normal">{changeDateFormat(movieOrShowData.first_air_date)}</span></h4>
+                                             <h4 className='font-semibold'>Last aired on: <span className="text-slate-300 font-normal">{changeDateFormat(movieOrShowData.last_air_date)}</span></h4>
                                              <h4 className='font-semibold'>Status: <span className="text-slate-300 font-normal">{movieOrShowData.status}</span></h4>
                                              <h4 className='font-semibold'>No of Episodes: <span className="text-slate-300 font-normal">{movieOrShowData.number_of_seasons}</span></h4>
                                              <h4 className='font-semibold'>No of Seasons: <span className="text-slate-300 font-normal">{movieOrShowData.number_of_episodes}</span></h4>

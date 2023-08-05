@@ -4,7 +4,7 @@ import { GlobalContextType } from "../types/type"
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 
-const GlobalContext = createContext({} as GlobalContextType)
+const GlobalContext = createContext<GlobalContextType>({} as GlobalContextType)
 
 export function useGlobalContext() {
      return useContext(GlobalContext)
@@ -22,8 +22,14 @@ export function GlobalContextProvider({ children }: ChildrenType) {
           })
      }
 
+     function changeDateFormat(date: string): string {
+          const [year, month, day] = date.split('-')
+          const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+          return `${months[parseInt(month) - 1]} ${day}, ${year}`
+     }
+
      return (
-          <GlobalContext.Provider value={{ menuTogglerActive, changeMenuTogglerState }}>
+          <GlobalContext.Provider value={{ menuTogglerActive, changeMenuTogglerState, changeDateFormat }}>
                <QueryClientProvider client={queryClient}>
                     {children}
                </QueryClientProvider>

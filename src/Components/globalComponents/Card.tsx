@@ -4,6 +4,7 @@ import { CircularProgressbar } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
 import { MovieAndShowsDetails } from "../../types/type"
 import { circularProgressbarStyles } from "../../utils/common"
+import { useGlobalContext } from "../../stateManagement/context"
 
 // the customMediaType is needed because only trending movies or shows has media_type property
 export function Card({ customMediaType, ...movieOrShow }: { customMediaType: string | undefined } & MovieAndShowsDetails) {
@@ -13,6 +14,8 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
      const { pathname } = useLocation()
 
      const { media_type, id: main_id } = useParams()
+
+     const { changeDateFormat } = useGlobalContext()
 
      // ${pathname.includes('movies') || pathname.includes('tvshows') || pathname.includes('search') ? 'max-h-[400px]' : 'max-h-[300px]'}`
      return (
@@ -41,7 +44,13 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
                     </span>
                </div>
                <h1 className="sm:text-lg text-sm truncate md:max-w-[195px] sm:max-w-[145px] max-w-[115px]">{title || name}</h1>
-               <h2 className="text-[10px] font-bold">{release_date || first_air_date || 'N/A'}</h2>
+               <h2 className="text-[10px] font-bold">{
+                    release_date
+                         ? changeDateFormat(release_date)
+                         : first_air_date ?
+                              changeDateFormat(first_air_date)
+                              : 'N/A'}
+               </h2>
           </div>
      )
 }
