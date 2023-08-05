@@ -21,21 +21,38 @@ export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode
      }, [trailer])
 
      return (
-          <div className="h-[85vh] relative">
+          <div className="md:h-[90vh] md:relative b">
 
-               <div
-                    className="bg-no-repeat bg-cover bg-top h-[80%] w-full relative"
+               {/* <div
+                    className="bg-no-repeat bg-cover bg-top md:h-[80%] h-[50vh] w-full relative"
                     style={{ backgroundImage: `url(${image_baseUrl + movieOrShowData.backdrop_path})` }}>
                     <div className="overlay-lrb h-full w-full absolute inset-0"></div>
+               </div> */}
+
+               <div className="md:h-[80%] h-[35vh]">
+                    {/* separate container because to make the overlaying div positioned absolute relative to this container because class
+                     relative doesn't work in img*/}
+                    <div className="md:h-full w-full h-[65vh] relative -z-10">
+                         <img src={image_baseUrl + movieOrShowData.backdrop_path} alt="backdrop"
+                              className="h-full w-full object-cover" />
+                         <div className="overlay-lrb h-full w-full absolute inset-0"></div>
+                    </div>
                </div>
 
-               <div className="absolute bottom-0 w-full flex justify-center">
+               <div className="md:absolute md:bottom-0 flex justify-center">
                     <div className="lg:w-[85%] w-[100%] flex gap-3">
-                         <img src={image_baseUrl + movieOrShowData.poster_path} alt="posterImg" className='rounded-lg max-h-[370px] shadow-2xl' />
-                         <div className="flex flex-col gap-4">
+                         <img src={image_baseUrl + movieOrShowData.poster_path} alt="posterImg" className='rounded-lg max-h-[370px] md:block hidden' />
+                         <div className="flex flex-col md:gap-4 gap-2">
                               <div className="flex flex-col gap-1 items-start">
-                                   <h1 className="font-bold text-3xl text-slate-200 bg-primary-dark/40 py-[2px] px-3 rounded-lg">{movieOrShowData.title || movieOrShowData.name}</h1>
-                                   {movieOrShowData.tagline && <h1 className="font-medium text-[12px] italic text-slate-200 bg-primary-dark/40 py-[2px] px-2 rounded-lg">{movieOrShowData.tagline}</h1>}
+                                   <h1
+                                        className="font-bold text-3xl text-slate-200 bg-primary-dark/40 py-[2px] px-2 rounded-lg">
+                                        {movieOrShowData.title || movieOrShowData.name}
+                                   </h1>
+                                   {movieOrShowData.tagline &&
+                                        <h1
+                                             className="font-medium text-[12px] italic text-slate-200 bg-primary-dark/40 py-[2px] px-2 rounded-lg">
+                                             {movieOrShowData.tagline}
+                                        </h1>}
                               </div>
                               <div className="flex gap-2 items-center">
                                    {
@@ -71,13 +88,13 @@ export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode
                               {
                                    media_type === 'movie'
                                         ?
-                                        <div className="flex gap-4 text-sm flex-wrap">
+                                        <div className="flex md:gap-4 gap-2 text-sm flex-wrap">
                                              <h4 className='font-semibold'>Released on: <span className="text-slate-300 font-normal">{movieOrShowData.release_date || movieOrShowData.first_air_date}</span></h4>
                                              <h4 className='font-semibold'>Status: <span className="text-slate-300 font-normal">{movieOrShowData.status}</span></h4>
                                              <h4 className='font-semibold'>Running Time: <span className="text-slate-300 font-normal">{movieOrShowData.runtime} minutes</span></h4>
                                         </div>
                                         :
-                                        <div className="flex gap-4 text-sm flex-wrap">
+                                        <div className="flex md:gap-4 gap-2 text-sm flex-wrap">
                                              <h4 className='font-semibold'>First aired on: <span className="text-slate-300 font-normal">{movieOrShowData.first_air_date}</span></h4>
                                              <h4 className='font-semibold'>Last aired on: <span className="text-slate-300 font-normal">{movieOrShowData.last_air_date}</span></h4>
                                              <h4 className='font-semibold'>Status: <span className="text-slate-300 font-normal">{movieOrShowData.status}</span></h4>

@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom"
 import { fetchDataFromApi } from "../utils/api"
 import { Loading } from "../Components/helperComponents/Loading"
-import '../styles/gradient_overlay.css'
 import 'react-circular-progressbar/dist/styles.css'
 import { SuggestedCategory } from "../Components/detailsPageComponents/SuggestedCategory"
 import { CastSection } from "../Components/detailsPageComponents/CastSection"

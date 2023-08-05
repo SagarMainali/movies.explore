@@ -1,7 +1,7 @@
 import { MovieAndShowsDetails } from "../../types/type"
 import { fetchDataFromApi } from "../../utils/api"
 import { Card } from "../globalComponents/Card"
-import '../../styles/category.css'
+import '../../styles/hide_scrollbar.css'
 
 export function SuggestedCategory({ id, media_type, category }: { id: string | undefined, media_type: string | undefined, category: string }) {
 

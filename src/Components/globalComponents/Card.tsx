@@ -1,5 +1,5 @@
 import { image_baseUrl } from "../../utils/common"
-import { NavLink, useLocation } from "react-router-dom"
+import { NavLink, useLocation, useParams } from "react-router-dom"
 import { CircularProgressbar } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
 import { MovieAndShowsDetails } from "../../types/type"
@@ -12,15 +12,22 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
 
      const { pathname } = useLocation()
 
+     const { media_type, id: main_id} = useParams()
+
+     // ${pathname.includes('movies') || pathname.includes('tvshows') || pathname.includes('search') ? 'max-h-[400px]' : 'max-h-[300px]'}`
      return (
           <div className="flex flex-col gap-1">
                <div className="relative">
                     <NavLink to={`/${customMediaType}/${id}`}>
                          <img
-                              className={`md:min-w-[200px] sm:min-w-[150px] min-w-[120px] rounded-lg 
-                              ${pathname.includes('movies') || pathname.includes('tvshows') || pathname.includes('search') ? 'h-[400px]' : 'h-[300px]'}`}
+                              className={`md:min-w-[200px] sm:min-w-[150px] min-w-[130px] rounded-lg
+                              ${pathname === '/' || pathname === `/${media_type}/${main_id}`
+                                        ? 'max-h-[300px] md:h-[300px] sm:h-[230px] h-[190px]'
+                                        : 'max-h-[500px]'}`
+                              }
                               src={`${image_baseUrl}/${poster_path}`}
-                              alt="movie/tvshow" />
+                              alt="movie/tvshow"
+                         />
                     </NavLink>
                     <span className="absolute left-1 bottom-1 w-[40px] h-[40px] rounded-full p-[1.5px] bg-slate-200">
                          <CircularProgressbar
