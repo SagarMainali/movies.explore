@@ -1,1 +1,1 @@
-### movies.explore is a movie app made using react with typescript. Here you can explore to find details regarding movies and tv shows which has been possible from TMDB's REST API.
+### movies.explore is a movie app made using react with typescript. Using this app, user can explore movies and tv shows to get their details.
