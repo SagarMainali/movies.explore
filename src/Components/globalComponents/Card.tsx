@@ -28,7 +28,7 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
                                         ? 'max-h-[300px] md:h-[300px] sm:h-[230px] h-[190px]'
                                         : 'max-h-[460px] 2xl:min-h-[425px] xl:min-h-[410px] lg:min-h-[460px] md:min-h-[415px] sm:min-h-[300px] xsm:min-h-[400px] min-h-[345px]'}`
                               }
-                              src={`${image_baseUrl}/${poster_path}`}
+                              src={poster_path ? `${image_baseUrl}/${poster_path}` : '/no-poster.png'}
                               alt="movie/tvshow"
                          />
                     </NavLink>
