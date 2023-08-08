@@ -34,10 +34,17 @@ export function CastSection({ endpoint }: { endpoint: string }) {
                     {
                          castList?.map((cast: CastType) => (
                               <div key={cast.id} className="md:min-w-[150px] min-w-[120px]">
-                                   <img
-                                        src={image_baseUrl + cast.profile_path} alt="cast"
-                                        className="rounded-full md:h-[150px] h-[120px] w-full object-cover"
-                                   />
+                                   <div className="md:h-[150px] h-[120px] rounded-full border-2 border-slate-300 p-[2px]">
+                                        <img
+                                             src={cast.profile_path
+                                                  ? image_baseUrl + cast.profile_path
+                                                  : cast.gender === 1
+                                                       ? '/female-avatar.png'
+                                                       : '/male-avatar.png'}
+                                             alt="cast"
+                                             className="rounded-full h-full w-full object-cover"
+                                        />
+                                   </div>
                                    <h1 className="text-sm font-medium text-center">{cast.original_name}</h1>
                                    {cast.character && <h1 className="text-xs font-medium text-center">({cast.character})</h1>}
                               </div>

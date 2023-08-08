@@ -1,4 +1,4 @@
-import { NavLink, useNavigate, useLocation } from "react-router-dom"
+import { NavLink, useNavigate, useLocation, useParams } from "react-router-dom"
 import '../../styles/navbar.css'
 import { useGlobalContext } from '../../stateManagement/context'
 import { ChangeEvent, KeyboardEvent, useEffect, useState, useRef } from "react"
@@ -6,6 +6,8 @@ import { ChangeEvent, KeyboardEvent, useEffect, useState, useRef } from "react"
 export function Navbar() {
 
      const { pathname } = useLocation()
+
+     const { media_type, id } = useParams()
 
      const { menuTogglerActive, changeMenuTogglerState } = useGlobalContext()
 
@@ -82,7 +84,7 @@ export function Navbar() {
           <div
                className={`fixed w-full max-w-[1500px] z-50 px-3 duration-300 
                ${hideNavbar ? '-translate-y-[100%]' : ''} 
-               ${pathname === '/' && !crossed300 ? 'bg-primary-dark/40' : 'bg-primary-dark/80 backdrop-blur-sm'}`}>
+               ${pathname === '/' || pathname === `/${media_type}/${id}` && !crossed300 ? 'bg-primary-dark/40' : 'bg-primary-dark/80 backdrop-blur-sm'}`}>
                {/* Logo */}
                <div className="h-[50px] flex justify-between items-center">
 
