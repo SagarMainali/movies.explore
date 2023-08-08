@@ -16,17 +16,17 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
      const { media_type, id: main_id } = useParams()
 
      const { changeDateFormat } = useGlobalContext()
-
+     // 2xl:h-[300px] xl:min-h-[410px] lg:min-h-[460px] md:min-h-[415px] sm:min-h-[300px] xsm:min-h-[400px] min-h-[345px]
      // ${pathname.includes('movies') || pathname.includes('tvshows') || pathname.includes('search') ? 'max-h-[400px]' : 'max-h-[300px]'}`
      return (
           <div className="flex flex-col gap-1">
                <div className="relative">
                     <NavLink to={`/${customMediaType}/${id}`}>
                          <img
-                              className={`md:min-w-[200px] sm:min-w-[150px] min-w-[130px] rounded-lg
+                              className={` rounded-lg
                               ${pathname === '/' || pathname === `/${media_type}/${main_id}`
-                                        ? 'max-h-[300px] md:h-[300px] sm:h-[230px] h-[190px]'
-                                        : 'max-h-[460px] 2xl:min-h-[425px] xl:min-h-[410px] lg:min-h-[460px] md:min-h-[415px] sm:min-h-[300px] xsm:min-h-[400px] min-h-[345px]'}`
+                                        ? 'md:min-w-[200px] sm:min-w-[150px] min-w-[130px] md:h-[300px] sm:h-[230px] h-[190px]'
+                                        : 'max-h-[350px] '}`
                               }
                               src={poster_path ? `${image_baseUrl}/${poster_path}` : '/no-poster.png'}
                               alt="movie/tvshow"

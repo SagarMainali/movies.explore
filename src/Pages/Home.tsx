@@ -9,13 +9,13 @@ export function Home() {
 
                <Banner />
 
+               <Category category={'Now playing'} />
+              
                <Category category={'Trending Now'} />
 
                <Category category={"What's Popular"} />
 
                <Category category={'Top rated'} />
-
-               <Category category={'Now playing'} />
 
                <Footer />
           </div>

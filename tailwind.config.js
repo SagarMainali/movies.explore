@@ -12,9 +12,9 @@ export default {
       },
       screens: {
         'xsm': '500px',
-        'sm': '600px',
-        'md': '800px',
-        'lg': '1040px',
+        'sm': '620px',
+        'md': '860px',
+        'lg': '1080px',
         'xl': '1300px',
         '2xl': '1500px',
       },

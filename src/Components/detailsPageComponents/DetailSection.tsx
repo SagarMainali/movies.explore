@@ -82,15 +82,21 @@ export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode
                     {/* separate container because to make the overlaying div positioned absolute relative to this container because class
                      relative doesn't work in img*/}
                     <div className="md:h-full w-full h-[65vh] relative -z-10">
-                         <img src={image_baseUrl + movieOrShowData.backdrop_path} alt="backdrop"
-                              className="h-full w-full object-cover" />
+                         < img
+                              src={movieOrShowData.backdrop_path ? image_baseUrl + movieOrShowData.backdrop_path : '/no-poster.png'}
+                              alt="backdrop_img"
+                              className={`h-full w-full object-center ${movieOrShowData.backdrop_path ? 'object-cover' : 'object-contain'}`}
+                         />
                          <div className="overlay-lrb h-full w-full absolute inset-0"></div>
                     </div>
                </div>
 
                <div className="md:absolute md:bottom-0 flex justify-center">
                     <div className="lg:w-[85%] w-[100%] flex gap-3">
-                         <img src={image_baseUrl + movieOrShowData.poster_path} alt="posterImg" className='rounded-lg max-h-[370px] md:block hidden' />
+                         <img
+                              src={movieOrShowData.poster_path ? `${image_baseUrl}/${movieOrShowData.poster_path}` : '/no-poster.png'}
+                              alt="posterImg"
+                              className='rounded-lg max-h-[370px] md:block hidden' />
                          <div className="flex flex-col md:gap-4 gap-2">
                               <div className="flex flex-col gap-1 items-start">
                                    <h1
@@ -158,7 +164,7 @@ export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode
                                         <h4 className='font-semibold'>Box office: <span className="text-slate-300 font-normal">{movieOrShowData.revenue ? moneyInWords(movieOrShowData.revenue, 'revenue') : 'N/A'}</span></h4>
                                    </div>
                               }
-                              <p className="text-slate-300 md:text-[16px] text-sm">"{movieOrShowData.overview}"</p>
+                              <p className="text-slate-300 md:text-[15px] text-sm">"{movieOrShowData.overview}"</p>
                          </div>
                     </div>
                </div>

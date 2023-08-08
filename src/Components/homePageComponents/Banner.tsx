@@ -38,7 +38,8 @@ export function Banner() {
                <Loading />
                :
                <NavLink to={`/${trending.media_type}/${trending.id}`}>
-                    <div className="md:h-[80vh] h-[95vh] max-h-[700px] bg-no-repeat bg-cover bg-center" style={{ backgroundImage: trending.backdrop_path ? `url(${image_baseUrl + trending.backdrop_path})` : '' }}>
+                    <div className={`md:h-[80vh] h-[95vh] max-h-[700px] bg-no-repeat bg-center ${trending.backdrop_path ? 'object-cover' : 'object-contain'}`}
+                         style={{ backgroundImage: trending.backdrop_path ? `url(${image_baseUrl + trending.backdrop_path})` : '/no-poster.png' }}>
                          <GradientOverlay>
                               <div className='flex flex-col gap-4 md:w-[70vw] w-full'>
                                    <h1 className='md:text-5xl sm:text-4xl text-3xl font-semibold'>{trending.title || trending.name}</h1>
