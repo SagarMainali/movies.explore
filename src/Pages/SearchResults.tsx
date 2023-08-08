@@ -19,7 +19,10 @@ export function SearchResults() {
                     {
                          // first checking the type of 'data' which should return true and proceed if it is an array
                          Array.isArray(data) && data?.map(
-                              (movieOrShow: MovieAndShowsDetails) => <Card key={movieOrShow.id} {...movieOrShow} customMediaType={movieOrShow.media_type} />
+                              (movieOrShow: MovieAndShowsDetails) => {
+                                   if (movieOrShow.media_type === 'person') return
+                                   return <Card key={movieOrShow.id} {...movieOrShow} customMediaType={movieOrShow.media_type} />
+                              }
                          )
                     }
                </div>

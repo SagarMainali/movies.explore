@@ -26,7 +26,7 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
                               className={` rounded-lg
                               ${pathname === '/' || pathname === `/${media_type}/${main_id}`
                                         ? 'md:min-w-[200px] sm:min-w-[150px] min-w-[130px] md:h-[300px] sm:h-[230px] h-[190px]'
-                                        : 'max-h-[350px] '}`
+                                        : 'lg:h-[350px] md:h-[280px] sm:h-[260px] xsm:h-[280px] h-[300px]'}`
                               }
                               src={poster_path ? `${image_baseUrl}/${poster_path}` : '/no-poster.png'}
                               alt="movie/tvshow"
