@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { fetchDataFromApi } from "../utils/api"
+import { useFetchDataFromApi } from "../utils/api"
 import { Loading } from "../Components/helperComponents/Loading"
 import { MovieAndShowsDetails } from "../types/type"
 import { Card } from "../Components/globalComponents/Card"
@@ -9,7 +9,7 @@ export function SearchResults() {
 
      const { searchQuery } = useParams()
 
-     const { data, isLoading } = fetchDataFromApi(`/search/multi?query=${searchQuery}`)
+     const { data, isLoading } = useFetchDataFromApi(`/search/multi?query=${searchQuery}`)
 
      return (
           isLoading

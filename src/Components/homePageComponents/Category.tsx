@@ -1,5 +1,5 @@
 import { MovieAndShowsDetails } from "../../types/type"
-import { fetchDataFromApi } from "../../utils/api"
+import { useFetchDataFromApi } from "../../utils/api"
 import { useState } from "react"
 import '../../styles/hide_scrollbar.css'
 import { Card } from "../globalComponents/Card"
@@ -26,13 +26,13 @@ export function Category({ category }: { category: string }) {
 
      )
 
-     const { data } = fetchDataFromApi(dynamicUrl)
+     const { data } = useFetchDataFromApi(dynamicUrl)
 
      return (
           <div className="flex flex-col gap-3">
 
                <div className="flex justify-between items-center">
-                    <h2 className="sm:text-xl text-lg font-semibold">{category}</h2>
+                    <h2 className="md:text-2xl text-lg font-semibold">{category}</h2>
                     <span className="flex rounded-md text-xs sm:text-sm text-slate-200 bg-slate-700 z-0 sm:w-[170px] w-[140px] overflow-hidden">
                          <h4
                               onClick={() => { changeUserInput('movie') }}

@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { fetchDataFromApi } from "../utils/api"
+import { useFetchDataFromApi } from "../utils/api"
 import { Loading } from "../Components/helperComponents/Loading"
 import 'react-circular-progressbar/dist/styles.css'
 import { SuggestedCategory } from "../Components/detailsPageComponents/SuggestedCategory"
@@ -13,9 +13,9 @@ export function Details() {
 
   const { media_type, id } = useParams()
 
-  const { data: movieOrShowData, isLoading } = fetchDataFromApi(`/${media_type}/${id}`)
+  const { data: movieOrShowData, isLoading } = useFetchDataFromApi(`/${media_type}/${id}`)
 
-  const { data: videosData } = fetchDataFromApi(`/${media_type}/${id}/videos`)
+  const { data: videosData } = useFetchDataFromApi(`/${media_type}/${id}/videos`)
 
   const [trailer, setTrailer] = useState<VideoType>({} as VideoType)
 

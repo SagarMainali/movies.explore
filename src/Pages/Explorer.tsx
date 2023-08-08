@@ -1,16 +1,16 @@
-import { fetchDataFromApi } from "../utils/api"
-import { Loading } from "../Components/helperComponents/Loading"
+import { useFetchDataFromApi } from "../utils/api"
 import { MovieAndShowsDetails } from "../types/type"
 import { Card } from "../Components/globalComponents/Card"
 import { useState, useEffect } from "react"
 import InfiniteScroll from 'react-infinite-scroll-component'
+import { Loading } from "../Components/helperComponents/Loading"
 
 export function Explorer({ explore }: { explore: string }) {
 
      const [pageNum, setPageNum] = useState<number>(1)
 
      // initial fetching
-     const { data } = fetchDataFromApi(`/discover/${explore}?page=${pageNum}`)
+     const { data } = useFetchDataFromApi(`/discover/${explore}?page=${pageNum}`)
 
      const [dataList, setDataList] = useState<MovieAndShowsDetails[]>([])
 
@@ -33,7 +33,7 @@ export function Explorer({ explore }: { explore: string }) {
                next={changePageNum}
                dataLength={dataList.length}
                hasMore={true}
-               loader={<h4>Loading...</h4>}
+               loader={<Loading forScrolling={true} />}
                endMessage={
                     <p style={{ textAlign: 'center' }}>
                          <b>Yay! You have seen it all</b>

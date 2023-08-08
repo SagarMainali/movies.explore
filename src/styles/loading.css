@@ -1,6 +1,6 @@
 .loading-container {
      margin: auto;
-     height: 100vh;
+     /* the height is dynamic and maintained from the component */
      width: 100%;
      display: flex;
      justify-content: center;

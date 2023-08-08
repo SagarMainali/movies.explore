@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
-import { fetchDataFromApi } from "../../utils/api"
+import { useFetchDataFromApi } from "../../utils/api"
 import { CastType } from "../../types/type"
 import { image_baseUrl } from "../../utils/common"
 
 export function CastSection({ endpoint }: { endpoint: string }) {
 
-     const { data } = fetchDataFromApi(endpoint)
+     const { data } = useFetchDataFromApi(endpoint)
 
      const [castList, setCastList] = useState<CastType[]>([] as CastType[])
 

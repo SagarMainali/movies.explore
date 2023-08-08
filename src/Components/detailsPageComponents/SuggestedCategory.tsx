@@ -1,5 +1,5 @@
 import { MovieAndShowsDetails } from "../../types/type"
-import { fetchDataFromApi } from "../../utils/api"
+import { useFetchDataFromApi } from "../../utils/api"
 import { Card } from "../globalComponents/Card"
 import '../../styles/hide_scrollbar.css'
 
@@ -7,7 +7,7 @@ export function SuggestedCategory({ id, media_type, category }: { id: string | u
 
      const endpoint = `/${media_type}/${id}/${category}`
 
-     const { data } = fetchDataFromApi(endpoint)
+     const { data } = useFetchDataFromApi(endpoint)
 
      const category_title = category === 'similar'
           ? `Similar ${media_type === 'movie'

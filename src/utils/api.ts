@@ -9,17 +9,23 @@ const headers = {
      Authorization: 'bearer ' + tmdb_api_access_token
 }
 
-export const fetchDataFromApi = (endpoint: string) => {
+// to be used inside useEffect since it don't have useQuery
+export async function fetchDataFromApi(endpoint: string) {
+     const { data } = await axios.get(base_url + endpoint, {
+          headers
+     })
+     return data
+}
 
+export const useFetchDataFromApi = (endpoint: string) => {
      return useQuery({
           queryKey: [endpoint],
           queryFn: async () => {
-               const { data } = await axios.get(base_url + endpoint, {
-                    headers
-               })
+               const data = await fetchDataFromApi(endpoint)
                return data.results ? data.results : data.cast ? data.cast : data
           }
      })
+}
 
      // without useQuery
      // try {
@@ -33,4 +39,3 @@ export const fetchDataFromApi = (endpoint: string) => {
      //      console.log(error)
      //      return error
      // }
-}

@@ -2,13 +2,13 @@ import { GradientOverlay } from './GradientOverlay'
 import { NavLink } from 'react-router-dom'
 import { image_baseUrl } from '../../utils/common'
 import { useState, useEffect } from 'react'
-import { fetchDataFromApi } from '../../utils/api'
+import { useFetchDataFromApi } from '../../utils/api'
 import { MovieAndShowsDetails } from '../../types/type'
 import { Loading } from '../helperComponents/Loading'
 
 export function Banner() {
 
-     const { data, isLoading } = fetchDataFromApi('/trending/all/day')
+     const { data, isLoading } = useFetchDataFromApi('/trending/all/day')
 
      const [trending, setTrending] = useState<MovieAndShowsDetails>({} as MovieAndShowsDetails)
 
@@ -20,7 +20,7 @@ export function Banner() {
      }, [isLoading])
 
      // useEffect(() => {
-     //      fetchDataFromApi('/trending/all/day')
+     //      useFetchDataFromApi('/trending/all/day')
      //           .then(response => {
      //                getSingleTrending(response)
      //           })
@@ -38,7 +38,7 @@ export function Banner() {
                <Loading />
                :
                <NavLink to={`/${trending.media_type}/${trending.id}`}>
-                    <div className={`md:h-[80vh] h-[95vh] max-h-[700px] bg-no-repeat bg-center ${trending.backdrop_path ? 'object-cover' : 'object-contain'}`}
+                    <div className={`md:h-[80vh] h-[95vh] max-h-[700px] bg-cover bg-no-repeat bg-center ${trending.backdrop_path ? 'object-cover' : 'object-contain'}`}
                          style={{ backgroundImage: trending.backdrop_path ? `url(${image_baseUrl + trending.backdrop_path})` : '/no-poster.png' }}>
                          <GradientOverlay>
                               <div className='flex flex-col gap-4 md:w-[70vw] w-full'>
