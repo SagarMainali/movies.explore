@@ -7,18 +7,18 @@ import { Loading } from "../Components/helperComponents/Loading"
 
 export function Explorer({ explore }: { explore: string }) {
 
-     const pageNum = useRef<number>(1)
-
-     const totalPages = useRef<number>(0)
-
      const [customLoading, setCustomLoading] = useState<boolean>(true)
 
      const [data, setData] = useState<MovieAndShowsDetails[]>([])
 
+     const totalPages = useRef<number>(0)
+
+     const pageNum = useRef<number>(1)
+
      async function fetchInitialData() {
           const initialData: MainDataType = await fetchDataFromApi(`/discover/${explore}`)
-          totalPages.current = initialData.total_pages
           setData(initialData.results)
+          totalPages.current = initialData.total_pages
           // this function is being invoked 1 additional time by React.StrictMode therefore the pageNum is changed directly to 2
           // instead of adding 1 to previous value, it is the same thing because either way this function sets the appropriate pageNum
           // to be used in the function fetchNextPageData()
@@ -27,10 +27,8 @@ export function Explorer({ explore }: { explore: string }) {
      }
 
      async function fetchNextPageData() {
-          console.log(pageNum.current)
           const { results }: MainDataType = await fetchDataFromApi(`/discover/${explore}?page=${pageNum.current}`)
           setData((prevData: MovieAndShowsDetails[]) => [...prevData, ...results])
-          // setPageNum((prevPageNum: number) => prevPageNum + 1)
           pageNum.current = pageNum.current + 1
      }
 
