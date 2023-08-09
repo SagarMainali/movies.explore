@@ -11,6 +11,8 @@ export function SearchResults() {
 
      const { data, isLoading } = useFetchDataFromApi(`/search/multi?query=${searchQuery}`)
 
+     // const [pageNum, setPageNum]
+
      return (
           isLoading
                ?

@@ -7,9 +7,9 @@ import { Loading } from "../Components/helperComponents/Loading"
 
 export function Explorer({ explore }: { explore: string }) {
 
-     const [pageNum, setPageNum] = useState<number>(1)
+     const pageNum = useRef<number>(1)
 
-     const total_pages = useRef<number>(0)
+     const totalPages = useRef<number>(0)
 
      const [customLoading, setCustomLoading] = useState<boolean>(true)
 
@@ -17,17 +17,21 @@ export function Explorer({ explore }: { explore: string }) {
 
      async function fetchInitialData() {
           const initialData: MainDataType = await fetchDataFromApi(`/discover/${explore}`)
-          total_pages.current = initialData.total_pages
+          totalPages.current = initialData.total_pages
           setData(initialData.results)
-          setPageNum(2)
+          // this function is being invoked 1 additional time by React.StrictMode therefore the pageNum is changed directly to 2
+          // instead of adding 1 to previous value, it is the same thing because either way this function sets the appropriate pageNum
+          // to be used in the function fetchNextPageData()
+          pageNum.current = 2
           setCustomLoading(false)
      }
 
      async function fetchNextPageData() {
-          console.log(pageNum)
-          const { results }: MainDataType = await fetchDataFromApi(`/discover/${explore}?page=${pageNum}`)
+          console.log(pageNum.current)
+          const { results }: MainDataType = await fetchDataFromApi(`/discover/${explore}?page=${pageNum.current}`)
           setData((prevData: MovieAndShowsDetails[]) => [...prevData, ...results])
-          setPageNum((prevPageNum: number) => prevPageNum + 1)
+          // setPageNum((prevPageNum: number) => prevPageNum + 1)
+          pageNum.current = pageNum.current + 1
      }
 
      useEffect(() => {
@@ -44,7 +48,7 @@ export function Explorer({ explore }: { explore: string }) {
                                xl:grid-cols-6 md:grid-cols-5 sm:grid-cols-4 xsm:grid-cols-3 grid-cols-2"
                     next={fetchNextPageData}
                     dataLength={data?.length || 0}
-                    hasMore={pageNum <= total_pages.current}
+                    hasMore={pageNum.current <= totalPages.current}
                     loader={
                          <div className="col-span-full h-[90px]">
                               <Loading forScrolling={true} />
