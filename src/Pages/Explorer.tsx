@@ -1,7 +1,7 @@
-import { useFetchDataFromApi } from "../utils/api"
-import { MovieAndShowsDetails } from "../types/type"
+import { fetchDataFromApi } from "../utils/api"
+import { MainDataType, MovieAndShowsDetails } from "../types/type"
 import { Card } from "../Components/globalComponents/Card"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { Loading } from "../Components/helperComponents/Loading"
 
@@ -9,44 +9,60 @@ export function Explorer({ explore }: { explore: string }) {
 
      const [pageNum, setPageNum] = useState<number>(1)
 
-     // initial fetching
-     const { data } = useFetchDataFromApi(`/discover/${explore}?page=${pageNum}`)
+     const total_pages = useRef<number>(0)
 
-     const [dataList, setDataList] = useState<MovieAndShowsDetails[]>([])
+     const [customLoading, setCustomLoading] = useState<boolean>(true)
 
-     useEffect(() => {
-          if (Array.isArray(data)) {
-               setDataList(
-                    (prevDataList: MovieAndShowsDetails[]) => [...prevDataList, ...data]
-               )
-               console.log(dataList)
-          }
-     }, [data, pageNum])
+     const [data, setData] = useState<MovieAndShowsDetails[]>([])
 
-     function changePageNum() {
+     async function fetchInitialData() {
+          const initialData: MainDataType = await fetchDataFromApi(`/discover/${explore}`)
+          total_pages.current = initialData.total_pages
+          setData(initialData.results)
+          setPageNum(2)
+          setCustomLoading(false)
+     }
+
+     async function fetchNextPageData() {
+          console.log(pageNum)
+          const { results }: MainDataType = await fetchDataFromApi(`/discover/${explore}?page=${pageNum}`)
+          setData((prevData: MovieAndShowsDetails[]) => [...prevData, ...results])
           setPageNum((prevPageNum: number) => prevPageNum + 1)
      }
 
+     useEffect(() => {
+          fetchInitialData()
+     }, [explore])
+
      return (
-          <InfiniteScroll
-               className="py-[60px] grid sm:gap-x-4 sm:gap-y-6 gap-x-3 gap-y-5 xl:grid-cols-6 md:grid-cols-5 sm:grid-cols-4 xsm:grid-cols-3 grid-cols-2"
-               next={changePageNum}
-               dataLength={dataList.length}
-               hasMore={true}
-               loader={<Loading forScrolling={true} />}
-               endMessage={
-                    <p style={{ textAlign: 'center' }}>
-                         <b>Yay! You have seen it all</b>
-                    </p>
-               }
-          >
-               {
-                    // first checking the type of 'data' which should return true and proceed if it is an array
-                    Array.isArray(dataList) && dataList?.map(
-                         (movieOrShow: MovieAndShowsDetails) => <Card key={movieOrShow.id} {...movieOrShow} customMediaType={explore} />
-                    )
-               }
-          </InfiniteScroll>
+          customLoading && data.length < 1
+               ?
+               <Loading />
+               :
+               <InfiniteScroll
+                    className="pt-[60px] grid sm:gap-x-4 sm:gap-y-6 gap-x-3 gap-y-6 
+                               xl:grid-cols-6 md:grid-cols-5 sm:grid-cols-4 xsm:grid-cols-3 grid-cols-2"
+                    next={fetchNextPageData}
+                    dataLength={data?.length || 0}
+                    hasMore={pageNum <= total_pages.current}
+                    loader={
+                         <div className="col-span-full h-[90px]">
+                              <Loading forScrolling={true} />
+                         </div>
+                    }
+                    endMessage={
+                         <p className="col-span-full text-center">
+                              You have reached the end of results. Try searching.
+                         </p>
+                    }
+               >
+                    {
+                         // first checking the type of 'data' which should return true and proceed if it is an array
+                         Array.isArray(data) && data?.map(
+                              (movieOrShow: MovieAndShowsDetails) => <Card key={movieOrShow.id} {...movieOrShow} customMediaType={explore} />
+                         )
+                    }
+               </InfiniteScroll>
 
      )
 }

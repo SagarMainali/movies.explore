@@ -1,5 +1,9 @@
 import { ReactNode } from 'react'
 
+export type ChildrenType = {
+     children: ReactNode
+}
+
 export type MovieAndShowsDetails = {
      id: number,
      name: string,
@@ -36,14 +40,17 @@ export type CastType = {
      character: string
 }
 
+export type MainDataType = {
+     page: number,
+     results: MovieAndShowsDetails[],
+     total_pages: number,
+     total_results: number
+}
+
 export type VideoType = {
      name: string,
      key: string,
      type: string
-}
-
-export type ChildrenType = {
-     children: ReactNode
 }
 
 export type VideoModeType = {
