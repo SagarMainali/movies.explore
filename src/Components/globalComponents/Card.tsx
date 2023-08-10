@@ -16,16 +16,24 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
      const { media_type, id: main_id } = useParams()
 
      const { changeDateFormat } = useGlobalContext()
-     // 2xl:h-[300px] xl:min-h-[410px] lg:min-h-[460px] md:min-h-[415px] sm:min-h-[300px] xsm:min-h-[400px] min-h-[345px]
-     // ${pathname.includes('movies') || pathname.includes('tvshows') || pathname.includes('search') ? 'max-h-[400px]' : 'max-h-[300px]'}`
+
+     // sm:min-w-[150px] min-w-[130px] md:h-[300px] sm:h-[230px] h-[190px]
+
      return (
-          <div className="flex flex-col gap-1">
+          <div className={`flex flex-col gap-1 
+               ${pathname === '/' || pathname === `/${media_type}/${main_id}`
+                    ? `xl:min-w-[calc((100%/7)-10px)] 
+                         lg:min-w-[calc((100%/6)-10px)] 
+                         md:min-w-[calc((100%/5)-10px)] 
+                         sm:min-w-[calc((100%/4)-6px)]
+                         min-w-[calc((100%/3)-5px)]`
+                    : ''} `}>
                <div className="relative">
                     <NavLink to={`/${customMediaType}/${id}`}>
                          <img
-                              className={` rounded-lg
+                              className={` rounded-xl
                               ${pathname === '/' || pathname === `/${media_type}/${main_id}`
-                                        ? 'md:min-w-[200px] sm:min-w-[150px] min-w-[130px] md:h-[300px] sm:h-[230px] h-[190px]'
+                                        ? 'w-[100%]'
                                         : 'lg:h-[350px] md:h-[280px] sm:h-[260px] xsm:h-[280px] h-[300px]'}`
                               }
                               src={poster_path ? `${image_baseUrl}/${poster_path}` : '/no-poster.png'}
@@ -43,14 +51,16 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
                               }} />
                     </span>
                </div>
-               <h1 className="sm:text-lg text-sm truncate md:max-w-[195px] sm:max-w-[145px] max-w-[115px]">{title || name}</h1>
-               <h2 className="text-[10px] font-bold">{
-                    release_date
-                         ? changeDateFormat(release_date)
-                         : first_air_date ?
-                              changeDateFormat(first_air_date)
-                              : 'N/A'}
-               </h2>
+               <div className="flex flex-col gap-0">
+                    <h1 className="sm:text-lg text-sm truncate md:max-w-[195px] sm:max-w-[145px] max-w-[115px]">{title || name}</h1>
+                    <h2 className="text-[10px] font-bold">{
+                         release_date
+                              ? changeDateFormat(release_date)
+                              : first_air_date ?
+                                   changeDateFormat(first_air_date)
+                                   : 'N/A'}
+                    </h2>
+               </div>
           </div>
      )
 }

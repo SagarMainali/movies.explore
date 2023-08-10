@@ -45,8 +45,9 @@ export function Explorer({ explore }: { explore: string }) {
                     className="pt-[60px] grid sm:gap-x-4 sm:gap-y-6 gap-x-3 gap-y-6 
                                xl:grid-cols-6 md:grid-cols-5 sm:grid-cols-4 xsm:grid-cols-3 grid-cols-2"
                     next={fetchNextPageData}
-                    dataLength={data?.length || 0}
+                    dataLength={data?.length || 20}
                     hasMore={pageNum.current <= totalPages.current}
+                    scrollThreshold={1}
                     loader={
                          <div className="col-span-full h-[90px]">
                               <Loading forScrolling={true} />
