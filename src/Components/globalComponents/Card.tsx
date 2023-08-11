@@ -22,9 +22,9 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
      return (
           <div className={`flex flex-col gap-1 
                ${pathname === '/' || pathname === `/${media_type}/${main_id}`
-                    ? `xl:min-w-[calc((100%/7)-10px)] 
-                         lg:min-w-[calc((100%/6)-10px)] 
-                         md:min-w-[calc((100%/5)-10px)] 
+                    ? `xl:min-w-[calc((100%/7)-10.3px)] 
+                         lg:min-w-[calc((100%/6)-10.3px)] 
+                         md:min-w-[calc((100%/5)-10.3px)] 
                          sm:min-w-[calc((100%/4)-6px)]
                          min-w-[calc((100%/3)-5px)]`
                     : ''} `}>
