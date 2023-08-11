@@ -1,7 +1,5 @@
-import { ReactNode } from 'react'
-
 export type ChildrenType = {
-     children: ReactNode
+     children: React.ReactNode
 }
 
 export type MovieAndShowsDetails = {
@@ -61,5 +59,6 @@ export type VideoModeType = {
 export type GlobalContextType = {
      menuTogglerActive: boolean,
      changeMenuTogglerState: () => void,
-     changeDateFormat: (date: string) => string
+     changeDateFormat: (date: string) => string,
+     itemContainer: React.RefObject<HTMLDivElement>
 }

@@ -50,7 +50,7 @@ export function Category({ category }: { category: string }) {
                pxToScroll = itemContainerScrollPosition - itemContainerWidth
           }
 
-          itemContainer.current?.scrollTo({
+          container.scrollTo({
                left: pxToScroll,
                behavior: 'smooth'
           })
