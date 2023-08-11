@@ -46,31 +46,31 @@ export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode
           // to not add decimal in budget
           if (type === 'budget') {
                if (money < 1000000) {
-                    return `${(money / 1000).toFixed()} Thousand USD`
+                    return `${(money / 1000).toFixed()} Thousand`
                }
                else if (money >= 1000000 && money < 1000000000) {
-                    return `${(money / 1000000).toFixed()} Million USD`
+                    return `${(money / 1000000).toFixed()} Million`
                }
                else {
-                    return `${(money / 1000000000).toFixed()} Billion USD`
+                    return `${(money / 1000000000).toFixed()} Billion`
                }
           }
           // to add decimal in revenue
           else {
                if (money < 1000000) {
-                    return `${(money / 1000).toFixed(2)} Thousand USD`
+                    return `${(money / 1000).toFixed(2)} Thousand`
                }
                else if (money >= 1000000 && money < 1000000000) {
-                    return `${(money / 1000000).toFixed(2)} Million USD`
+                    return `${(money / 1000000).toFixed(2)} Million`
                }
                else {
-                    return `${(money / 1000000000).toFixed(2)} Billion USD`
+                    return `${(money / 1000000000).toFixed(2)} Billion`
                }
           }
      }
 
      return (
-          <div className="md:h-[90vh] md:relative">
+          <div className="md:h-[95vh] md:relative max-h-[700px]">
 
                {/* <div
                     className="bg-no-repeat bg-cover bg-top md:h-[80%] h-[50vh] w-full relative"

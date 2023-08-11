@@ -38,7 +38,7 @@ export default function VideosSection({ videosData, changeVideoMode }: {
                     <Controller direction="left" forwardedRef={containerRef} />
 
                     <Controller direction="right" forwardedRef={containerRef} />
-
+                    
                </div>
           </div>
      )
