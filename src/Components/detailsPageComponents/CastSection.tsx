@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { useFetchDataFromApi } from "../../utils/api"
 import { CastType } from "../../types/type"
 import { image_baseUrl } from "../../utils/common"
@@ -26,6 +26,8 @@ export function CastSection({ endpoint }: { endpoint: string }) {
           }
      }, [data])
 
+     const containerRef = useRef<HTMLDivElement>(null)
+
      return (
           castList && castList.length > 0
           &&
@@ -34,11 +36,7 @@ export function CastSection({ endpoint }: { endpoint: string }) {
 
                <div className="relative">
 
-                    <Controller direction="left" />
-
-                    <Controller direction="right" />
-
-                    <div className="flex md:gap-[12px] gap-[8px] overflow-x-scroll hide-scrollbar">
+                    <div className="flex md:gap-[12px] gap-[8px] overflow-x-scroll hide-scrollbar" ref={containerRef}>
                          {
                               castList?.map((cast: CastType) => (
                                    <div key={cast.id} className="md:min-w-[150px] min-w-[120px]">
@@ -59,6 +57,11 @@ export function CastSection({ endpoint }: { endpoint: string }) {
                               ))
                          }
                     </div>
+
+                    <Controller direction="left" forwardedRef={containerRef} />
+
+                    <Controller direction="right" forwardedRef={containerRef} />
+
                </div>
           </div>
      )

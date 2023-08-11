@@ -3,6 +3,7 @@ import { useFetchDataFromApi } from "../../utils/api"
 import { Card } from "../globalComponents/Card"
 import '../../styles/hide_scrollbar.css'
 import { Controller } from "../globalComponents/Controller"
+import { useRef } from "react"
 
 export function SuggestedCategory({ id, media_type, category }: { id: string | undefined, media_type: string | undefined, category: string }) {
 
@@ -15,6 +16,8 @@ export function SuggestedCategory({ id, media_type, category }: { id: string | u
                ? 'Movies' : 'Tv Shows'}`
           : 'Recommendations'
 
+     const containerRef = useRef<HTMLDivElement>(null)
+
      return (
           Array.isArray(data) && data.length > 0
           &&
@@ -25,17 +28,17 @@ export function SuggestedCategory({ id, media_type, category }: { id: string | u
 
                <div className="relative">
 
-                    <Controller direction="left" />
-
-                    <Controller direction="right" />
-
-                    <div className="hide-scrollbar flex md:gap-[12px] gap-[8px] overflow-x-scroll" >
+                    <div className="hide-scrollbar flex md:gap-[12px] gap-[8px] overflow-x-scroll" ref={containerRef}>
                          {
                               data.map(
                                    (movieOrShow: MovieAndShowsDetails) => <Card key={movieOrShow.id} customMediaType={media_type} {...movieOrShow} />
                               )
                          }
                     </div>
+
+                    <Controller direction="left" forwardedRef={containerRef} />
+
+                    <Controller direction="right" forwardedRef={containerRef} />
 
                </div>
 

@@ -51,15 +51,15 @@ export function Category({ category }: { category: string }) {
 
                <div className="relative">
 
-                    <Controller direction="left" forwardedRef={containerRef} />
-
-                    <Controller direction="right" forwardedRef={containerRef} />
-
                     <div className="hide-scrollbar flex md:gap-[12px] gap-[8px] overflow-x-scroll relative" ref={containerRef}>
                          {
                               Array.isArray(data) && data?.map((movieOrShow: MovieAndShowsDetails) => <Card key={movieOrShow.id} customMediaType={userInput} {...movieOrShow} />)
                          }
                     </div>
+
+                    <Controller direction="left" forwardedRef={containerRef} />
+
+                    <Controller direction="right" forwardedRef={containerRef} />
 
                </div>
 

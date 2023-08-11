@@ -1,6 +1,7 @@
 import { VideoModeType, VideoType } from "../../types/type"
 import { Controller } from "../globalComponents/Controller"
 import { PlayButton } from "./PlayButton"
+import { useRef } from 'react'
 
 export default function VideosSection({ videosData, changeVideoMode }: {
      videosData: VideoType[],
@@ -8,17 +9,15 @@ export default function VideosSection({ videosData, changeVideoMode }: {
      changeVideoMode: (key?: string) => void
 }) {
 
+     const containerRef = useRef<HTMLDivElement>(null)
+
      return (
           <div className="flex flex-col md:gap-4 gap-3">
                <h1 className="sm:text-xl text-lg font-semibold">Official Videos</h1>
 
                <div className="relative">
 
-                    <Controller direction="left" />
-
-                    <Controller direction="right" />
-
-                    <div className="flex md:gap-4 gap-2 overflow-x-scroll hide-scrollbar">
+                    <div className="flex md:gap-4 gap-2 overflow-x-scroll hide-scrollbar" ref={containerRef}>
                          {
                               videosData?.map((video: VideoType) => (
                                    <div className="lg:min-w-[280px] md:min-w-[240px] min-w-[200px] max-w-[280px]" key={video.key}>
@@ -35,6 +34,11 @@ export default function VideosSection({ videosData, changeVideoMode }: {
                               ))
                          }
                     </div>
+
+                    <Controller direction="left" forwardedRef={containerRef} />
+
+                    <Controller direction="right" forwardedRef={containerRef} />
+
                </div>
           </div>
      )
