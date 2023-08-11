@@ -1,8 +1,8 @@
-export type ChildrenType = {
+export interface ChildrenType {
      children: React.ReactNode
 }
 
-export type MovieAndShowsDetails = {
+export interface MovieAndShowsDetails {
      id: number,
      name: string,
      title: string,
@@ -30,7 +30,7 @@ export type MovieAndShowsDetails = {
      }[],
 }
 
-export type CastType = {
+export interface CastType {
      id: number,
      gender: number,
      original_name: string,
@@ -38,27 +38,26 @@ export type CastType = {
      character: string
 }
 
-export type MainDataType = {
+export interface MainDataType {
      page: number,
      results: MovieAndShowsDetails[],
      total_pages: number,
      total_results: number
 }
 
-export type VideoType = {
+export interface VideoType {
      name: string,
      key: string,
      type: string
 }
 
-export type VideoModeType = {
+export interface VideoModeType {
      videoKey: string | null,
      openVideo: boolean
 }
 
-export type GlobalContextType = {
+export interface GlobalContextType {
      menuTogglerActive: boolean,
      changeMenuTogglerState: () => void,
-     changeDateFormat: (date: string) => string,
-     itemContainer: React.RefObject<HTMLDivElement>
+     changeDateFormat: (date: string) => string
 }

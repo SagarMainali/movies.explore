@@ -3,7 +3,6 @@ import { useFetchDataFromApi } from "../../utils/api"
 import { Card } from "../globalComponents/Card"
 import '../../styles/hide_scrollbar.css'
 import { Controller } from "../globalComponents/Controller"
-import { useGlobalContext } from "../../stateManagement/context"
 
 export function SuggestedCategory({ id, media_type, category }: { id: string | undefined, media_type: string | undefined, category: string }) {
 
@@ -15,8 +14,6 @@ export function SuggestedCategory({ id, media_type, category }: { id: string | u
           ? `Similar ${media_type === 'movie'
                ? 'Movies' : 'Tv Shows'}`
           : 'Recommendations'
-
-     const { itemContainer } = useGlobalContext()
 
      return (
           Array.isArray(data) && data.length > 0
@@ -32,7 +29,7 @@ export function SuggestedCategory({ id, media_type, category }: { id: string | u
 
                     <Controller direction="right" />
 
-                    <div className="hide-scrollbar flex md:gap-[12px] gap-[8px] overflow-x-scroll" ref={itemContainer}>
+                    <div className="hide-scrollbar flex md:gap-[12px] gap-[8px] overflow-x-scroll" >
                          {
                               data.map(
                                    (movieOrShow: MovieAndShowsDetails) => <Card key={movieOrShow.id} customMediaType={media_type} {...movieOrShow} />

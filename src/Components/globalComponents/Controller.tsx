@@ -1,11 +1,7 @@
-import { useGlobalContext } from '../../stateManagement/context'
-
-export function Controller({ direction }: { direction: string }) {
-
-     const { itemContainer } = useGlobalContext()
+export function Controller({ direction, forwardedRef }: { direction: string, forwardedRef: React.RefObject<HTMLDivElement> }) {
 
      function slider(direction: string) {
-          const container = itemContainer.current
+          const container = forwardedRef.current
 
           if (!container) {
                return // return early if the container is not available

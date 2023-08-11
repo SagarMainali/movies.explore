@@ -17,7 +17,7 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
 
      const { changeDateFormat } = useGlobalContext()
 
-     // sm:min-w-[150px] min-w-[130px] md:h-[300px] sm:h-[230px] h-[190px]
+     // sm:min-w-[150px] min-w-[130px]
 
      return (
           <div className={`flex flex-col gap-1 
@@ -33,7 +33,7 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
                          <img
                               className={` rounded-xl
                               ${pathname === '/' || pathname === `/${media_type}/${main_id}`
-                                        ? 'w-[100%]'
+                                        ? 'w-[100%] md:h-[280px] sm:h-[230px] h-[190px]'
                                         : 'lg:h-[350px] md:h-[280px] sm:h-[260px] xsm:h-[280px] h-[300px]'}`
                               }
                               src={poster_path ? `${image_baseUrl}/${poster_path}` : '/no-poster.png'}
