@@ -4,14 +4,8 @@ import { useRef, useState } from "react"
 import '../../styles/hide_scrollbar.css'
 import { Card } from "../globalComponents/Card"
 // import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+// import 'react-loading-skeleton/dist/skeleton.css'
 import { Controller } from "../globalComponents/Controller"
-
-interface RefObject {
-     [key: string]: React.RefObject<HTMLDivElement>
-}
-
-const refObject: RefObject = {}
 
 export function Category({ category }: { category: string }) {
 
@@ -32,20 +26,11 @@ export function Category({ category }: { category: string }) {
                          : category === 'Now playing'
                               ? `/${userInput}/${userInput === 'movie' ? 'now_playing' : 'on_the_air'}`
                               : ''
-
      )
 
      const { data } = useFetchDataFromApi(dynamicUrl)
 
-     // removing space and '
-     const dynamicRefVariable_refine = category.split(' ').join('').replace("'", '')
-
-     // changing the variable to camelCase
-     const dynamicRefVariable = dynamicRefVariable_refine[0].toLowerCase() + dynamicRefVariable_refine.slice(1)
-
-     refObject[dynamicRefVariable] = useRef<HTMLDivElement>(null)
-
-     const containerRef = refObject[dynamicRefVariable]
+     const containerRef = useRef<HTMLDivElement>(null)
 
      return (
           <div className="flex flex-col gap-3 relative">

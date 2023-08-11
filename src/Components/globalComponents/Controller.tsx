@@ -1,7 +1,7 @@
-export function Controller({ direction, forwardedRef }: { direction: string, forwardedRef: React.RefObject<HTMLDivElement> }) {
+export function Controller({ direction, forwardedRef }: { direction: string, forwardedRef?: React.RefObject<HTMLDivElement> }) {
 
      function slider(direction: string) {
-          const container = forwardedRef.current
+          const container = forwardedRef?.current
 
           if (!container) {
                return // return early if the container is not available
