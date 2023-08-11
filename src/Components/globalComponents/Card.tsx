@@ -33,14 +33,14 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
                          <img
                               className={` rounded-xl
                               ${pathname === '/' || pathname === `/${media_type}/${main_id}`
-                                        ? 'w-[100%] md:h-[280px] sm:h-[230px] h-[190px]'
+                                        ? 'w-[100%] md:h-[260px] sm:h-[220px] h-[175px]'
                                         : 'lg:h-[350px] md:h-[280px] sm:h-[260px] xsm:h-[280px] h-[300px]'}`
                               }
                               src={poster_path ? `${image_baseUrl}/${poster_path}` : '/no-poster.png'}
                               alt="movie/tvshow"
                          />
                     </NavLink>
-                    <span className="absolute left-1 bottom-1 w-[40px] h-[40px] rounded-full p-[1.5px] bg-slate-200">
+                    <span className="absolute left-1 bottom-1 sm:w-[40px] sm:h-[40px] w-[32px] h-[32px] rounded-full p-[1.5px] bg-slate-200">
                          <CircularProgressbar
                               maxValue={10} value={vote_average} text={`${vote_average?.toFixed(1)}`}
                               strokeWidth={9} background

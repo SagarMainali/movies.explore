@@ -8,7 +8,7 @@ export function VideoPopup({ videoKey, changeVideoMode, title }: {
 
      return (
           <div
-               className="fixed h-[100vh] w-[100vw] top-0 left-0 z-10 flex justify-center items-center bg-slate-900/70 backdrop-blur-md"
+               className="fixed h-[100vh] w-[100vw] top-0 left-0 z-50 flex justify-center items-center bg-slate-900/70 backdrop-blur-md"
                onClick={() => changeVideoMode()}>
                <div className='xl:h-[70%] xl:w-[80%]
                               lg:h-[70%] lg:w-[85%]
