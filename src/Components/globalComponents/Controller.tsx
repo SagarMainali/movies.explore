@@ -25,6 +25,11 @@ export function Controller({ direction, forwardedRef }: { direction: string, for
           }
      }, [forwardedRef.current])
 
+     // run at least once anyway
+     useEffect(() => {
+          changeControlsConfig()
+     }, [])
+
      function changeControlsConfig() {
           const refs = forwardedRef.current
           if (refs) {
