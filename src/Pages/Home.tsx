@@ -5,7 +5,7 @@ import { Footer } from "../Components/homePageComponents/Footer"
 export function Home() {
 
      return (
-          <div className="flex flex-col gap-10 relative">
+          <div className="flex flex-col gap-8 relative">
 
                <Banner />
 

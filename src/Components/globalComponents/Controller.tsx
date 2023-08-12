@@ -29,8 +29,8 @@ export function Controller({ direction, forwardedRef }: { direction: string, for
           const refs = forwardedRef.current
           if (refs) {
                setControlsConfig({
-                    hideLeftBtn: refs.scrollWidth <= refs.offsetWidth || refs.scrollLeft === 0 ? true : false,
-                    hideRightBtn: refs.scrollWidth <= refs.offsetWidth || refs.scrollLeft + refs.offsetWidth >= refs.scrollWidth ? true : false
+                    hideLeftBtn: refs.scrollWidth <= refs.offsetWidth || refs.scrollLeft < 100 ? true : false,
+                    hideRightBtn: refs.scrollWidth <= refs.offsetWidth || refs.scrollLeft + refs.offsetWidth + 100 >= refs.scrollWidth ? true : false
                })
           }
      }
