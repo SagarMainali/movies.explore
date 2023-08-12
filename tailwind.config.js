@@ -11,6 +11,7 @@ export default {
         'logo-inherit': '#0FB6DF',
       },
       screens: {
+        'xxsm': '370px',
         'xsm': '500px',
         'sm': '620px',
         'md': '860px',

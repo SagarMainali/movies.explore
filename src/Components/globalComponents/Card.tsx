@@ -30,9 +30,11 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
                     <NavLink to={`/${customMediaType}/${id}`}>
                          <img
                               className={` rounded-xl
-                              ${pathname === '/' || pathname === `/${media_type}/${main_id}`
-                                        ? 'w-[100%] lg:max-h-[280px] md:max-h-[270px] sm:max-h-[260px] xsm:max-h-[250px] max-h-[210px]'
-                                        : 'lg:h-[350px] md:h-[280px] sm:h-[260px] xsm:h-[280px] h-[300px]'}`
+                              ${pathname === '/'
+                                        ? 'w-[100%] xl:h-[280px] lg:h-[270px] md:h-[270px] sm:h-[260px] xsm:h-[250px] xxsm:h-[170px] h-[145px]'
+                                        : pathname === `/${media_type}/${main_id}`
+                                             ? 'w-[100%] xl:h-[255px] lg:h-[240px] md:h-[265px] sm:h-[260px] xsm:h-[250px] xxsm:h-[170px] h-[145px]'
+                                             : 'lg:h-[350px] md:h-[280px] sm:h-[260px] xsm:h-[280px] h-[300px]'}`
                               }
                               src={poster_path ? `${image_baseUrl}/${poster_path}` : '/no-poster.png'}
                               alt="movie/tvshow"
