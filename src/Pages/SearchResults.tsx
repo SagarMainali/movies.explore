@@ -56,7 +56,7 @@ export function SearchResults() {
                          }
                          endMessage={
                               <p className="col-span-full text-center">
-                                   You have reached the end of results.
+                                   No more data to show.
                               </p>
                          }
                     >

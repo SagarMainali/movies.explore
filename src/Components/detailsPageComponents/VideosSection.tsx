@@ -12,6 +12,8 @@ export default function VideosSection({ videosData, changeVideoMode }: {
      const containerRef = useRef<HTMLDivElement>(null)
 
      return (
+          videosData && videosData.length > 0
+          &&
           <div className="flex flex-col md:gap-4 gap-3">
                <h1 className="sm:text-xl text-lg font-semibold">Official Videos</h1>
 
