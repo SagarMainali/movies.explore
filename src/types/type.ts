@@ -59,5 +59,6 @@ export interface VideoModeType {
 export interface GlobalContextType {
      menuTogglerActive: boolean,
      changeMenuTogglerState: () => void,
-     changeDateFormat: (date: string) => string
+     changeDateFormat: (date: string) => string,
+     slider: (direction: string, forwardedRef: React.RefObject<HTMLDivElement>) => void
 }

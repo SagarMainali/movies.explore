@@ -58,7 +58,7 @@ export function Details() {
         />
 
         {/* separate container because to match the width 80% of the DetailsSeciont's content */}
-        <div className="lg:w-[85%] w-[100%] mx-auto flex flex-col gap-10 overflow-hidden">
+        <div className="lg:w-[90%] w-[100%] mx-auto flex flex-col gap-10 overflow-hidden">
 
           <VideosSection
             videosData={videosData as VideoType[]}

@@ -28,8 +28,32 @@ export function GlobalContextProvider({ children }: ChildrenType) {
           return `${months[parseInt(month) - 1]} ${day}, ${year}`
      }
 
+     function slider(direction: string, forwardedRef: React.RefObject<HTMLDivElement>) {
+          const container = forwardedRef.current
+
+          if (!container) {
+               return // return early if the container is not available
+          }
+
+          const itemContainerWidth = container.offsetWidth
+          const itemContainerScrollPosition = container.scrollLeft
+          let pxToScroll = 0
+
+          if (direction === 'right') {
+               pxToScroll = itemContainerScrollPosition + itemContainerWidth
+          }
+          else {
+               pxToScroll = itemContainerScrollPosition - itemContainerWidth
+          }
+
+          container.scrollTo({
+               left: pxToScroll,
+               behavior: 'smooth'
+          })
+     }
+
      return (
-          <GlobalContext.Provider value={{ menuTogglerActive, changeMenuTogglerState, changeDateFormat }}>
+          <GlobalContext.Provider value={{ menuTogglerActive, changeMenuTogglerState, changeDateFormat, slider }}>
                <QueryClientProvider client={queryClient}>
                     {children}
                </QueryClientProvider>

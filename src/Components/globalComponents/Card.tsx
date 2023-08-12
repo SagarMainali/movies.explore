@@ -17,12 +17,10 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
 
      const { changeDateFormat } = useGlobalContext()
 
-     // sm:min-w-[150px] min-w-[130px]
-
      return (
           <div className={`flex flex-col gap-1 
                ${pathname === '/' || pathname === `/${media_type}/${main_id}`
-                    ? `xl:min-w-[calc((100%/7)-10.3px)] 
+                    ? `xl:min-w-[calc((100%/7)-10.3px)]
                          lg:min-w-[calc((100%/6)-10.3px)] 
                          md:min-w-[calc((100%/5)-10.3px)] 
                          sm:min-w-[calc((100%/4)-6px)]
@@ -33,7 +31,7 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
                          <img
                               className={` rounded-xl
                               ${pathname === '/' || pathname === `/${media_type}/${main_id}`
-                                        ? 'w-[100%] md:h-[260px] sm:h-[220px] h-[175px]'
+                                        ? 'w-[100%] lg:max-h-[280px] md:max-h-[270px] sm:max-h-[260px] xsm:max-h-[250px] max-h-[210px]'
                                         : 'lg:h-[350px] md:h-[280px] sm:h-[260px] xsm:h-[280px] h-[300px]'}`
                               }
                               src={poster_path ? `${image_baseUrl}/${poster_path}` : '/no-poster.png'}
