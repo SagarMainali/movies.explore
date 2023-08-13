@@ -10,7 +10,7 @@ export function SuggestedCategory({ id, media_type, category }: { id: string | u
 
      const endpoint = `/${media_type}/${id}/${category}`
 
-     const { data } = useFetchDataFromApi(endpoint)
+     const { data, isLoading } = useFetchDataFromApi(endpoint)
 
      const category_title = category === 'similar'
           ? `Similar ${media_type === 'movie'
@@ -20,8 +20,12 @@ export function SuggestedCategory({ id, media_type, category }: { id: string | u
      const containerRef = useRef<HTMLDivElement>(null)
 
      return (
-          Array.isArray(data) && data.length > 0
+          isLoading
                ?
+               <Skeleton containerType="similarCategory" />
+               :
+               Array.isArray(data) && data.length > 0
+               &&
                <div className="flex flex-col gap-3">
                     <h1 className="sm:text-xl text-lg font-semibold">
                          {category_title}
@@ -43,6 +47,5 @@ export function SuggestedCategory({ id, media_type, category }: { id: string | u
 
                     </div>
                </div>
-               : <Skeleton containerType="similarCategory" />
      )
 }

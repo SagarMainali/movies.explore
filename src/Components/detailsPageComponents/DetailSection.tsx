@@ -91,12 +91,13 @@ export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode
                     </div>
                </div>
 
-               <div className="md:absolute md:bottom-0 flex justify-center">
+               <div className="md:absolute md:bottom-0 flex justify-center w-full">
                     <div className="lg:w-[90%] w-[100%] flex gap-3">
                          <img
                               src={movieOrShowData.poster_path ? `${image_baseUrl}/${movieOrShowData.poster_path}` : '/no-poster.png'}
                               alt="posterImg"
                               className='rounded-lg max-h-[370px] md:block hidden' />
+                         
                          <div className="flex flex-col md:gap-4 gap-2">
                               <div className="flex flex-col gap-1 items-start">
                                    <h1

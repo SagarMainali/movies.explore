@@ -29,7 +29,7 @@ export function Category({ category }: { category: string }) {
                               : ''
      )
 
-     const { data } = useFetchDataFromApi(dynamicUrl)
+     const { data, isLoading } = useFetchDataFromApi(dynamicUrl)
 
      const containerRef = useRef<HTMLDivElement>(null)
 
@@ -69,8 +69,10 @@ export function Category({ category }: { category: string }) {
 
                {/* when the Controller component renders it should pass the latest forwardedRef i.e after filling the container with movies or
                shows data, so in order to do that the Controller component is only rendered after the container gets filled with all data*/}
-               {data
+               {isLoading
                     ?
+                    <Skeleton containerType="category" />
+                    :
                     <div className="relative">
 
                          <div className={`hide-scrollbar flex overflow-x-scroll gap-[${flexGap}px]`} ref={containerRef}>
@@ -84,8 +86,6 @@ export function Category({ category }: { category: string }) {
                          <Controller direction="right" forwardedRef={containerRef} gap={flexGap} />
 
                     </div>
-                    :
-                    <Skeleton containerType="category" />
                }
 
           </div >
