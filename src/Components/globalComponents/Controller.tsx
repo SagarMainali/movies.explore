@@ -19,7 +19,6 @@ export function Controller({ direction, forwardedRef }: { direction: string, for
                     hideLeftBtn: refs.scrollWidth === refs.offsetWidth || refs.scrollLeft < 100 ? true : false,
                     hideRightBtn: refs.scrollWidth === refs.offsetWidth || refs.scrollLeft + refs.offsetWidth + 100 >= refs.scrollWidth ? true : false
                })
-               console.log(refs.scrollWidth, refs.offsetWidth, refs.scrollLeft)
           }
 
      }

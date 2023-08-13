@@ -6,6 +6,7 @@ import { Card } from "../globalComponents/Card"
 // import Skeleton from 'react-loading-skeleton'
 // import 'react-loading-skeleton/dist/skeleton.css'
 import { Controller } from "../globalComponents/Controller"
+import { Skeleton } from "../globalComponents/Skeleton"
 
 export function Category({ category }: { category: string }) {
 
@@ -51,7 +52,8 @@ export function Category({ category }: { category: string }) {
 
                {/* when the Controller component renders it should pass the latest forwardedRef i.e after filling the container with movies or
                shows data, so in order to do that the Controller component is only rendered after the container gets filled with all data*/}
-               {data &&
+               {data
+                    ?
                     <div className="relative">
 
                          <div className="hide-scrollbar flex md:gap-[12px] gap-[8px] overflow-x-scroll" ref={containerRef}>
@@ -65,6 +67,7 @@ export function Category({ category }: { category: string }) {
                          <Controller direction="right" forwardedRef={containerRef} />
 
                     </div>
+                    : <Skeleton containerType="category" />
                }
 
           </div >

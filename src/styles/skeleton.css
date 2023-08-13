@@ -1,0 +1,20 @@
+.effect-skeleton {
+     background-color: rgb(51, 65, 85);
+     position: relative;
+     overflow: hidden;
+}
+
+.effect-skeleton::after {
+     content: '';
+     position: absolute;
+     inset: 0;
+     background: linear-gradient(to right, rgba(51, 65, 85, .1), rgba(226, 232, 240, .1) 50%, rgb(51, 65, 85));
+     transform: translateX(-100%);
+     animation: moveItmoveIt 1s infinite ease-in-out;
+}
+
+@keyframes moveItmoveIt {
+     100% {
+          transform: translateX(100%)
+     }
+}

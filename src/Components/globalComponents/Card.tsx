@@ -18,7 +18,7 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
      const { changeDateFormat } = useGlobalContext()
 
      return (
-          <div className={`flex flex-col gap-1 
+          <div className={`rounded-xl overflow-hidden flex flex-col gap-1 
                ${pathname === '/' || pathname === `/${media_type}/${main_id}`
                     ? `xl:min-w-[calc((100%/7)-10.3px)]
                          lg:min-w-[calc((100%/6)-10.3px)] 
@@ -29,7 +29,7 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
                <div className="relative">
                     <NavLink to={`/${customMediaType}/${id}`}>
                          <img
-                              className={` rounded-xl
+                              className={`
                               ${pathname === '/'
                                         ? 'w-[100%] xl:h-[280px] lg:h-[270px] md:h-[270px] sm:h-[260px] xsm:h-[250px] xxsm:h-[170px] h-[145px]'
                                         : pathname === `/${media_type}/${main_id}`
