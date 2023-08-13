@@ -10,7 +10,7 @@ export function Home() {
                <Banner />
 
                <Category category={'Now playing'} />
-              
+
                <Category category={'Trending Now'} />
 
                <Category category={"What's Popular"} />

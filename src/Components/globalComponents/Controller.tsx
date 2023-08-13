@@ -10,39 +10,36 @@ export function Controller({ direction, forwardedRef }: { direction: string, for
 
      const { slider } = useGlobalContext()
 
-     const [controlsConfig, setControlsConfig] = useState<ControlsVisibility>({
-          hideLeftBtn: true,
-          hideRightBtn: false
-     })
+     const [controlsConfig, setControlsConfig] = useState<ControlsVisibility>({} as ControlsVisibility)
+
+     function changeControlsConfig() {
+          const refs = forwardedRef.current
+          if (refs) {
+               setControlsConfig({
+                    hideLeftBtn: refs.scrollWidth === refs.offsetWidth || refs.scrollLeft < 100 ? true : false,
+                    hideRightBtn: refs.scrollWidth === refs.offsetWidth || refs.scrollLeft + refs.offsetWidth + 100 >= refs.scrollWidth ? true : false
+               })
+               console.log(refs.scrollWidth, refs.offsetWidth, refs.scrollLeft)
+          }
+
+     }
 
      useEffect(() => {
           if (forwardedRef.current) {
                forwardedRef.current.addEventListener('scroll', changeControlsConfig)
           }
 
-          return () => {
-               forwardedRef.current?.removeEventListener('scroll', changeControlsConfig)
-          }
+          return () => { forwardedRef.current?.removeEventListener('scroll', changeControlsConfig) }
      }, [forwardedRef.current])
 
-     // run at least once anyway
+     // run at least once without any conditions
      useEffect(() => {
           changeControlsConfig()
      }, [])
 
-     function changeControlsConfig() {
-          const refs = forwardedRef.current
-          if (refs) {
-               setControlsConfig({
-                    hideLeftBtn: refs.scrollWidth <= refs.offsetWidth || refs.scrollLeft < 100 ? true : false,
-                    hideRightBtn: refs.scrollWidth <= refs.offsetWidth || refs.scrollLeft + refs.offsetWidth + 100 >= refs.scrollWidth ? true : false
-               })
-          }
-     }
-
      if (direction === 'left') {
           return (
-               <svg className={`h-[25px] absolute max-md:hidden top-[45%] left-2 -translate-y-[50%] z-10 
+               <svg className={`h-[27px] absolute max-md:hidden top-[45%] left-2 -translate-y-[50%] z-10 
                     fill-primary-dark bg-slate-100 rounded-full cursor-pointer ${controlsConfig.hideLeftBtn ? 'md:hidden' : ''}`}
                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
                     onClick={() => slider('left', forwardedRef)}>
@@ -52,7 +49,7 @@ export function Controller({ direction, forwardedRef }: { direction: string, for
      }
      else {
           return (
-               <svg className={`h-[25px] absolute max-md:hidden top-[45%] right-2 -translate-y-[50%] z-10 
+               <svg className={`h-[27px] absolute max-md:hidden top-[45%] right-2 -translate-y-[50%] z-10 
                     fill-primary-dark bg-slate-100 rounded-full cursor-pointer ${controlsConfig.hideRightBtn ? 'md:hidden' : ''}`}
                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
                     onClick={() => slider('right', forwardedRef)}>

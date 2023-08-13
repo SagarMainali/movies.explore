@@ -49,19 +49,23 @@ export function Category({ category }: { category: string }) {
                     </span>
                </div>
 
-               <div className="relative">
+               {/* when the Controller component renders it should pass the latest forwardedRef i.e after filling the container with movies or
+               shows data, so in order to do that the Controller component is only rendered after the container gets filled with all data*/}
+               {data &&
+                    <div className="relative">
 
-                    <div className="hide-scrollbar flex md:gap-[12px] gap-[8px] overflow-x-scroll relative" ref={containerRef}>
-                         {
-                              Array.isArray(data) && data?.map((movieOrShow: MovieAndShowsDetails) => <Card key={movieOrShow.id} customMediaType={userInput} {...movieOrShow} />)
-                         }
+                         <div className="hide-scrollbar flex md:gap-[12px] gap-[8px] overflow-x-scroll" ref={containerRef}>
+                              {
+                                   Array.isArray(data) && data.map((movieOrShow: MovieAndShowsDetails) => <Card key={movieOrShow.id} customMediaType={userInput} {...movieOrShow} />)
+                              }
+                         </div>
+
+                         <Controller direction="left" forwardedRef={containerRef} />
+
+                         <Controller direction="right" forwardedRef={containerRef} />
+
                     </div>
-
-                    <Controller direction="left" forwardedRef={containerRef} />
-
-                    <Controller direction="right" forwardedRef={containerRef} />
-
-               </div>
+               }
 
           </div >
      )
