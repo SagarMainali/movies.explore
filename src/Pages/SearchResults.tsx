@@ -6,6 +6,7 @@ import { Card } from "../Components/globalComponents/Card"
 import { NoResults } from "../Components/helperComponents/NoResults"
 import { useState, useEffect, useRef } from 'react'
 import InfiniteScroll from "react-infinite-scroll-component"
+import { Skeleton } from "../Components/globalComponents/Skeleton"
 
 export function SearchResults() {
 
@@ -34,13 +35,15 @@ export function SearchResults() {
      }
 
      useEffect(() => {
+          setCustomLoading(true)
+          setData([])
           fetchInitialData()
      }, [searchQuery])
 
      return (
           customLoading && data.length < 1
                ?
-               <Loading />
+               <Skeleton containerType="searchResults"/>
                : data.length > 0
                     ?
                     <InfiniteScroll

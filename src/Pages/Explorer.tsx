@@ -4,6 +4,7 @@ import { Card } from "../Components/globalComponents/Card"
 import { useState, useEffect, useRef } from "react"
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { Loading } from "../Components/helperComponents/Loading"
+import { Skeleton } from "../Components/globalComponents/Skeleton"
 
 export function Explorer({ explore }: { explore: string }) {
 
@@ -33,13 +34,15 @@ export function Explorer({ explore }: { explore: string }) {
      }
 
      useEffect(() => {
+          setCustomLoading(true)
+          setData([])
           fetchInitialData()
      }, [explore])
 
      return (
           customLoading && data.length < 1
                ?
-               <Loading />
+               <Skeleton containerType="explorer" />
                :
                <InfiniteScroll
                     className="pt-[60px] grid sm:gap-x-4 sm:gap-y-6 gap-x-3 gap-y-6 
