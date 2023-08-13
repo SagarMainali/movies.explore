@@ -18,18 +18,23 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
      const { changeDateFormat } = useGlobalContext()
 
      return (
-          <div className={`rounded-xl overflow-hidden flex flex-col gap-1 
+          <div className={`flex flex-col gap-1 
                ${pathname === '/' || pathname === `/${media_type}/${main_id}`
-                    ? `xl:min-w-[calc((100%/7)-10.3px)]
-                         lg:min-w-[calc((100%/6)-10.3px)] 
-                         md:min-w-[calc((100%/5)-10.3px)] 
-                         sm:min-w-[calc((100%/4)-6px)]
-                         min-w-[calc((100%/3)-5px)]`
+                    ? `xl:min-w-[calc((100%/7)-12px+calc(12px/7))]
+                         lg:min-w-[calc((100%/6)-12px+calc(12px/6))] 
+                         md:min-w-[calc((100%/5)-12px+calc(12px/5))] 
+                         sm:min-w-[calc((100%/4)-8px+calc(8px/4))]
+                         min-w-[calc((100%/3)-8px+calc(8px/3))]`
                     : ''} `}>
+               {/* above width explained - 
+               the first calc divides the width according to the no of total items in the container,
+               the '-12px' is reduced from the total width because to give space for flex gap,
+               the last calc further refines the width to share the gap of last item in the visible container
+               with this configuration, each item in the container gets equal width with proper gap in the middle*/}
                <div className="relative">
                     <NavLink to={`/${customMediaType}/${id}`}>
                          <img
-                              className={`
+                              className={` rounded-xl
                               ${pathname === '/'
                                         ? 'w-[100%] xl:h-[280px] lg:h-[270px] md:h-[270px] sm:h-[260px] xsm:h-[250px] xxsm:h-[170px] h-[145px]'
                                         : pathname === `/${media_type}/${main_id}`

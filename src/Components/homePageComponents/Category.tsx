@@ -1,6 +1,6 @@
 import { MovieAndShowsDetails } from "../../types/type"
 import { useFetchDataFromApi } from "../../utils/api"
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 import '../../styles/hide_scrollbar.css'
 import { Card } from "../globalComponents/Card"
 // import Skeleton from 'react-loading-skeleton'
@@ -33,6 +33,23 @@ export function Category({ category }: { category: string }) {
 
      const containerRef = useRef<HTMLDivElement>(null)
 
+     const [flexGap, setFlexGap] = useState<number>(0)
+
+     function changeFlexGap() {
+          if (window.screen.width >= 860) {
+               setFlexGap(12)
+          }
+          else {
+               setFlexGap(8)
+          }
+     }
+
+     useEffect(() => {
+          window.addEventListener('resize', changeFlexGap)
+          changeFlexGap()
+          return () => { window.removeEventListener }
+     }, [])
+
      return (
           <div className="flex flex-col gap-3 relative">
 
@@ -56,18 +73,19 @@ export function Category({ category }: { category: string }) {
                     ?
                     <div className="relative">
 
-                         <div className="hide-scrollbar flex md:gap-[12px] gap-[8px] overflow-x-scroll" ref={containerRef}>
+                         <div className={`hide-scrollbar flex overflow-x-scroll gap-[${flexGap}px]`} ref={containerRef}>
                               {
                                    Array.isArray(data) && data.map((movieOrShow: MovieAndShowsDetails) => <Card key={movieOrShow.id} customMediaType={userInput} {...movieOrShow} />)
                               }
                          </div>
 
-                         <Controller direction="left" forwardedRef={containerRef} />
+                         <Controller direction="left" forwardedRef={containerRef} gap={flexGap} />
 
-                         <Controller direction="right" forwardedRef={containerRef} />
+                         <Controller direction="right" forwardedRef={containerRef} gap={flexGap} />
 
                     </div>
-                    : <Skeleton containerType="category" />
+                    :
+                    <Skeleton containerType="category" />
                }
 
           </div >

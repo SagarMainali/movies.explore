@@ -28,7 +28,7 @@ export function GlobalContextProvider({ children }: ChildrenType) {
           return `${months[parseInt(month) - 1]} ${day}, ${year}`
      }
 
-     function slider(direction: string, forwardedRef: React.RefObject<HTMLDivElement>) {
+     function slider(direction: string, forwardedRef: React.RefObject<HTMLDivElement>, gap: number) {
           const container = forwardedRef.current
 
           if (!container) {
@@ -40,10 +40,10 @@ export function GlobalContextProvider({ children }: ChildrenType) {
           let pxToScroll = 0
 
           if (direction === 'right') {
-               pxToScroll = itemContainerScrollPosition + itemContainerWidth
+               pxToScroll = itemContainerScrollPosition + itemContainerWidth + gap
           }
           else {
-               pxToScroll = itemContainerScrollPosition - itemContainerWidth
+               pxToScroll = itemContainerScrollPosition - itemContainerWidth - gap
           }
 
           container.scrollTo({
