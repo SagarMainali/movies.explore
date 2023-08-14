@@ -50,7 +50,7 @@ export function Explorer({ explore }: { explore: string }) {
                     next={fetchNextPageData}
                     dataLength={data?.length || 20}
                     hasMore={pageNum.current <= totalPages.current}
-                    scrollThreshold={1}
+                    scrollThreshold={0.8}
                     loader={
                          <div className="col-span-full h-[90px]">
                               <Loading forScrolling={true} />

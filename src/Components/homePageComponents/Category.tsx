@@ -3,8 +3,6 @@ import { useFetchDataFromApi } from "../../utils/api"
 import { useRef, useState, useEffect } from "react"
 import '../../styles/hide_scrollbar.css'
 import { Card } from "../globalComponents/Card"
-// import Skeleton from 'react-loading-skeleton'
-// import 'react-loading-skeleton/dist/skeleton.css'
 import { Controller } from "../globalComponents/Controller"
 import { Skeleton } from "../globalComponents/Skeleton"
 
@@ -45,8 +43,8 @@ export function Category({ category }: { category: string }) {
      }
 
      useEffect(() => {
-          window.addEventListener('resize', changeFlexGap)
           changeFlexGap()
+          window.addEventListener('resize', changeFlexGap)
           return () => { window.removeEventListener }
      }, [])
 
