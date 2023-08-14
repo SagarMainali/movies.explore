@@ -5,6 +5,7 @@ import 'react-circular-progressbar/dist/styles.css'
 import { MovieAndShowsDetails } from "../../types/type"
 import { circularProgressbarStyles } from "../../utils/common"
 import { useGlobalContext } from "../../stateManagement/context"
+import { LazyLoadImg } from "./LazyLoadImg"
 
 // the customMediaType is needed because only trending movies or shows has media_type property
 export function Card({ customMediaType, ...movieOrShow }: { customMediaType: string | undefined } & MovieAndShowsDetails) {
@@ -33,7 +34,7 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
                with this configuration, each item in the container gets equal width with proper gap in the middle*/}
                <div className="relative">
                     <NavLink to={`/${customMediaType}/${id}`}>
-                         <img
+                         <LazyLoadImg
                               className={` rounded-xl
                               ${pathname === '/'
                                         ? 'w-[100%] xl:h-[280px] lg:h-[270px] md:h-[270px] sm:h-[260px] xsm:h-[250px] xxsm:h-[170px] h-[145px]'
