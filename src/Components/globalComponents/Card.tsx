@@ -5,7 +5,7 @@ import 'react-circular-progressbar/dist/styles.css'
 import { MovieAndShowsDetails } from "../../types/type"
 import { circularProgressbarStyles } from "../../utils/common"
 import { useGlobalContext } from "../../stateManagement/context"
-import { LazyLoadImg } from "./LazyLoadImg"
+import { LazyImage } from "./LazyImage"
 
 // the customMediaType is needed because only trending movies or shows has media_type property
 export function Card({ customMediaType, ...movieOrShow }: { customMediaType: string | undefined } & MovieAndShowsDetails) {
@@ -19,7 +19,7 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
      const { changeDateFormat } = useGlobalContext()
 
      return (
-          <div className={`flex flex-col gap-1 
+          <div className={`m-0 p-0 flex flex-col gap-1
                ${pathname === '/' || pathname === `/${media_type}/${main_id}`
                     ? `xl:min-w-[calc((100%/7)-12px+calc(12px/7))]
                          lg:min-w-[calc((100%/6)-12px+calc(12px/6))] 
@@ -34,17 +34,18 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
                with this configuration, each item in the container gets equal width with proper gap in the middle*/}
                <div className="relative">
                     <NavLink to={`/${customMediaType}/${id}`}>
-                         <LazyLoadImg
-                              className={` rounded-xl
+                         <div className={`rounded-xl overflow-hidden
                               ${pathname === '/'
-                                        ? 'w-[100%] xl:h-[280px] lg:h-[270px] md:h-[270px] sm:h-[260px] xsm:h-[250px] xxsm:h-[170px] h-[145px]'
-                                        : pathname === `/${media_type}/${main_id}`
-                                             ? 'w-[100%] xl:h-[255px] lg:h-[240px] md:h-[265px] sm:h-[260px] xsm:h-[250px] xxsm:h-[170px] h-[145px]'
-                                             : 'lg:h-[350px] md:h-[280px] sm:h-[260px] xsm:h-[280px] h-[300px]'}`
-                              }
-                              src={poster_path ? `${image_baseUrl}/${poster_path}` : '/no-poster.png'}
-                              alt="movie/tvshow"
-                         />
+                                   ? 'w-[100%] xl:h-[280px] lg:h-[270px] md:h-[270px] sm:h-[260px] xsm:h-[250px] xxsm:h-[170px] h-[145px]'
+                                   : pathname === `/${media_type}/${main_id}`
+                                        ? 'w-[100%] xl:h-[255px] lg:h-[240px] md:h-[265px] sm:h-[260px] xsm:h-[250px] xxsm:h-[170px] h-[145px]'
+                                        : 'lg:h-[350px] md:h-[280px] sm:h-[260px] xsm:h-[280px] h-[300px]'}`
+                         }>
+                              <LazyImage
+                                   src={poster_path ? `${image_baseUrl}/${poster_path}` : '/no-poster.png'}
+                                   alt="movie/tvshow"
+                              />
+                         </div>
                     </NavLink>
                     <span className="absolute left-1 bottom-1 sm:w-[40px] sm:h-[40px] w-[32px] h-[32px] rounded-full p-[1.5px] bg-slate-200">
                          <CircularProgressbar
@@ -57,8 +58,8 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
                               }} />
                     </span>
                </div>
-               <div className="flex flex-col gap-0">
-                    <h1 className="sm:text-lg text-sm truncate md:max-w-[195px] sm:max-w-[145px] max-w-[115px]">{title || name}</h1>
+               <div className="flex flex-col gap-0 w-[100%] overflow-hidden">
+                    <h1 className="sm:text-lg text-sm truncate">{title || name}</h1>
                     <h2 className="text-[10px] font-bold">{
                          release_date
                               ? changeDateFormat(release_date)

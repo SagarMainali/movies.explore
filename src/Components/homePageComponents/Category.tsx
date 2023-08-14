@@ -45,7 +45,7 @@ export function Category({ category }: { category: string }) {
      useEffect(() => {
           changeFlexGap()
           window.addEventListener('resize', changeFlexGap)
-          return () => { window.removeEventListener }
+          return () => { window.removeEventListener('resize', changeFlexGap) }
      }, [])
 
      return (
@@ -73,7 +73,7 @@ export function Category({ category }: { category: string }) {
                     :
                     <div className="relative">
 
-                         <div className={`hide-scrollbar flex overflow-x-scroll gap-[${flexGap}px]`} ref={containerRef}>
+                         <div className={`hide-scrollbar flex overflow-x-scroll gap-[${flexGap.toString()}px]`} ref={containerRef}>
                               {
                                    Array.isArray(data) && data.map((movieOrShow: MovieAndShowsDetails) => <Card key={movieOrShow.id} customMediaType={userInput} {...movieOrShow} />)
                               }

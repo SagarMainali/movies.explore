@@ -82,7 +82,7 @@ export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode
                     {/* separate container because to make the overlaying div positioned absolute relative to this container because class
                      relative doesn't work in img*/}
                     <div className="md:h-full w-full h-[65vh] relative -z-10">
-                         < img
+                         <img
                               src={movieOrShowData.backdrop_path ? image_baseUrl + movieOrShowData.backdrop_path : '/no-poster.png'}
                               alt="backdrop_img"
                               className={`h-full w-full object-center ${movieOrShowData.backdrop_path ? 'object-cover' : 'object-contain'}`}
@@ -97,7 +97,7 @@ export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode
                               src={movieOrShowData.poster_path ? `${image_baseUrl}/${movieOrShowData.poster_path}` : '/no-poster.png'}
                               alt="posterImg"
                               className='rounded-lg max-h-[370px] md:block hidden' />
-                         
+
                          <div className="flex flex-col md:gap-4 gap-2">
                               <div className="flex flex-col gap-1 items-start">
                                    <h1

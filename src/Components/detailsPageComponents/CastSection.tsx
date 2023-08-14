@@ -40,7 +40,7 @@ export function CastSection({ endpoint }: { endpoint: string }) {
                          {
                               castList?.map((cast: CastType) => (
                                    <div key={cast.id} className="md:min-w-[150px] min-w-[120px]">
-                                        <div className="md:h-[150px] h-[120px] rounded-full border-2 border-slate-300 p-[2px]">
+                                        <div className="md:h-[150px] h-[120px] rounded-full border-2 border-slate-300 p-[2px] overflow-hidden">
                                              <img
                                                   src={cast.profile_path
                                                        ? image_baseUrl + cast.profile_path
