@@ -34,18 +34,16 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
                with this configuration, each item in the container gets equal width with proper gap in the middle*/}
                <div className="relative">
                     <NavLink to={`/${customMediaType}/${id}`}>
-                         <div className={`rounded-xl overflow-hidden
+                         <LazyImage
+                              src={poster_path ? `${image_baseUrl}/${poster_path}` : '/no-poster.png'}
+                              alt="movie/tvshow"
+                              className={`rounded-xl overflow-hidden
                               ${pathname === '/'
-                                   ? 'w-[100%] xl:h-[280px] lg:h-[270px] md:h-[270px] sm:h-[260px] xsm:h-[250px] xxsm:h-[170px] h-[145px]'
-                                   : pathname === `/${media_type}/${main_id}`
-                                        ? 'w-[100%] xl:h-[255px] lg:h-[240px] md:h-[265px] sm:h-[260px] xsm:h-[250px] xxsm:h-[170px] h-[145px]'
-                                        : 'lg:h-[350px] md:h-[280px] sm:h-[260px] xsm:h-[280px] h-[300px]'}`
-                         }>
-                              <LazyImage
-                                   src={poster_path ? `${image_baseUrl}/${poster_path}` : '/no-poster.png'}
-                                   alt="movie/tvshow"
-                              />
-                         </div>
+                                        ? 'w-[100%] xl:h-[280px] lg:h-[270px] md:h-[270px] sm:h-[260px] xsm:h-[250px] xxsm:h-[170px] h-[145px]'
+                                        : pathname === `/${media_type}/${main_id}`
+                                             ? 'w-[100%] xl:h-[255px] lg:h-[240px] md:h-[265px] sm:h-[260px] xsm:h-[250px] xxsm:h-[170px] h-[145px]'
+                                             : 'lg:h-[350px] md:h-[280px] sm:h-[260px] xsm:h-[280px] h-[300px]'}`}
+                         />
                     </NavLink>
                     <span className="absolute left-1 bottom-1 sm:w-[40px] sm:h-[40px] w-[32px] h-[32px] rounded-full p-[1.5px] bg-slate-200">
                          <CircularProgressbar

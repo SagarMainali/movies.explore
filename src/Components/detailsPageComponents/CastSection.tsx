@@ -3,6 +3,7 @@ import { useFetchDataFromApi } from "../../utils/api"
 import { CastType } from "../../types/type"
 import { image_baseUrl } from "../../utils/common"
 import { Controller } from "../globalComponents/Controller"
+import { LazyImage } from "../globalComponents/LazyImage"
 
 export function CastSection({ endpoint }: { endpoint: string }) {
 
@@ -41,7 +42,7 @@ export function CastSection({ endpoint }: { endpoint: string }) {
                               castList?.map((cast: CastType) => (
                                    <div key={cast.id} className="md:min-w-[150px] min-w-[120px]">
                                         <div className="md:h-[150px] h-[120px] rounded-full border-2 border-slate-300 p-[2px] overflow-hidden">
-                                             <img
+                                             <LazyImage
                                                   src={cast.profile_path
                                                        ? image_baseUrl + cast.profile_path
                                                        : cast.gender === 1
