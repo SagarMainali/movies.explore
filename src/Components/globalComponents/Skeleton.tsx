@@ -40,7 +40,7 @@ export function Skeleton({ containerType }: { containerType: string }) {
      }
 
      return (
-          containerType === 'category' || containerType === 'similarCategory'
+          containerType === 'home-category' || containerType === 'suggested-category'
                ?
                <div className="hide-scrollbar flex md:gap-[10px] gap-[6px] overflow-x-scroll">
                     {skeletonItems}
