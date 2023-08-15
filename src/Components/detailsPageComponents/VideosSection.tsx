@@ -41,7 +41,7 @@ export default function VideosSection({ videosData, changeVideoMode }: {
                          {
                               videosData?.map((video: VideoType) => (
                                    <div key={video.key}
-                                        className="lg:min-w-[calc((100%/5)-10px+calc(10px/5))] 
+                                        className="max-w-[280px] lg:min-w-[calc((100%/5)-10px+calc(10px/5))] 
                                         md:min-w-[calc((100%/4)-10px+calc(10px/4))] 
                                         sm:min-w-[calc((100%/3)-6px+calc(6px/3))]
                                         min-w-[calc((100%/2)-6px+calc(6px/2))]">
@@ -57,7 +57,7 @@ export default function VideosSection({ videosData, changeVideoMode }: {
                                              <PlayButton />
 
                                         </div>
-                                        <h1 className="mt-1 text-center md:text-base text-sm">"{video.name}"</h1>
+                                        <h1 className="mt-1 text-center md:text-[14px] text-sm leading-[17px]">"{video.name}"</h1>
                                    </div>
                               ))
                          }
