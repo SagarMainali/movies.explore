@@ -25,12 +25,14 @@ export default function VideosSection({ videosData, changeVideoMode }: {
                               videosData?.map((video: VideoType) => (
                                    <div className="lg:min-w-[280px] md:min-w-[240px] min-w-[200px] max-w-[280px]" key={video.key}>
 
-
-                                        <div className="relative rounded-md overflow-hidden md:h-[160px] h-[130px] w-[100%] flex justify-center items-center 
+                                        <div className="relative rounded-md overflow-hidden md:h-[160px] h-[130px] w-[100%]
                                                        cursor-pointer group border-2 border-logo-inherit border-opacity-0 hover:border-opacity-100 duration-300"
                                              onClick={() => changeVideoMode(video.key)}>
 
-                                             <LazyImage src={`https://img.youtube.com/vi/${video.key}/mqdefault.jpg`} alt="thumbnail" className="w-[100%]"/>
+                                             <LazyImage
+                                                  src={`https://img.youtube.com/vi/${video.key}/mqdefault.jpg`}
+                                                  alt="thumbnail"
+                                                  className="w-[100%] h-[100%] object-cover object-center rounded-lg" />
                                              <PlayButton />
 
                                         </div>

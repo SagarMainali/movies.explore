@@ -3,7 +3,7 @@ import { ChildrenType } from '../../types/type'
 
 export function GradientOverlay({ children }: ChildrenType) {
      return (
-          <div className="overlay-lrb flex items-end h-full w-full">
+          <div className="overlay-lrb flex items-end absolute inset-0">
                {children}
           </div>
      )
