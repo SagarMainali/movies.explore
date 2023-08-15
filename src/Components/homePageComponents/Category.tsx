@@ -69,7 +69,7 @@ export function Category({ category }: { category: string }) {
                shows data, so in order to do that the Controller component is only rendered after the container gets filled with all data*/}
                {isLoading
                     ?
-                    <Skeleton containerType="category" />
+                    <Skeleton containerType="home-category" />
                     :
                     <div className="relative">
 
@@ -77,7 +77,7 @@ export function Category({ category }: { category: string }) {
                          <div className='hide-scrollbar flex md:gap-[12px] gap-[8px] overflow-x-scroll' ref={containerRef}>
                               {
                                    Array.isArray(data) && data.map((movieOrShow: MovieAndShowsDetails) => (
-                                        <Card key={movieOrShow.id} customMediaType={userInput} {...movieOrShow} />
+                                        <Card key={movieOrShow.id} customMediaType={userInput} containerType="home-category" {...movieOrShow} />
                                    ))
                               }
                          </div>

@@ -39,7 +39,7 @@ export function SuggestedCategory({ id, media_type, category }: { id: string | u
      return (
           isLoading
                ?
-               <Skeleton containerType="similarCategory" />
+               <Skeleton containerType="suggested-category" />
                :
                Array.isArray(data) && data.length > 0
                &&
@@ -54,7 +54,9 @@ export function SuggestedCategory({ id, media_type, category }: { id: string | u
                          <div className='hide-scrollbar flex md:gap-[12px] gap-[8px] overflow-x-scroll' ref={containerRef}>
                               {
                                    data.map(
-                                        (movieOrShow: MovieAndShowsDetails) => <Card key={movieOrShow.id} customMediaType={media_type} {...movieOrShow} />
+                                        (movieOrShow: MovieAndShowsDetails) => (
+                                             <Card key={movieOrShow.id} containerType="suggested-category" customMediaType={media_type} {...movieOrShow} />
+                                        )
                                    )
                               }
                          </div>

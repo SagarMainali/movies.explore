@@ -20,11 +20,15 @@ export default function VideosSection({ videosData, changeVideoMode }: {
 
                <div className="relative">
 
-                    <div className="flex md:gap-4 gap-2 overflow-x-scroll hide-scrollbar" ref={containerRef}>
+                    <div className="flex md:gap-[12px] gap-[8px] overflow-x-scroll hide-scrollbar" ref={containerRef}>
                          {
                               videosData?.map((video: VideoType) => (
-                                   <div className="lg:min-w-[280px] md:min-w-[240px] min-w-[200px] max-w-[280px]" key={video.key}>
-
+                                   <div key={video.key}
+                                        className="lg:min-w-[calc((100%/5)-12px+calc(12px/5))] 
+                                        md:min-w-[calc((100%/4)-12px+calc(12px/4))] 
+                                        sm:min-w-[calc((100%/3)-8px+calc(8px/3))]
+                                        min-w-[calc((100%/2)-8px+calc(8px/2))]">
+                                        {/* className="lg:min-w-[280px] md:min-w-[240px] min-w-[200px] max-w-[280px]" */}
                                         <div className="relative rounded-md overflow-hidden md:h-[160px] h-[130px] w-[100%]
                                                        cursor-pointer group border-2 border-logo-inherit border-opacity-0 hover:border-opacity-100 duration-300"
                                              onClick={() => changeVideoMode(video.key)}>

@@ -1,6 +1,6 @@
 import '../../styles/skeleton.css'
 
-export function Skeleton({ containerType }: { containerType: string }) {
+export function Skeleton({ containerType }: { containerType?: string }) {
 
      const screenWidth = window.screen.width
 
@@ -18,18 +18,18 @@ export function Skeleton({ containerType }: { containerType: string }) {
      for (i = 0; i < noOfskeletonItems; i++) {
           skeletonItems.push(
                <div key={i} className={`rounded-xl overflow-hidden flex flex-col gap-1
-                    ${containerType === 'category' || containerType === 'similarCategory'
-                         ? `xl:min-w-[calc((100%/7)-10.3px)]
-                         lg:min-w-[calc((100%/6)-10.3px)] 
-                         md:min-w-[calc((100%/5)-10.3px)] 
-                         sm:min-w-[calc((100%/4)-6px)]
-                         min-w-[calc((100%/3)-5px)]`
+                    ${containerType === 'home-category' || containerType === 'suggested-category'
+                         ? `xl:min-w-[calc((100%/7)-12px+calc(12px/7))]
+                         lg:min-w-[calc((100%/6)-12px+calc(12px/6))] 
+                         md:min-w-[calc((100%/5)-12px+calc(12px/5))] 
+                         sm:min-w-[calc((100%/4)-8px+calc(8px/4))]
+                         min-w-[calc((100%/3)-8px+calc(8px/3))]`
                          : ''} `}>
 
                     <div className={`effect-skeleton
-                              ${containerType === 'category'
+                              ${containerType === 'home-category'
                               ? 'w-[100%] xl:h-[280px] lg:h-[270px] md:h-[270px] sm:h-[260px] xsm:h-[250px] xxsm:h-[170px] h-[145px]'
-                              : containerType === 'similarCategory'
+                              : containerType === 'suggested-category'
                                    ? 'w-[100%] xl:h-[255px] lg:h-[240px] md:h-[265px] sm:h-[260px] xsm:h-[250px] xxsm:h-[170px] h-[145px]'
                                    : 'lg:h-[330px] md:h-[280px] sm:h-[260px] xsm:h-[280px] h-[300px]'}`} >
                     </div>

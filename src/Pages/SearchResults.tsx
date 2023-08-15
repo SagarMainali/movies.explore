@@ -43,7 +43,7 @@ export function SearchResults() {
      return (
           customLoading && data.length < 1
                ?
-               <Skeleton containerType="searchResults"/>
+               <Skeleton />
                : data.length > 0
                     ?
                     <InfiniteScroll

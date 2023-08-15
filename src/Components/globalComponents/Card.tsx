@@ -1,5 +1,5 @@
 import { image_baseUrl } from "../../utils/common"
-import { NavLink, useLocation, useParams } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { CircularProgressbar } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
 import { MovieAndShowsDetails } from "../../types/type"
@@ -8,19 +8,17 @@ import { useGlobalContext } from "../../stateManagement/context"
 import { LazyImage } from "./LazyImage"
 
 // the customMediaType is needed because only trending movies or shows has media_type property
-export function Card({ customMediaType, ...movieOrShow }: { customMediaType: string | undefined } & MovieAndShowsDetails) {
+export function Card({ customMediaType, containerType, ...movieOrShow }: {
+     customMediaType: string | undefined, containerType?: string
+} & MovieAndShowsDetails) {
 
      const { id, poster_path, vote_average, title, name, release_date, first_air_date } = movieOrShow
-
-     const { pathname } = useLocation()
-
-     const { media_type, id: main_id } = useParams()
 
      const { changeDateFormat } = useGlobalContext()
 
      return (
           <div className={`m-0 p-0 flex flex-col gap-1
-               ${pathname === '/' || pathname === `/${media_type}/${main_id}`
+               ${containerType === 'home-category' || containerType === 'suggested-category'
                     ? `xl:min-w-[calc((100%/7)-12px+calc(12px/7))]
                          lg:min-w-[calc((100%/6)-12px+calc(12px/6))] 
                          md:min-w-[calc((100%/5)-12px+calc(12px/5))] 
@@ -38,9 +36,9 @@ export function Card({ customMediaType, ...movieOrShow }: { customMediaType: str
                               src={poster_path ? `${image_baseUrl}/${poster_path}` : '/no-poster.png'}
                               alt="movie/tvshow"
                               className={`rounded-xl overflow-hidden
-                              ${pathname === '/'
+                              ${containerType === 'home-category'
                                         ? 'w-[100%] xl:h-[280px] lg:h-[270px] md:h-[270px] sm:h-[260px] xsm:h-[250px] xxsm:h-[170px] h-[145px]'
-                                        : pathname === `/${media_type}/${main_id}`
+                                        : containerType === 'suggested-category'
                                              ? 'w-[100%] xl:h-[255px] lg:h-[240px] md:h-[265px] sm:h-[260px] xsm:h-[250px] xxsm:h-[170px] h-[145px]'
                                              : 'lg:h-[350px] md:h-[280px] sm:h-[260px] xsm:h-[280px] h-[300px]'}`}
                          />
