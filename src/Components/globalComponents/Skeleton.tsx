@@ -1,13 +1,13 @@
 import '../../styles/skeleton.css'
 
-export function Skeleton({ containerType }: { containerType?: string }) {
+export function Skeleton({ containerType }: { containerType: string }) {
 
      const screenWidth = window.screen.width
 
      let noOfskeletonItems = 0
      let skeletonItems = []
 
-     if (containerType === 'explorer' || containerType === 'searchResults') noOfskeletonItems = 12
+     if (containerType === 'explorer' || containerType === 'search-results') noOfskeletonItems = 12
      else if (screenWidth >= 1300) noOfskeletonItems = 7
      else if (screenWidth < 1300 && screenWidth >= 1080) noOfskeletonItems = 6
      else if (screenWidth < 1080 && screenWidth >= 860) noOfskeletonItems = 5

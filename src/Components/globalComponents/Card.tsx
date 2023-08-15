@@ -17,13 +17,14 @@ export function Card({ customMediaType, containerType, ...movieOrShow }: {
      const { changeDateFormat } = useGlobalContext()
 
      return (
-          <div className={`flex flex-col gap-1 rounded-xl border-2 border-opacity-0 hover:border-opacity-100 duration-[250ms] p-[3px] pb-0
+          <div className={`flex flex-col gap-1 rounded-xl
                     ${containerType === 'home-category' || containerType === 'suggested-category'
                     ? `xl:min-w-[calc((100%/7)-10px+calc(10px/7))]
                          lg:min-w-[calc((100%/6)-10px+calc(10px/6))] 
                          md:min-w-[calc((100%/5)-10px+calc(10px/5))] 
                          sm:min-w-[calc((100%/4)-6px+calc(6px/4))]
                          min-w-[calc((100%/3)-6px+calc(6px/3))]
+                         border-2 border-opacity-0 hover:border-opacity-100 duration-[250ms] p-[3px] pb-0
                          ${vote_average >= 6.5 ? 'border-[#0FB6DF]' : 'border-[#f07b41]'}`
                     : ''} `}>
                {/* above width explained - 

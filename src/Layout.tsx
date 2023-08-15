@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom'
 import { Navbar } from './Components/globalComponents/Navbar'
 import { OverlayEffect } from './Components/globalComponents/OverlayEffect'
 import { useGlobalContext } from './stateManagement/context'
+import { Suspense } from 'react'
 
 export function Layout() {
 
@@ -15,7 +16,9 @@ export function Layout() {
                          // overlay on top of the GradientOverlay if the main-menu is active
                          menuTogglerActive && <OverlayEffect />
                     }
-                    <Outlet />
+                    <Suspense >
+                         <Outlet />
+                    </Suspense>
                </div>
           </div>
      )

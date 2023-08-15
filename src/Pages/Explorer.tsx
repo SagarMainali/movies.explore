@@ -42,7 +42,7 @@ export function Explorer({ explore }: { explore: string }) {
      return (
           customLoading && data.length < 1
                ?
-               <Skeleton/>
+               <Skeleton containerType="explorer"/>
                :
                <InfiniteScroll
                     className="pt-[60px] grid sm:gap-x-4 sm:gap-y-6 gap-x-3 gap-y-6 
