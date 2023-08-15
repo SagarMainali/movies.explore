@@ -50,7 +50,8 @@ export function SuggestedCategory({ id, media_type, category }: { id: string | u
 
                     <div className="relative">
 
-                         <div className={`hide-scrollbar flex overflow-x-scroll gap-[${flexGap}px]`} ref={containerRef}>
+                         {/* gap-[${flexGap.toString()}px] - the dynamic assignment of flex gap was sometimes working sometime not, so used static instead*/}
+                         <div className='hide-scrollbar flex md:gap-[12px] gap-[8px] overflow-x-scroll' ref={containerRef}>
                               {
                                    data.map(
                                         (movieOrShow: MovieAndShowsDetails) => <Card key={movieOrShow.id} customMediaType={media_type} {...movieOrShow} />
@@ -58,9 +59,9 @@ export function SuggestedCategory({ id, media_type, category }: { id: string | u
                               }
                          </div>
 
-                         <Controller direction="left" forwardedRef={containerRef} gap={flexGap}/>
+                         <Controller direction="left" forwardedRef={containerRef} gap={flexGap} />
 
-                         <Controller direction="right" forwardedRef={containerRef} gap={flexGap}/>
+                         <Controller direction="right" forwardedRef={containerRef} gap={flexGap} />
 
                     </div>
                </div>
