@@ -16,7 +16,7 @@ export function Layout() {
                          // overlay on top of the GradientOverlay if the main-menu is active
                          menuTogglerActive && <OverlayEffect />
                     }
-                    <Suspense >
+                    <Suspense>
                          <Outlet />
                     </Suspense>
                </div>
