@@ -1,9 +1,9 @@
 import { lazy } from 'react'
 
-export function lazyLoader(path: string, componentName: string) {
+export function lazyLoader(componentName: string) {
      return (
           lazy(() => (
-               import(path)
+               import(`../Pages/${componentName}.tsx`)
                     .then(module => ({ default: module[componentName] }))
           ))
      )

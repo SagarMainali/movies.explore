@@ -4,11 +4,11 @@ import { GlobalContextProvider } from './stateManagement/context'
 import { lazyLoader } from './codeSplitting/lazyLoader'
 
 // dynamic import
-const LazyHome = lazyLoader('../pages/Home.tsx', 'Home')
-const LazyExplorer = lazyLoader('../pages/Explorer.tsx', 'Explorer')
-const LazySearchResults = lazyLoader('../pages/SearchResults.tsx', 'SearchResults')
-const LazyDetails = lazyLoader('../pages/Details.tsx', 'Details')
-const LazyPageNotFound = lazyLoader('../pages/PageNotFound.tsx', 'PageNotFound')
+const LazyHome = lazyLoader('Home')
+const LazyExplorer = lazyLoader('Explorer')
+const LazySearchResults = lazyLoader('SearchResults')
+const LazyDetails = lazyLoader('Details')
+const LazyPageNotFound = lazyLoader('PageNotFound')
 
 export function App() {
 
