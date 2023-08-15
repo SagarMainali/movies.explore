@@ -2,7 +2,7 @@ import { VideoModeType, VideoType } from "../../types/type"
 import { Controller } from "../globalComponents/Controller"
 import { LazyImage } from "../globalComponents/LazyImage"
 import { PlayButton } from "./PlayButton"
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 
 export default function VideosSection({ videosData, changeVideoMode }: {
      videosData: VideoType[],
@@ -12,6 +12,23 @@ export default function VideosSection({ videosData, changeVideoMode }: {
 
      const containerRef = useRef<HTMLDivElement>(null)
 
+     const [flexGap, setFlexGap] = useState<number>(0)
+
+     function changeFlexGap() {
+          if (window.screen.width >= 860) {
+               setFlexGap(10)
+          }
+          else {
+               setFlexGap(6)
+          }
+     }
+
+     useEffect(() => {
+          window.addEventListener('resize', changeFlexGap)
+          changeFlexGap()
+          return () => { window.removeEventListener }
+     }, [])
+
      return (
           videosData && videosData.length > 0
           &&
@@ -20,14 +37,14 @@ export default function VideosSection({ videosData, changeVideoMode }: {
 
                <div className="relative">
 
-                    <div className="flex md:gap-[12px] gap-[8px] overflow-x-scroll hide-scrollbar" ref={containerRef}>
+                    <div className="flex md:gap-[10px] gap-[6px] overflow-x-scroll hide-scrollbar" ref={containerRef}>
                          {
                               videosData?.map((video: VideoType) => (
                                    <div key={video.key}
-                                        className="lg:min-w-[calc((100%/5)-12px+calc(12px/5))] 
-                                        md:min-w-[calc((100%/4)-12px+calc(12px/4))] 
-                                        sm:min-w-[calc((100%/3)-8px+calc(8px/3))]
-                                        min-w-[calc((100%/2)-8px+calc(8px/2))]">
+                                        className="lg:min-w-[calc((100%/5)-10px+calc(10px/5))] 
+                                        md:min-w-[calc((100%/4)-10px+calc(10px/4))] 
+                                        sm:min-w-[calc((100%/3)-6px+calc(6px/3))]
+                                        min-w-[calc((100%/2)-6px+calc(6px/2))]">
                                         {/* className="lg:min-w-[280px] md:min-w-[240px] min-w-[200px] max-w-[280px]" */}
                                         <div className="relative rounded-md overflow-hidden md:h-[160px] h-[130px] w-[100%]
                                                        cursor-pointer group border-2 border-logo-inherit border-opacity-0 hover:border-opacity-100 duration-300"
@@ -46,9 +63,9 @@ export default function VideosSection({ videosData, changeVideoMode }: {
                          }
                     </div>
 
-                    <Controller direction="left" forwardedRef={containerRef} />
+                    <Controller direction="left" forwardedRef={containerRef} gap={flexGap} />
 
-                    <Controller direction="right" forwardedRef={containerRef} />
+                    <Controller direction="right" forwardedRef={containerRef} gap={flexGap} />
 
                </div>
           </div>

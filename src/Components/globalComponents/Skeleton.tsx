@@ -19,11 +19,11 @@ export function Skeleton({ containerType }: { containerType?: string }) {
           skeletonItems.push(
                <div key={i} className={`rounded-xl overflow-hidden flex flex-col gap-1
                     ${containerType === 'home-category' || containerType === 'suggested-category'
-                         ? `xl:min-w-[calc((100%/7)-12px+calc(12px/7))]
-                         lg:min-w-[calc((100%/6)-12px+calc(12px/6))] 
-                         md:min-w-[calc((100%/5)-12px+calc(12px/5))] 
-                         sm:min-w-[calc((100%/4)-8px+calc(8px/4))]
-                         min-w-[calc((100%/3)-8px+calc(8px/3))]`
+                         ? `xl:min-w-[calc((100%/7)-10px+calc(10px/7))]
+                         lg:min-w-[calc((100%/6)-10px+calc(10px/6))] 
+                         md:min-w-[calc((100%/5)-10px+calc(10px/5))] 
+                         sm:min-w-[calc((100%/4)-6px+calc(6px/4))]
+                         min-w-[calc((100%/3)-6px+calc(6px/3))]`
                          : ''} `}>
 
                     <div className={`effect-skeleton
@@ -42,7 +42,7 @@ export function Skeleton({ containerType }: { containerType?: string }) {
      return (
           containerType === 'category' || containerType === 'similarCategory'
                ?
-               <div className="hide-scrollbar flex md:gap-[12px] gap-[8px] overflow-x-scroll">
+               <div className="hide-scrollbar flex md:gap-[10px] gap-[6px] overflow-x-scroll">
                     {skeletonItems}
                </div>
                :

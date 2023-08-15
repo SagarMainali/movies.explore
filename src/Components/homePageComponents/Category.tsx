@@ -35,10 +35,10 @@ export function Category({ category }: { category: string }) {
 
      function changeFlexGap() {
           if (window.screen.width >= 860) {
-               setFlexGap(12)
+               setFlexGap(10)
           }
           else {
-               setFlexGap(8)
+               setFlexGap(6)
           }
      }
 
@@ -74,7 +74,7 @@ export function Category({ category }: { category: string }) {
                     <div className="relative">
 
                          {/* gap-[${flexGap.toString()}px] - the dynamic assignment of flex gap was sometimes working sometime not, so used static instead*/}
-                         <div className='hide-scrollbar flex md:gap-[12px] gap-[8px] overflow-x-scroll' ref={containerRef}>
+                         <div className='hide-scrollbar flex md:gap-[10px] gap-[6px] overflow-x-scroll' ref={containerRef}>
                               {
                                    Array.isArray(data) && data.map((movieOrShow: MovieAndShowsDetails) => (
                                         <Card key={movieOrShow.id} customMediaType={userInput} containerType="home-category" {...movieOrShow} />
