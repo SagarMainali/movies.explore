@@ -1,5 +1,6 @@
 import { VideoModeType, VideoType } from "../../types/type"
 import { Controller } from "../globalComponents/Controller"
+import { LazyImage } from "../globalComponents/LazyImage"
 import { PlayButton } from "./PlayButton"
 import { useRef } from 'react'
 
@@ -23,11 +24,15 @@ export default function VideosSection({ videosData, changeVideoMode }: {
                          {
                               videosData?.map((video: VideoType) => (
                                    <div className="lg:min-w-[280px] md:min-w-[240px] min-w-[200px] max-w-[280px]" key={video.key}>
-                                        <div className="rounded-md md:h-[160px] h-[130px] bg-no-repeat bg-center flex justify-center items-center 
-                                        cursor-pointer group border-2 border-logo-inherit border-opacity-0 hover:border-opacity-100 duration-300"
-                                             style={{ backgroundImage: `url(https://img.youtube.com/vi/${video.key}/mqdefault.jpg)` }}
+
+
+                                        <div className="relative rounded-md overflow-hidden md:h-[160px] h-[130px] w-[100%] flex justify-center items-center 
+                                                       cursor-pointer group border-2 border-logo-inherit border-opacity-0 hover:border-opacity-100 duration-300"
                                              onClick={() => changeVideoMode(video.key)}>
+
+                                             <LazyImage src={`https://img.youtube.com/vi/${video.key}/mqdefault.jpg`} alt="thumbnail" className="w-[100%]"/>
                                              <PlayButton />
+
                                         </div>
                                         <h1 className="mt-1 text-center md:text-base text-sm">"{video.name}"</h1>
                                    </div>

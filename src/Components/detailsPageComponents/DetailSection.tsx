@@ -129,9 +129,9 @@ export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode
                                                   }
                                              }} />
                                    </span>
-                                   <span className='group rounded-full' onClick={() => changeVideoMode(trailer.key)}>
+                                   <div className='group rounded-full relative h-[50px] w-[50px]' onClick={() => changeVideoMode(trailer.key)}>
                                         <PlayButton />
-                                   </span>
+                                   </div>
                                    {videoMode.openVideo && <VideoPopup
                                         videoKey={videoMode.videoKey}
                                         changeVideoMode={changeVideoMode}

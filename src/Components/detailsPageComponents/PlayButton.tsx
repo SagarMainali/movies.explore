@@ -1,9 +1,8 @@
 
 export function PlayButton() {
      return (
-          <span
-               className="border-[3px] border-slate-200 rounded-full flex justify-center items-center p-2 cursor-pointer h-[50px] w-[50px] 
-               group-hover:border-logo-inherit duration-300"
+          <span className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] border-[3px] border-slate-200 rounded-full 
+               flex justify-center items-center p-2 cursor-pointer h-[50px] w-[50px] group-hover:border-logo-inherit duration-300"
                title="Play Trailer">
                <svg
                     className='fill-slate-200 group-hover:scale-[.85] group-hover:fill-logo-inherit duration-300'
