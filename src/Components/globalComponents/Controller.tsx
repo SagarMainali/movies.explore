@@ -6,10 +6,12 @@ interface ControlsVisibility {
      hideRightBtn: boolean
 }
 
+// controllers for sliding carousel items
 export function Controller({ direction, forwardedRef, gap }: { direction: string, forwardedRef: React.RefObject<HTMLDivElement>, gap?: number }) {
 
      const { slider } = useGlobalContext()
 
+     // to store the visibility state of the Controller
      const [controlsConfig, setControlsConfig] = useState<ControlsVisibility>({} as ControlsVisibility)
 
      function changeControlsConfig() {

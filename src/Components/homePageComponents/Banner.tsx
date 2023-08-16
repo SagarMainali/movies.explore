@@ -13,6 +13,7 @@ export function Banner() {
 
      const [trending, setTrending] = useState<MovieAndShowsDetails>({} as MovieAndShowsDetails)
 
+     // out of the 20 object we get in the array, choose one randomly and sets its background as banner image
      useEffect(() => {
           if (data && Array.isArray(data)) {
                const randomNumber = Math.floor(Math.random() * 20)
@@ -20,6 +21,7 @@ export function Banner() {
           }
      }, [isLoading])
 
+     // can't do this because useFetchDataFromApi returns useQuery which is a hook making it unable to use inside useEffect hook
      // useEffect(() => {
      //      useFetchDataFromApi('/trending/all/day')
      //           .then(response => {

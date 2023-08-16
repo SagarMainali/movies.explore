@@ -33,6 +33,7 @@ export function Explorer({ explore }: { explore: string }) {
           pageNum.current = pageNum.current + 1
      }
 
+     // reset everything when the endpoint(derived from the explore prop) changes
      useEffect(() => {
           setCustomLoading(true)
           setData([])

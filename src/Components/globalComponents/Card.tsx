@@ -7,7 +7,8 @@ import { circularProgressbarStyles } from "../../utils/common"
 import { useGlobalContext } from "../../stateManagement/context"
 import { LazyImage } from "./LazyImage"
 
-// the customMediaType is needed because only trending movies or shows has media_type property
+// the customMediaType is needed because only trending movies or shows has media_type property, so we get this customMediaType from user interaction
+// in category Component
 export function Card({ customMediaType, containerType, ...movieOrShow }: {
      customMediaType: string | undefined, containerType?: string
 } & MovieAndShowsDetails) {
@@ -17,6 +18,8 @@ export function Card({ customMediaType, containerType, ...movieOrShow }: {
      const { changeDateFormat } = useGlobalContext()
 
      return (
+          // this complex seeming classname under is to get the accurate width, this ensures that only full Cards are renderd in the container
+          // this also ensures proper scrolling experience of the user
           <div className={`flex flex-col gap-1 rounded-xl
                     ${containerType === 'home-category' || containerType === 'suggested-category'
                     ? `xl:min-w-[calc((100%/7)-10px+calc(10px/7))]

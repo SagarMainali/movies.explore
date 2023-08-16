@@ -6,6 +6,7 @@ import { PlayButton } from "./PlayButton";
 import { useEffect } from "react";
 import { useGlobalContext } from "../../stateManagement/context";
 import { LazyImage } from "../globalComponents/LazyImage";
+import '../../styles/gradient_overlay.css'
 
 export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode, setVideoMode, changeVideoMode }: {
      movieOrShowData: MovieAndShowsDetails,
@@ -24,6 +25,7 @@ export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode
           }
      }, [trailer])
 
+     // we only get minutes so this converts to proper format (79 = 1hr 19mins, 123 = 2hrs 3min) 
      function minutesConverter(minutes: number): string {
           let hr = 0, min = 0, hrOrHrs = '', minOrMins = ''
           if (minutes > 60) {
@@ -43,6 +45,7 @@ export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode
           }
      }
 
+     // we only get huge numbers so this converts to proper format (1000000 = 1 Million, 1250000 = 1.25 Million)
      function moneyInWords(money: number, type: string) {
           // to not add decimal in budget
           if (type === 'budget') {
@@ -88,7 +91,7 @@ export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode
                               alt="backdrop_img"
                               className={`h-full w-full object-center ${movieOrShowData.backdrop_path ? 'object-cover' : 'object-contain'}`}
                          />
-                         <div className="overlay-lrb h-full w-full absolute inset-0"></div>
+                         <div className="overlay-lrb absolute inset-0 top-0"></div>
                     </div>
                </div>
 
@@ -133,6 +136,8 @@ export function DetailsSection({ movieOrShowData, media_type, trailer, videoMode
                                    <div className='group rounded-full relative h-[50px] w-[50px]' onClick={() => changeVideoMode(trailer.key)}>
                                         <PlayButton />
                                    </div>
+                                   {/* no matter where it gets triggered from, but it always opens here but since it has its position fixed,
+                                   there is no problem in doing so*/}
                                    {videoMode.openVideo && <VideoPopup
                                         videoKey={videoMode.videoKey}
                                         changeVideoMode={changeVideoMode}

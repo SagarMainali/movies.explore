@@ -1,4 +1,5 @@
 
+// custom play button to trigger video player popup
 export function PlayButton() {
      return (
           <span className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] border-[3px] border-slate-200 rounded-full 

@@ -24,8 +24,8 @@ export default function VideosSection({ videosData, changeVideoMode }: {
      }
 
      useEffect(() => {
-          window.addEventListener('resize', changeFlexGap)
           changeFlexGap()
+          window.addEventListener('resize', changeFlexGap)
           return () => { window.removeEventListener }
      }, [])
 

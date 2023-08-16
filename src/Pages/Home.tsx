@@ -9,6 +9,7 @@ export function Home() {
 
                <Banner />
 
+               {/* the props passed here as category is used to call api */}
                <Category category={'Now playing'} />
 
                <Category category={'Trending Now'} />

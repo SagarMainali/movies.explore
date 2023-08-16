@@ -1,5 +1,6 @@
 import ReactPlayer from 'react-player/youtube'
 
+// popup for video player using ReactPlayer
 export function VideoPopup({ videoKey, changeVideoMode, title }: {
      videoKey: string | null,
      changeVideoMode: (key?: string) => void,

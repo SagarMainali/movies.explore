@@ -43,7 +43,7 @@ export function Navbar() {
      // const [prevScrollY, setPrevScrollY] = useState<number>(0)
      const prevScrollY = useRef<number>(0)
 
-     // to change background color of navbar based on scrollposition
+     // to change background color of navbar based on scrollposition, not to hide the navbar
      const [crossed300, setCrossed300] = useState<boolean>(false)
 
      useEffect(() => {
@@ -70,7 +70,8 @@ export function Navbar() {
           window.addEventListener('scroll', handleNavbar)
 
           return () => { window.removeEventListener('scroll', handleNavbar) }
-     }, [prevScrollY.current])
+
+     }, [])
      // the dependecy prevScrollY is very important here because it lets the useEffect run everytime the componenet re-renders and if its value has
      // been changed. so everytime the useEffect runs it creates a new closure for the function handleNavbar then only it can refer to the latest
      // updated state value of the prevScrollY otherwise if there is no dependency provided the useEffect will not run on the next render and then
@@ -80,7 +81,6 @@ export function Navbar() {
      // *this problem gets solved when we just use useRef instead of useState variable - by using useRef we no longer need to use dependency *
 
      return (
-          // max-2xl:w-[calc(100%-24px)]
           <div
                className={`fixed w-full max-w-[1500px] z-50 px-3 duration-300 
                ${hideNavbar ? '-translate-y-[100%]' : ''} 

@@ -1,3 +1,5 @@
+
+// component to render when the path is invalid
 export function PageNotFound() {
      return (
           <div className="flex items-center justify-center gap-2 h-[96vh] w-full text-slate-300">

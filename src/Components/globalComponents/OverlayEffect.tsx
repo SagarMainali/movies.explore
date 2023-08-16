@@ -1,5 +1,7 @@
 import { useGlobalContext } from "../../stateManagement/context"
 
+// to be rendered when the menuTogglerState is active,
+//  it basically covers the whole page since it has fixed position with inset-0
 export function OverlayEffect() {
 
      const { changeMenuTogglerState } = useGlobalContext()

@@ -17,8 +17,10 @@ export function Details() {
 
   const { data: videosData } = useFetchDataFromApi(`/${media_type}/${id}/videos`)
 
+  // for storing video key of trailer type only
   const [trailer, setTrailer] = useState<VideoType>({} as VideoType)
 
+  // for popups that plays video
   const [videoMode, setVideoMode] = useState<VideoModeType>({} as VideoModeType)
 
   function changeVideoMode(key?: string): void {
@@ -30,6 +32,7 @@ export function Details() {
     }
   }
 
+  // out of all the overwelming video keys that we get, only pick one that is the actual trailer 
   useEffect(() => {
     if (videosData) {
       const trailersOnly = videosData.filter(

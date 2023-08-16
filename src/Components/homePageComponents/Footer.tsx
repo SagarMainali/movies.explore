@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import '../../styles/footer.css'
 
+// footer that contains my socials
 export function Footer() {
      return (
           <div className="flex flex-col gap-1 items-center justify-center bg-slate-900 py-3 rounded-md text-slate-300">

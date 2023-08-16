@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom'
-import { Layout } from './Layout'
 import { GlobalContextProvider } from './stateManagement/context'
+import { Layout } from './Layout'
 import { lazyLoader } from './codeSplitting/lazyLoader'
 
-// dynamic import
+// dynamic import 
 const LazyHome = lazyLoader('Home')
 const LazyExplorer = lazyLoader('Explorer')
 const LazySearchResults = lazyLoader('SearchResults')

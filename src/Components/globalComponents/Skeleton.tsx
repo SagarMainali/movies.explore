@@ -7,6 +7,7 @@ export function Skeleton({ containerType }: { containerType: string }) {
      let noOfskeletonItems = 0
      let skeletonItems = []
 
+     // how many skeleton items to render is based on where it is to be rendered
      if (containerType === 'explorer' || containerType === 'search-results') noOfskeletonItems = 12
      else if (screenWidth >= 1300) noOfskeletonItems = 7
      else if (screenWidth < 1300 && screenWidth >= 1080) noOfskeletonItems = 6
@@ -14,6 +15,7 @@ export function Skeleton({ containerType }: { containerType: string }) {
      else if (screenWidth < 860 && screenWidth >= 620) noOfskeletonItems = 4
      else noOfskeletonItems = 3
 
+     // adding the sekleton items itself on the array
      let i
      for (i = 0; i < noOfskeletonItems; i++) {
           skeletonItems.push(

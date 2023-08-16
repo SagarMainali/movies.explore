@@ -10,6 +10,8 @@ const headers = {
 }
 
 // to be used inside useEffect since it don't have useQuery
+// &&
+// to be used when we want the exact data we get from calling api without filtering
 export async function fetchDataFromApi(endpoint: string) {
      const { data } = await axios.get(base_url + endpoint, {
           headers
@@ -17,6 +19,7 @@ export async function fetchDataFromApi(endpoint: string) {
      return data
 }
 
+// can't be used inside useEffect since it returns useQuery hook
 export const useFetchDataFromApi = (endpoint: string) => {
      return useQuery({
           queryKey: [endpoint],

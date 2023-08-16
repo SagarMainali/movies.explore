@@ -8,13 +8,14 @@ import { Skeleton } from "../globalComponents/Skeleton"
 
 export function Category({ category }: { category: string }) {
 
-     // movies or tvshow
+     // movies or tvshow toggle to call differnt api based on user choice
      const [userInput, setUserInput] = useState<string>('movie')
 
      const changeUserInput = (category: string) => {
           setUserInput(category === 'movie' ? 'movie' : 'tv')
      }
 
+     // set the endpoint of the url based on the category prop
      let dynamicUrl = (
           category === 'Trending Now'
                ? `/trending/${userInput}/week`
@@ -29,8 +30,10 @@ export function Category({ category }: { category: string }) {
 
      const { data, isLoading } = useFetchDataFromApi(dynamicUrl)
 
+     // to get the width
      const containerRef = useRef<HTMLDivElement>(null)
 
+     // this is an addition value to the scroll for proper alignment
      const [flexGap, setFlexGap] = useState<number>(0)
 
      function changeFlexGap() {
@@ -43,6 +46,7 @@ export function Category({ category }: { category: string }) {
      }
 
      useEffect(() => {
+          // call at least once anyway
           changeFlexGap()
           window.addEventListener('resize', changeFlexGap)
           return () => { window.removeEventListener('resize', changeFlexGap) }

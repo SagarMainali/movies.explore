@@ -1,4 +1,5 @@
 
+// component to render when searchQuery don't match any data in the api
 export function NoResults({ searchQuery }: { searchQuery: string | undefined }) {
      return (
           <div className="h-[96vh] w-full flex flex-col gap-1 justify-center items-center">
